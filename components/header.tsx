@@ -14,7 +14,7 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-background editorial-border-b">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="w-7 h-7 rounded-md bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white group-hover:scale-110 transition-transform duration-300 shadow-sm">
+            <span className="w-7 h-7 rounded-md bg-gradient-to-br from-[#A0522D] to-[#6B3410] flex items-center justify-center text-xs font-bold text-white group-hover:scale-110 transition-transform duration-300 shadow-sm">
               P
             </span>
             <span className="font-editorial text-xl font-black tracking-tight text-foreground uppercase">
