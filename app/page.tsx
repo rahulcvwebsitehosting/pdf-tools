@@ -2,6 +2,7 @@ import Link from "next/link";
 import { tools } from "@/lib/tools";
 import { ArrowRight, Shield, Zap, WifiOff } from "lucide-react";
 import type { Metadata } from "next";
+import { FloatingCredit } from "@/components/floating-credit";
 
 export const metadata: Metadata = {
   title: "PDF Tools - Free Online PDF Utilities",
@@ -103,6 +104,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <FloatingCredit />
     </main>
   );
 }
