@@ -1,4 +1,10 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" rx="20" fill="#E6FF00"/>
-  <text x="50" y="50" dominant-baseline="central" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#000000">P</text>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="url(#g)"/>
+  <text x="50" y="51" dominant-baseline="central" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1">P</text>
 </svg>

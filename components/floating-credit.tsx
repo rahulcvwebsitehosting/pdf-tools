@@ -46,7 +46,7 @@ export function FloatingCredit() {
                   <ExternalLink size={12} /> Portfolio
                 </a>
                 <a
-                  href="https://github.com/rahulshyam"
+                  href="https://github.com/rahulcvwebsitehosting"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-foreground transition-colors"
