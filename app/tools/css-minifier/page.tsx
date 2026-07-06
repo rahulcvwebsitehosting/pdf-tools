@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import CssMinifierTool from "@/components/tools/css-minifier";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "CSS Minifier";
 const toolUrl = "/tools/css-minifier";
 
 const displayDescription = "Free compress CSS stylesheets by removing spacing rules and comments.";
 
 export const metadata: Metadata = {
-  title: "Free CSS Minifier Online | 100% Private | ToolsAtZero",
+  title: "Free CSS Minifier Online",
   description: displayDescription,
-  keywords: ["free css minifier","css minifier online","free css minifier online","css minifier tool","client-side css minifier","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free css minifier","css minifier online","free css minifier online","css minifier tool","client-side css minifier","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free CSS Minifier Online | 100% Private | ToolsAtZero",
+    title: "Free CSS Minifier Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/css-minifier",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/css-minifier",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free CSS Minifier Online | 100% Private | ToolsAtZero",
+    title: "Free CSS Minifier Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function CssMinifierToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            CSS Minifier
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free CSS Minifier Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <CssMinifierTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free CSS Minifier Online utility compresses CSS stylesheets by purging comments and spaces locally."
+            howToUse={[
+              "Paste your raw CSS style rules into the input panel.",
+              "Click 'Minify CSS' to compress style rules.",
+              "Copy the minified CSS style sheet output."
+            ]}
+            whyClientSide="Compressing css styles client-side avoids sending files to remote servers."
+          />
+        </article>
+      </main>
     </>
   );
 }

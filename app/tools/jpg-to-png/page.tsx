@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import JpgToPngTool from "@/components/tools/jpg-to-png";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "JPG to PNG";
 const toolUrl = "/tools/jpg-to-png";
 
 const displayDescription = "Free convert JPEG files to PNG transparent image structures.";
 
 export const metadata: Metadata = {
-  title: "Free JPG to PNG Online | 100% Private | ToolsAtZero",
+  title: "Free JPG to PNG Online",
   description: displayDescription,
-  keywords: ["free jpg to png","jpg to png online","free jpg to png online","jpg to png tool","client-side jpg to png","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free jpg to png","jpg to png online","free jpg to png online","jpg to png tool","client-side jpg to png","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free JPG to PNG Online | 100% Private | ToolsAtZero",
+    title: "Free JPG to PNG Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/jpg-to-png",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/jpg-to-png",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free JPG to PNG Online | 100% Private | ToolsAtZero",
+    title: "Free JPG to PNG Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function JpgToPngToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            JPG to PNG
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free JPG to PNG Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <JpgToPngTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free JPG to PNG Online utility converts JPEG images to PNG format client-side."
+            howToUse={[
+              "Select your JPG photo file.",
+              "The canvas tool wraps the flat JPEG stream into a PNG structure.",
+              "Download the transparent PNG graphic file instantly."
+            ]}
+            whyClientSide="Converting image formats locally ensures no media is saved by external entities."
+          />
+        </article>
+      </main>
     </>
   );
 }

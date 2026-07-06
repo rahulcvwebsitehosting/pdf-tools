@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
+import { AeoSection } from '@/components/aeo-section';
+
 export const metadata: Metadata = {
   title: 'Text to Speech Generator — Free Client-Side Audio Synthesizer',
   description: 'Convert written text into spoken audio files using local browser speech synthesis APIs. No server upload, completely private.',
@@ -30,21 +32,35 @@ export default function TextToSpeechPage() {
         toolUrl="/tools/text-to-speech"
         faqs={faqs}
       />
-      <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Convert written text into spoken audio files using local browser speech synthesis APIs. No server upload, completely private.
-          </p>
-        </header>
-        <div className="animate-card-in">
-          <ComingSoon toolName="Text to Speech Generator" description="Convert written text into spoken audio files using local browser speech synthesis APIs. No server upload, completely private." />
-        </div>
-      </div>
-    </main>
+      <main className="min-h-screen bg-background">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Header */}
+          <header className="mb-10 text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight font-editorial">
+              Text to Speech Generator
+            </h1>
+            <p className="mt-3 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Synthesize written text into spoken audio files using Web Speech APIs locally.
+            </p>
+          </header>
+
+          <ComingSoon
+            toolName="Text to Speech Generator"
+            description="Synthesize written text into spoken audio files using Web Speech APIs locally."
+          />
+
+          <AeoSection
+            toolName="Text to Speech Generator"
+            whatIs="A Text to Speech Generator is a voice synthesis utility that translates written text documents into audible spoken language, using state-of-the-art native browser speech engines."
+            howToUse={[
+              'Type or paste your text content into the main text input area.',
+              'Select a preferred voice, adjust speed/pitch settings, and click Speak.',
+              'Pause, resume, or stop the voice playback instantly using the control buttons.'
+            ]}
+            whyClientSide="By leveraging the browser's native SpeechSynthesis API rather than an external paid cloud service, the synthesis is completely free, instantaneous, and highly secure, as your proprietary documents or personal notes are never transmitted over the internet."
+          />
+        </article>
+      </main>
     </>
   );
 }

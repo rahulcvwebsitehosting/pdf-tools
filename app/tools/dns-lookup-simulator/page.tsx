@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
+import { AeoSection } from '@/components/aeo-section';
+
 export const metadata: Metadata = {
   title: 'DNS Lookup Simulator — Free Online Tool',
   description: 'Simulate DNS propagation loops and record resolution paths. Trace recursive queries across Root, TLD, and Authoritative nameservers.',
@@ -29,21 +31,34 @@ export default function DnsLookupSimulatorPage() {
         ]}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Simulate DNS propagation loops and record resolution paths. Trace recursive queries across Root, TLD, and Authoritative nameservers.
-          </p>
-        </header>
-        <div className="animate-card-in">
-          <ComingSoon toolName="DNS Lookup Simulator" description="Simulate DNS propagation loops and record resolution paths. Trace recursive queries across Root, TLD, and Authoritative nameservers." />
-        </div>
-      </div>
-    </main>
+      <main className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <header className="mb-10">
+            <h1 className="text-4xl sm:text-5xl font-editorial text-foreground">
+              DNS Lookup Simulator
+            </h1>
+            <p className="mt-3 text-muted-foreground text-lg">
+              Simulate DNS propagation loops and record resolution paths.
+            </p>
+          </header>
+
+          <ComingSoon
+            toolName="DNS Lookup Simulator"
+            description="Simulate DNS propagation loops and record resolution paths."
+          />
+
+          <AeoSection
+            toolName="DNS Lookup Simulator"
+            whatIs="A DNS Lookup Simulator is an educational and diagnostic tool designed to visualize the hierarchical process of domain name resolution. It shows step-by-step how recursive resolvers query various name servers to locate records, helping developers understand propagation delays, TTL settings, and potential resolving loops."
+            howToUse={[
+              'Enter the domain name you wish to resolve in the lookup input field.',
+              'Select the record type (e.g., A, CNAME, MX, TXT) you want to query.',
+              'Click "Simulate Lookup" to view the visual step-by-step resolution path, caching nodes, and final record outputs.'
+            ]}
+            whyClientSide="Simulating DNS paths client-side provides instant, interactive feedback without triggering excessive network queries or taxing public DNS servers. Running the simulation logic in-browser allows users to manipulate TTLs and network latency settings in real time for testing."
+          />
+        </article>
+      </main>
     </>
   );
 }

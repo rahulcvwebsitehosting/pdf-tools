@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FreeAiAiCommitMessageGeneratorTool from "@/components/tools/ai-commit-message-generator";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
 import { RelatedTools } from "@/components/related-tools";
 
 const toolName = "Free AI Commit Message Generator";
@@ -10,12 +11,12 @@ const displayDescription = "Use this Free AI commit message generator tool compl
 export const metadata: Metadata = {
   title: "Free AI Commit Message Generator - 100% Local | ToolsAtZero",
   description: displayDescription,
-  keywords: ["free ai commit message generator","ai commit message generator online","free ai commit message generator online","ai commit message generator tool","client-side ai commit message generator","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free ai commit message generator","ai commit message generator online","free ai commit message generator online","ai commit message generator tool","client-side ai commit message generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
     title: "Free AI Commit Message Generator - 100% Local | ToolsAtZero",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/ai-commit-message-generator",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/ai-commit-message-generator",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
@@ -47,20 +48,32 @@ export default function Page() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Free AI Commit Message Generator
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free AI Commit Message Generator
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <FreeAiAiCommitMessageGeneratorTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A client-side utility that operates completely locally on your machine."
+            howToUse={[
+              "Upload or enter your input data into the workspace area.",
+              "Trigger the local processing option and wait for the execution to finish.",
+              "Download or copy your secure results instantly."
+            ]}
+            whyClientSide="Your files and strings never leave your device. Computing locally bypasses external web endpoints entirely."
+          />
+
+          <RelatedTools currentSlug="ai-commit-message-generator" category="developer" />
+        </article>
+      </main>
     </>
   );
 }

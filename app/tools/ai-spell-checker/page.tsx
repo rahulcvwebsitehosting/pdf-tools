@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FreeAiAiSpellCheckerTool from "@/components/tools/ai-spell-checker";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
 import { RelatedTools } from "@/components/related-tools";
 
 const toolName = "Free AI Spell Checker";
@@ -10,12 +11,12 @@ const displayDescription = "Use this Free AI spell checker tool completely offli
 export const metadata: Metadata = {
   title: "Free AI Spell Checker - 100% Local | ToolsAtZero",
   description: displayDescription,
-  keywords: ["free ai spell checker","ai spell checker online","free ai spell checker online","ai spell checker tool","client-side ai spell checker","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free ai spell checker","ai spell checker online","free ai spell checker online","ai spell checker tool","client-side ai spell checker","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
     title: "Free AI Spell Checker - 100% Local | ToolsAtZero",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/ai-spell-checker",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/ai-spell-checker",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
@@ -47,20 +48,32 @@ export default function Page() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Free AI Spell Checker
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free AI Spell Checker
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <FreeAiAiSpellCheckerTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A client-side utility that operates completely locally on your machine."
+            howToUse={[
+              "Upload or enter your input data into the workspace area.",
+              "Trigger the local processing option and wait for the execution to finish.",
+              "Download or copy your secure results instantly."
+            ]}
+            whyClientSide="Your files and strings never leave your device. Computing locally bypasses external web endpoints entirely."
+          />
+
+          <RelatedTools currentSlug="ai-spell-checker" category="office" />
+        </article>
+      </main>
     </>
   );
 }

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import RemoveDuplicateLinesTool from "@/components/tools/remove-duplicate-lines";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "Remove Duplicate Lines";
 const toolUrl = "/tools/remove-duplicate-lines";
 
 const displayDescription = "Free filter duplicate lines out of list arrays in browser memory frames.";
 
 export const metadata: Metadata = {
-  title: "Free Remove Duplicate Lines Online | 100% Private | ToolsAtZero",
+  title: "Free Remove Duplicate Lines Online",
   description: displayDescription,
-  keywords: ["free remove duplicate lines","remove duplicate lines online","free remove duplicate lines online","remove duplicate lines tool","client-side remove duplicate lines","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free remove duplicate lines","remove duplicate lines online","free remove duplicate lines online","remove duplicate lines tool","client-side remove duplicate lines","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free Remove Duplicate Lines Online | 100% Private | ToolsAtZero",
+    title: "Free Remove Duplicate Lines Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/remove-duplicate-lines",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/remove-duplicate-lines",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Remove Duplicate Lines Online | 100% Private | ToolsAtZero",
+    title: "Free Remove Duplicate Lines Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function RemoveDuplicateLinesToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Remove Duplicate Lines
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free Remove Duplicate Lines Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <RemoveDuplicateLinesTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free Remove Duplicate Lines Online utility filters duplicate entries from lists in your browser memory."
+            howToUse={[
+              "Paste your line items list into the textarea.",
+              "Select case-sensitivity preferences.",
+              "Copy the deduplicated line list output instantly."
+            ]}
+            whyClientSide="Deduplicating emails or keys locally prevents records exposure."
+          />
+        </article>
+      </main>
     </>
   );
 }

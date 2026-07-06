@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import CsvToJsonTool from "@/components/tools/csv-to-json";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "CSV to JSON";
 const toolUrl = "/tools/csv-to-json";
 
 const displayDescription = "Free format CSV files into clean JSON arrays locally.";
 
 export const metadata: Metadata = {
-  title: "Free CSV to JSON Online | 100% Private | ToolsAtZero",
+  title: "Free CSV to JSON Online",
   description: displayDescription,
-  keywords: ["free csv to json","csv to json online","free csv to json online","csv to json tool","client-side csv to json","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free csv to json","csv to json online","free csv to json online","csv to json tool","client-side csv to json","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free CSV to JSON Online | 100% Private | ToolsAtZero",
+    title: "Free CSV to JSON Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/csv-to-json",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/csv-to-json",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free CSV to JSON Online | 100% Private | ToolsAtZero",
+    title: "Free CSV to JSON Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function CsvToJsonToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            CSV to JSON
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free CSV to JSON Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <CsvToJsonTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free CSV to JSON Online utility converts CSV tables into formatted JSON arrays in-memory."
+            howToUse={[
+              "Paste CSV table rows or load a local CSV file.",
+              "Configure cell delimiters and specify if the first row holds headers.",
+              "Copy the generated JSON array output instantly."
+            ]}
+            whyClientSide="Processing corporate tables locally protects client databases."
+          />
+        </article>
+      </main>
     </>
   );
 }

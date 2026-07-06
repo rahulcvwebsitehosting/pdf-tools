@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import ImageCropperTool from "@/components/tools/image-cropper";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "Image Cropper";
 const toolUrl = "/tools/image-cropper";
 
 const displayDescription = "Free crop local photos and adjust boundary coordinate grids.";
 
 export const metadata: Metadata = {
-  title: "Free Image Cropper Online | 100% Private | ToolsAtZero",
+  title: "Free Image Cropper Online",
   description: displayDescription,
-  keywords: ["free image cropper","image cropper online","free image cropper online","image cropper tool","client-side image cropper","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free image cropper","image cropper online","free image cropper online","image cropper tool","client-side image cropper","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free Image Cropper Online | 100% Private | ToolsAtZero",
+    title: "Free Image Cropper Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/image-cropper",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/image-cropper",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Image Cropper Online | 100% Private | ToolsAtZero",
+    title: "Free Image Cropper Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function ImageCropperToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Image Cropper
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free Image Cropper Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <ImageCropperTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free Image Cropper Online utility crops image coordinates locally in your browser memory."
+            howToUse={[
+              "Upload a photo to crop.",
+              "Input cropping dimensions (x, y, width, height) or drag the boundary crop box.",
+              "Click 'Crop Image' and download the cropped file."
+            ]}
+            whyClientSide="Cropping sensitive photos locally prevents remote storage uploads."
+          />
+        </article>
+      </main>
     </>
   );
 }

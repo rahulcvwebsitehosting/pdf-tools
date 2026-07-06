@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import MetaTagGeneratorTool from "@/components/tools/meta-tag-generator";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "Meta Tag Generator";
 const toolUrl = "/tools/meta-tag-generator";
 
 const displayDescription = "Free generate SEO-optimized HTML header meta tag blocks.";
 
 export const metadata: Metadata = {
-  title: "Free Meta Tag Generator Online | 100% Private | ToolsAtZero",
+  title: "Free Meta Tag Generator Online",
   description: displayDescription,
-  keywords: ["free meta tag generator","meta tag generator online","free meta tag generator online","meta tag generator tool","client-side meta tag generator","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free meta tag generator","meta tag generator online","free meta tag generator online","meta tag generator tool","client-side meta tag generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free Meta Tag Generator Online | 100% Private | ToolsAtZero",
+    title: "Free Meta Tag Generator Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/meta-tag-generator",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/meta-tag-generator",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Meta Tag Generator Online | 100% Private | ToolsAtZero",
+    title: "Free Meta Tag Generator Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function MetaTagGeneratorToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Meta Tag Generator
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free Meta Tag Generator Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <MetaTagGeneratorTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free Meta Tag Generator Online utility generates SEO-optimized HTML header meta tag elements locally."
+            howToUse={[
+              "Input website details (Title, description, og keywords).",
+              "Review the dynamic preview of the header metadata tags.",
+              "Copy the HTML meta tag output block to place in your header."
+            ]}
+            whyClientSide="Assembling meta tags locally avoids server templates exposure."
+          />
+        </article>
+      </main>
     </>
   );
 }

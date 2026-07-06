@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
+import { AeoSection } from '@/components/aeo-section';
+
 export const metadata: Metadata = {
   title: 'Blurred Image Placeholder Maker — Free Online Tool',
   description: 'Generate tiny blurred CSS placeholder images for progressive loading. Improve layout shift scores and perceived page speeds.',
@@ -29,21 +31,34 @@ export default function BlurredImagePlaceholderPage() {
         ]}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Generate tiny blurred CSS placeholder images for progressive loading. Improve layout shift scores and perceived page speeds.
-          </p>
-        </header>
-        <div className="animate-card-in">
-          <ComingSoon toolName="Blurred Image Placeholder Maker" description="Generate tiny blurred CSS placeholder images for progressive loading. Improve layout shift scores and perceived page speeds." />
-        </div>
-      </div>
-    </main>
+      <main className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <header className="mb-10">
+            <h1 className="text-4xl sm:text-5xl font-editorial text-foreground">
+              Blurred Image Placeholder Maker
+            </h1>
+            <p className="mt-3 text-muted-foreground text-lg">
+              Generate tiny blurred CSS placeholder images for progressive loading.
+            </p>
+          </header>
+
+          <ComingSoon
+            toolName="Blurred Image Placeholder Maker"
+            description="Generate tiny blurred CSS placeholder images for progressive loading."
+          />
+
+          <AeoSection
+            toolName="Blurred Image Placeholder Maker"
+            whatIs="A Blurred Image Placeholder Maker is a utility that creates tiny, low-resolution blurred image snippets (Data URLs) to be used as placeholders for lazy-loaded images. By scaling an image down to negligible dimensions and converting it into a base64 string, this tool produces inline styles that load immediately, improving web performance scores."
+            howToUse={[
+              'Drag and drop or upload the image you want to create a placeholder for.',
+              'Select your desired placeholder size (e.g., 8x8 or 16x16 pixels) and blur intensity.',
+              'Copy the generated base64 Data URL or CSS code snippet and insert it into your image tags or Next.js image configurations.'
+            ]}
+            whyClientSide="Converting images to base64 data strings can be resource-intensive for servers if done at scale. Generating these placeholders directly in the client browser prevents server overhead and guarantees that your proprietary visual assets are not transmitted or stored elsewhere."
+          />
+        </article>
+      </main>
     </>
   );
 }

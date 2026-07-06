@@ -3,6 +3,7 @@ import { calculatorRegistry, calculatorList } from "@/modules/calculators/calcul
 import { generateToolMetadata } from "@/lib/tools-engine/seo";
 import CalculatorShell from "@/components/calculator/CalculatorShell";
 import SEOSection from "@/components/calculator/SEOSection";
+import { AeoSection } from "@/components/aeo-section";
 import Link from "next/link";
 
 interface PageProps {
@@ -30,9 +31,12 @@ export default async function CalculatorPage({ params }: PageProps) {
     notFound();
   }
 
+  // Generate related tools links dynamically
   const relatedLinksElement = (
-    <div className="space-y-3">
-      <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground">Related</h4>
+    <div className="editorial-panel p-6 space-y-4">
+      <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-black/10 pb-2">
+        Related Calculators
+      </h4>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {tool.relatedTools.map((relSlug) => {
           const relTool = calculatorRegistry[relSlug];
@@ -41,10 +45,9 @@ export default async function CalculatorPage({ params }: PageProps) {
             <Link
               key={relSlug}
               href={`/tools/${relSlug}`}
-              className="editorial-card p-3 font-mono text-[10px] uppercase font-bold flex items-center justify-between hover:bg-accent transition-all"
+              className="editorial-card p-3 font-mono text-[10px] uppercase font-bold text-center block"
             >
-              <span className="truncate">{relTool.shortTitle}</span>
-              <span className="ml-1">→</span>
+              {relTool.shortTitle} →
             </Link>
           );
         })}
@@ -54,29 +57,44 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Schema Injection */}
       <SEOSection config={tool} />
 
-      <main className="min-h-screen bg-background text-foreground">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-          <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5 mb-6">
-            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+      <main className="min-h-screen bg-background text-foreground py-12">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {/* Breadcrumb */}
+          <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
+            <Link href="/" className="hover:text-black transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link href="/#calculators" className="hover:text-foreground transition-colors">Calculators</Link>
+            <Link href="/#calculators" className="hover:text-black transition-colors">
+              Calculators
+            </Link>
             <span>/</span>
             <span className="text-foreground">{tool.shortTitle}</span>
           </nav>
 
-          <header className="text-center mb-8">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-              {tool.title}
+          {/* Header */}
+          <header className="space-y-3">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight leading-tight">
+              Free {tool.title} Online
             </h1>
-            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-sm sm:text-base max-w-3xl leading-relaxed">
               {tool.description}
             </p>
           </header>
 
+          {/* Calculator Platform Shell */}
           <CalculatorShell slug={tool.slug} relatedLinks={relatedLinksElement} />
-        </div>
+
+          <AeoSection
+            toolName={tool.title}
+            whatIs={tool.aeo.aiSummary}
+            howToUse={tool.inputs.map(i => `Configure your target ${i.label} (defaults: ${i.defaultValue}).`)}
+            whyClientSide="Calculating parameters takes place strictly inside your local browser tab. No numbers are logged."
+          />
+        </article>
       </main>
     </>
   );

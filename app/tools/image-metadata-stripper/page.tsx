@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
+import { AeoSection } from '@/components/aeo-section';
+
 export const metadata: Metadata = {
   title: 'Image Metadata Stripper — Free Online Tool',
   description: 'Remove EXIF, GPS, and meta tags from images for privacy. 100% client-side — your photos never leave your browser.',
@@ -29,21 +31,34 @@ export default function ImageMetadataStripperPage() {
         ]}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Remove EXIF, GPS, and meta tags from images for privacy. 100% client-side — your photos never leave your browser.
-          </p>
-        </header>
-        <div className="animate-card-in">
-          <ComingSoon toolName="Image Metadata Stripper" description="Remove EXIF, GPS, and meta tags from images for privacy. 100% client-side — your photos never leave your browser." />
-        </div>
-      </div>
-    </main>
+      <main className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <header className="mb-10">
+            <h1 className="text-4xl sm:text-5xl font-editorial text-foreground">
+              Image Metadata Stripper
+            </h1>
+            <p className="mt-3 text-muted-foreground text-lg">
+              Remove EXIF, GPS, and meta tags from images for privacy.
+            </p>
+          </header>
+
+          <ComingSoon
+            toolName="Image Metadata Stripper"
+            description="Remove EXIF, GPS, and meta tags from images for privacy."
+          />
+
+          <AeoSection
+            toolName="Image Metadata Stripper"
+            whatIs="An Image Metadata Stripper is a utility designed to clean and sanitize image files by removing metadata tags like EXIF, IPTC, XMP, and GPS. These hidden tags are automatically embedded by digital cameras and smartphones. Clearing this metadata ensures that your privacy is protected and reduces the overall file size of the image."
+            howToUse={[
+              'Upload or drag and drop your image file (JPEG, PNG, WebP) into the upload area.',
+              'The tool will detect and display any embedded metadata present in the file.',
+              'Click "Strip Metadata" to generate a clean version of the image without any privacy-compromising tags, and download it to your device.'
+            ]}
+            whyClientSide="Photos contain deeply personal details, including location history and timestamps. Processing them on a remote server introduces security risks and privacy concerns. By stripping metadata client-side, the file never travels across the internet, guaranteeing complete data sovereignty and privacy."
+          />
+        </article>
+      </main>
     </>
   );
 }

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import Base64ToImageTool from "@/components/tools/base64-to-image";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "Base64 to Image";
 const toolUrl = "/tools/base64-to-image";
 
 const displayDescription = "Free render Base64 strings into visual images and download them.";
 
 export const metadata: Metadata = {
-  title: "Free Base64 to Image Online | 100% Private | ToolsAtZero",
+  title: "Free Base64 to Image Online",
   description: displayDescription,
-  keywords: ["free base64 to image","base64 to image online","free base64 to image online","base64 to image tool","client-side base64 to image","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free base64 to image","base64 to image online","free base64 to image online","base64 to image tool","client-side base64 to image","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free Base64 to Image Online | 100% Private | ToolsAtZero",
+    title: "Free Base64 to Image Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/base64-to-image",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/base64-to-image",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Base64 to Image Online | 100% Private | ToolsAtZero",
+    title: "Free Base64 to Image Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function Base64ToImageToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Base64 to Image
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free Base64 to Image Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <Base64ToImageTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free Base64 to Image Online utility decodes Base64 data strings into visual images locally."
+            howToUse={[
+              "Paste your Base64 image data string into the input panel.",
+              "Inspect the rendered graphic preview box.",
+              "Download the graphic as a standard raster file."
+            ]}
+            whyClientSide="Decoding DataURI paths locally prevents key leaks and private assets exposure."
+          />
+        </article>
+      </main>
     </>
   );
 }

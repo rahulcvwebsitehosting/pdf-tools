@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import RobotsTxtGeneratorTool from "@/components/tools/robots-txt-generator";
 import { SchemaMarkup } from "@/components/schema-markup";
+import { AeoSection } from "@/components/aeo-section";
+
 const toolName = "Robots.txt Generator";
 const toolUrl = "/tools/robots-txt-generator";
 
 const displayDescription = "Free create search engine crawler instruction sitemaps.";
 
 export const metadata: Metadata = {
-  title: "Free Robots.txt Generator Online | 100% Private | ToolsAtZero",
+  title: "Free Robots.txt Generator Online",
   description: displayDescription,
-  keywords: ["free robots.txt generator","robots.txt generator online","free robots.txt generator online","robots.txt generator tool","client-side robots.txt generator","free online tools","privacy first","no upload","browser tool","ToolsAtZero"],
+  keywords: ["free robots.txt generator","robots.txt generator online","free robots.txt generator online","robots.txt generator tool","client-side robots.txt generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free Robots.txt Generator Online | 100% Private | ToolsAtZero",
+    title: "Free Robots.txt Generator Online",
     description: displayDescription,
-    url: "https://toolsatzero.com/tools/robots-txt-generator",
-    siteName: "ToolsAtZero",
+    url: "https://pdf-tools-cv.vercel.app/tools/robots-txt-generator",
+    siteName: "PDF Tools",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Robots.txt Generator Online | 100% Private | ToolsAtZero",
+    title: "Free Robots.txt Generator Online",
     description: displayDescription,
   },
 };
@@ -46,20 +48,30 @@ export default function RobotsTxtGeneratorToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        <header className="text-center mb-8">
-          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-            Robots.txt Generator
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            {displayDescription}
-          </p>
-        </header>
-        <div className="animate-card-in">
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+          <header className="space-y-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
+              Free Robots.txt Generator Online
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+              {displayDescription}
+            </p>
+          </header>
+
           <RobotsTxtGeneratorTool />
-        </div>
-      </div>
-    </main>
+
+          <AeoSection
+            toolName={toolName}
+            whatIs="A Free Robots.txt Generator Online utility generates Robots.txt indexing rules locally."
+            howToUse={[
+              "Define crawler access rules (allow/disallow specific engines).",
+              "Enter sitemap links and configure block directories.",
+              "Generate and save the Robots.txt rules document."
+            ]}
+            whyClientSide="Creating index instructions locally keeps site mapping private."
+          />
+        </article>
+      </main>
     </>
   );
 }
