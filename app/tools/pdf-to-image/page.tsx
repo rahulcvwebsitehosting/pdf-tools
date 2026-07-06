@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import PdfToImageTool from "@/components/tools/pdf-to-image";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "PDF to Image";
 const toolUrl = "/tools/pdf-to-image";
 
@@ -48,30 +46,20 @@ export default function PdfToImageToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free PDF to Image Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            PDF to Image
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <PdfToImageTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free PDF to Image Online utility parses PDF document vectors and rasterizes each page into image file nodes locally."
-            howToUse={[
-              "Drop the PDF file into the rendering box.",
-              "Choose PNG or JPG format and define the target rendering resolution.",
-              "Click 'Convert to Image' to render the pages to canvas elements and download."
-            ]}
-            whyClientSide="Rasterizing pages on remote APIs exposes contract layouts. local canvas rendering processes pixels inside browser memory."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

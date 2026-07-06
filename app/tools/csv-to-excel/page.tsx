@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import CsvToExcelTool from "@/components/tools/csv-to-excel";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "CSV to Excel";
 const toolUrl = "/tools/csv-to-excel";
 
@@ -48,30 +46,20 @@ export default function CsvToExcelToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free CSV to Excel Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            CSV to Excel
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <CsvToExcelTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free CSV to Excel Online utility parses CSV text tables and generates Excel-compatible spreadsheet spreadsheets locally."
-            howToUse={[
-              "Paste CSV records or drop a CSV file into the workspace.",
-              "Set delimiters and check the spreadsheet layout preview.",
-              "Click 'Download Excel File' to save your .xls document."
-            ]}
-            whyClientSide="Keeping spreadsheets in local browser memory frames prevents data tracking."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

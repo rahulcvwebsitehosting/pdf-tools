@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import CropPdfTool from "@/components/tools/crop-pdf";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Crop PDF";
 const toolUrl = "/tools/crop-pdf";
 
@@ -48,30 +46,20 @@ export default function CropPdfToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Crop PDF Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Crop PDF
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <CropPdfTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Crop PDF Online utility is a layout editor that modifies the visible margins of a PDF document by resetting its internal crop-box coordinates locally."
-            howToUse={[
-              "Load your PDF file into the local canvas workbench.",
-              "Adjust the border crop dimensions by shifting the layout box boundaries.",
-              "Click 'Crop PDF' to save your changes and download the cropped file."
-            ]}
-            whyClientSide="Cropping scanned passports or checks on remote web tools risks leakage. Browser canvas framing keeps your visual layers strictly local."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import RemoveDuplicateLinesTool from "@/components/tools/remove-duplicate-lines";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Remove Duplicate Lines";
 const toolUrl = "/tools/remove-duplicate-lines";
 
@@ -48,30 +46,20 @@ export default function RemoveDuplicateLinesToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Remove Duplicate Lines Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Remove Duplicate Lines
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <RemoveDuplicateLinesTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Remove Duplicate Lines Online utility filters duplicate entries from lists in your browser memory."
-            howToUse={[
-              "Paste your line items list into the textarea.",
-              "Select case-sensitivity preferences.",
-              "Copy the deduplicated line list output instantly."
-            ]}
-            whyClientSide="Deduplicating emails or keys locally prevents records exposure."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

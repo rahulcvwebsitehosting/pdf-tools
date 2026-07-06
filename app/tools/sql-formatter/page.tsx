@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import SqlFormatterTool from "@/components/tools/sql-formatter";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "SQL Formatter";
 const toolUrl = "/tools/sql-formatter";
 
@@ -48,30 +46,20 @@ export default function SqlFormatterToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free SQL Formatter Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            SQL Formatter
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <SqlFormatterTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free SQL Formatter Online utility parses raw SQL statements and applies clean indentation and keyword capitalization."
-            howToUse={[
-              "Paste your raw SQL query string into the input area.",
-              "Click 'Format SQL' to apply indentation and capitalize SQL keywords.",
-              "Copy the formatted and beautified SQL query structure."
-            ]}
-            whyClientSide="Formatting SQL queries containing sensitive table details locally avoids cloud storage leaks."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

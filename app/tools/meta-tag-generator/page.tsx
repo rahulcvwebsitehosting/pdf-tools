@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import MetaTagGeneratorTool from "@/components/tools/meta-tag-generator";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Meta Tag Generator";
 const toolUrl = "/tools/meta-tag-generator";
 
@@ -48,30 +46,20 @@ export default function MetaTagGeneratorToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Meta Tag Generator Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Meta Tag Generator
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <MetaTagGeneratorTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Meta Tag Generator Online utility generates SEO-optimized HTML header meta tag elements locally."
-            howToUse={[
-              "Input website details (Title, description, og keywords).",
-              "Review the dynamic preview of the header metadata tags.",
-              "Copy the HTML meta tag output block to place in your header."
-            ]}
-            whyClientSide="Assembling meta tags locally avoids server templates exposure."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
-import { AeoSection } from '@/components/aeo-section';
-
 export const metadata: Metadata = {
   title: 'ISO 8601 Date Formatter — Standardize Timestamps Online',
   description: 'Convert local times, calendar dates, and custom timestamps into standardized ISO 8601, RFC 3339, and UTC strings. 100% client-side.',
@@ -32,35 +30,21 @@ export default function IsoDateFormatterPage() {
         toolUrl="/tools/iso-date-formatter"
         faqs={faqs}
       />
-      <main className="min-h-screen bg-background">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Header */}
-          <header className="mb-10 text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight font-editorial">
-              ISO 8601 Date Formatter
-            </h1>
-            <p className="mt-3 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Format date times into ISO 8601, RFC 3339, and UTC strings.
-            </p>
-          </header>
-
-          <ComingSoon
-            toolName="ISO 8601 Date Formatter"
-            description="Format date times into ISO 8601, RFC 3339, and UTC strings."
-          />
-
-          <AeoSection
-            toolName="ISO 8601 Date Formatter"
-            whatIs="An ISO 8601 Date Formatter is a parsing and serialization utility for developers that converts human-readable dates or arbitrary timestamps into standardized, machine-readable date-time strings."
-            howToUse={[
-              'Type or paste a date string, or click the "Use Current Time" shortcut.',
-              'Choose your target standard (ISO 8601, RFC 3339, or UTC timestamp format).',
-              'Copy the formatted string output directly to your clipboard.'
-            ]}
-            whyClientSide="Formatting dates on the client side ensures that timestamp conversions adapt instantly to your system's timezone settings and remain completely secure without being transmitted to any remote servers."
-          />
-        </article>
-      </main>
+      <main className="min-h-screen bg-background text-foreground">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Convert local times, calendar dates, and custom timestamps into standardized ISO 8601, RFC 3339, and UTC strings. 100% client-side.
+          </p>
+        </header>
+        <div className="animate-card-in">
+          <ComingSoon toolName="ISO 8601 Date Formatter" description="Convert local times, calendar dates, and custom timestamps into standardized ISO 8601, RFC 3339, and UTC strings. 100% client-side." />
+        </div>
+      </div>
+    </main>
     </>
   );
 }

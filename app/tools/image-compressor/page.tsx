@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import ImageCompressorTool from "@/components/tools/image-compressor";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Image Compressor";
 const toolUrl = "/tools/image-compressor";
 
@@ -48,30 +46,20 @@ export default function ImageCompressorToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Image Compressor Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Image Compressor
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <ImageCompressorTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Image Compressor Online utility compresses JPEG/PNG images locally using HTML5 canvas options."
-            howToUse={[
-              "Upload an image file (JPEG, PNG, WebP) to the compressor.",
-              "Adjust the quality slider to define target compression parameters.",
-              "Preview compressed dimensions and download the optimized image."
-            ]}
-            whyClientSide="Optimizing photos locally secures image assets and saves bandwidth."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

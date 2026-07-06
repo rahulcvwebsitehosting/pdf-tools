@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import CompressPdfTool from "@/components/tools/compress-pdf";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Compress PDF";
 const toolUrl = "/tools/compress-pdf";
 
@@ -48,30 +46,20 @@ export default function CompressPdfToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Compress PDF Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Compress PDF
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <CompressPdfTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Compress PDF Online utility compiles PDF content streams, downsizes image resources, and reorganizes structural components to minimize file bytes without losing visible quality."
-            howToUse={[
-              "Drop your PDF file into the local compression window.",
-              "Select your target compression strength (low, medium, or high quality).",
-              "Click 'Compress PDF' to process in-browser and save the optimized file."
-            ]}
-            whyClientSide="Standard online PDF shrinkers transfer your large slides to external systems. Local processing handles PDF buffer chunks directly in your browser tab."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

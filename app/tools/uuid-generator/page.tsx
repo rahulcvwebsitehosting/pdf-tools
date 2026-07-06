@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import UuidGeneratorTool from "@/components/tools/uuid-generator";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "UUID Generator";
 const toolUrl = "/tools/uuid-generator";
 
@@ -48,30 +46,20 @@ export default function UuidGeneratorToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free UUID Generator Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            UUID Generator
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <UuidGeneratorTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free UUID Generator Online utility generates unique random UUID v4 identifier tokens locally."
-            howToUse={[
-              "Specify the quantity of UUID tokens you need to generate.",
-              "Toggle uppercase/lowercase formatting options.",
-              "Generate and copy the list of secure UUIDs instantly."
-            ]}
-            whyClientSide="Generating security identifiers locally avoids tracking and keeps tokens private."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

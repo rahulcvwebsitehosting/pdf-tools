@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import CaseConverterTool from "@/components/tools/case-converter";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Advanced Case Converter";
 const toolUrl = "/tools/case-converter";
 
@@ -48,30 +46,20 @@ export default function CaseConverterToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Advanced Case Converter Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Advanced Case Converter
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <CaseConverterTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Advanced Case Converter Online utility formats text styles into camelCase, snake_case, UPPERCASE, lowercase, and Title Case configurations."
-            howToUse={[
-              "Enter your text input into the text editor area.",
-              "Click on the conversion buttons (e.g., camelCase, Title Case).",
-              "Copy the updated text output instantly."
-            ]}
-            whyClientSide="Converting file content styles locally guarantees complete security."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

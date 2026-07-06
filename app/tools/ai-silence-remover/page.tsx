@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import FreeAiAiSilenceRemoverTool from "@/components/tools/ai-silence-remover";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
 import { RelatedTools } from "@/components/related-tools";
 
 const toolName = "Free AI Silence Remover";
@@ -48,32 +47,20 @@ export default function Page() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free AI Silence Remover
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Free AI Silence Remover
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <FreeAiAiSilenceRemoverTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A client-side utility that operates completely locally on your machine."
-            howToUse={[
-              "Upload or enter your input data into the workspace area.",
-              "Trigger the local processing option and wait for the execution to finish.",
-              "Download or copy your secure results instantly."
-            ]}
-            whyClientSide="Your files and strings never leave your device. Computing locally bypasses external web endpoints entirely."
-          />
-
-          <RelatedTools currentSlug="ai-silence-remover" category="web" />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import WordCounterTool from "@/components/tools/word-counter";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Word Counter";
 const toolUrl = "/tools/word-counter";
 
@@ -48,30 +46,20 @@ export default function WordCounterToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Word Counter Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Word Counter
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <WordCounterTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Word Counter Online utility analyzes text character counts, word density metrics, and reading times locally."
-            howToUse={[
-              "Enter your text block into the editor box.",
-              "View real-time statistics like word density and reading time.",
-              "Copy your counts or clear the input to start over."
-            ]}
-            whyClientSide="Analyzing drafts locally secures your copywriting assets."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

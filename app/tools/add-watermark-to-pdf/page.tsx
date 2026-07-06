@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import AddWatermarkTool from "@/components/tools/add-watermark";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Add Watermark";
 const toolUrl = "/tools/add-watermark-to-pdf";
 
@@ -48,30 +46,20 @@ export default function AddWatermarkToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Add Watermark Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Add Watermark
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <AddWatermarkTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Add Watermark Online utility overlays copyright notices, logos, or stamp markers over existing PDF page layers to secure distribution permissions."
-            howToUse={[
-              "Upload your target PDF document to the watermark editor.",
-              "Type in your custom watermark text, rotation angle, and opacity slider.",
-              "Click 'Add Watermark' to stamp the layers locally and download your file."
-            ]}
-            whyClientSide="Watermarking draft agreements or invoices on cloud services exposes sensitive details. Local rendering protects your business content."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

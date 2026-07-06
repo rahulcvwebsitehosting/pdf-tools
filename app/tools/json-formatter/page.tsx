@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { JsonFormatterTool } from "@/components/tools/json-formatter";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "JSON Formatter & Validator";
 const toolUrl = "/tools/json-formatter";
 
@@ -48,30 +46,20 @@ export default function JsonFormatterToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free JSON Formatter & Validator Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            JSON Formatter & Validator
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <JsonFormatterTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free JSON Formatter & Validator Online utility is a developer tool that validates and formats JSON data using custom indentation layouts."
-            howToUse={[
-              "Paste your raw JSON text into the input panel.",
-              "Click 'Format' to beautify, or 'Minify' to remove whitespaces.",
-              "View any parse errors at line/column indexes, and click 'Copy' to save the output."
-            ]}
-            whyClientSide="JSON logs can hold proprietary parameters and credentials. Formatting locally in your browser memory ensures your data is secure."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

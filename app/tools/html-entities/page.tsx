@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import HtmlEntitiesTool from "@/components/tools/html-entities";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "HTML Entity Encoder";
 const toolUrl = "/tools/html-entities";
 
@@ -48,30 +46,20 @@ export default function HtmlEntitiesToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free HTML Entity Encoder Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            HTML Entity Encoder
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <HtmlEntitiesTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free HTML Entity Encoder Online utility converts special characters into safe HTML entity escape strings."
-            howToUse={[
-              "Type or paste your text markup in the input area.",
-              "Toggle between Encode or Decode options to escape characters.",
-              "Copy the entity-escaped output text instantly."
-            ]}
-            whyClientSide="Converting code markup locally ensures no scripts or keys leave your device."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

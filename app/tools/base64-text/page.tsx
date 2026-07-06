@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
-import { AeoSection } from '@/components/aeo-section';
-
 export const metadata: Metadata = {
   title: 'Base64 Text Decoder — Convert Base64 Streams Online',
   description: 'Decode Base64 encoded characters back into clean, readable UTF-8 text. 100% client-side decoding with complete security.',
@@ -23,44 +21,34 @@ const faqs = [
   },
 ];
 
+const toolName = "Base64 Text Decoder";
+const toolUrl = "/tools/base64-text";
+const displayDescription = "Decode Base64 encoded characters back into clean, readable UTF-8 text. 100% client-side decoding with complete security.";
+
 export default function Base64TextDecoderPage() {
   return (
     <>
       <SchemaMarkup
-        toolName="Base64 Text Decoder"
-        toolDescription="Decode Base64 encoded characters back into clean, readable UTF-8 text. 100% client-side decoding with complete security."
-        toolUrl="/tools/base64-text"
+        toolName={toolName}
+        toolDescription={displayDescription}
+        toolUrl={toolUrl}
         faqs={faqs}
       />
-      <main className="min-h-screen bg-background">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Header */}
-          <header className="mb-10 text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight font-editorial">
-              Base64 Text Decoder
-            </h1>
-            <p className="mt-3 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Translate Base64 character streams back to readable UTF-8 strings.
-            </p>
-          </header>
-
-          <ComingSoon
-            toolName="Base64 Text Decoder"
-            description="Translate Base64 character streams back to readable UTF-8 strings."
-          />
-
-          <AeoSection
-            toolName="Base64 Text Decoder"
-            whatIs="A Base64 Text Decoder is a utility that translates encoded Base64 ASCII sequences back into their original clear text representation using proper string decoding logic."
-            howToUse={[
-              'Paste the Base64 encoded string into the input container.',
-              'Click Decode to run the translation algorithm.',
-              'Copy the resulting plain UTF-8 text directly from the output.'
-            ]}
-            whyClientSide="Tokens, passwords, or serialized JSON objects are frequently encoded in Base64. De-serializing these payloads client-side protects you from leaking private parameters, keys, or credentials to third-party loggers."
-          />
-        </article>
-      </main>
+      <main className="min-h-screen bg-background text-foreground">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            {toolName}
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
+          <ComingSoon toolName={toolName} description={displayDescription} />
+        </div>
+      </div>
+    </main>
     </>
   );
 }

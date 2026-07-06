@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import ExcelToPdfTool from "@/components/tools/excel-to-pdf";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "Excel to PDF";
 const toolUrl = "/tools/excel-to-pdf";
 
@@ -48,30 +46,20 @@ export default function ExcelToPdfToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free Excel to PDF Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Excel to PDF
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <ExcelToPdfTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free Excel to PDF Online utility formats tabular spreadsheet data into printable PDF formats locally in browser memory."
-            howToUse={[
-              "Select your Excel (.xlsx) or CSV file.",
-              "Verify cell alignment, sheet borders, and print layouts.",
-              "Click 'Convert to PDF' to compile table grids and download the PDF document."
-            ]}
-            whyClientSide="Corporate spreadsheet data is highly sensitive. Converting client-side ensures complete data protection."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

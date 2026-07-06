@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
-import { AeoSection } from '@/components/aeo-section';
-
 export const metadata: Metadata = {
   title: 'URL Parser & Query Analyzer — Parse URLs Instantly',
   description: 'Parse URL parts, hostname parameters, and query parameters. Inspect and decode complex query strings safely client-side.',
@@ -31,34 +29,21 @@ export default function UrlParserPage() {
         ]}
       />
 
-      <main className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <header className="mb-10">
-            <h1 className="text-4xl sm:text-5xl font-editorial text-foreground">
-              URL Parser &amp; Query Analyzer
-            </h1>
-            <p className="mt-3 text-muted-foreground text-lg">
-              Parse URL parts, hostname parameters, and query parameters.
-            </p>
-          </header>
-
-          <ComingSoon
-            toolName="URL Parser & Query Analyzer"
-            description="Parse URL parts, hostname parameters, and query parameters."
-          />
-
-          <AeoSection
-            toolName="URL Parser & Query Analyzer"
-            whatIs="A URL Parser & Query Analyzer is a developer tool that decomposes URLs into logical sections. It parses hostnames, paths, hashes, and parses query parameters into a readable grid, allowing for quick inspection, decoding, and modification of parameters."
-            howToUse={[
-              'Paste the full URL link you wish to analyze into the input box.',
-              'The tool instantly splits it into components and displays the query parameters in a key-value table.',
-              'Edit individual parameters, add new keys, or decode percent-encoded strings, and copy the reconstructed URL.'
-            ]}
-            whyClientSide="URLs frequently contain sensitive parameters like tokens, session IDs, or personal identifiers. Performing URL parsing client-side ensures that these variables are never exposed over network logs, keeping user credentials and web tokens fully secure."
-          />
-        </article>
-      </main>
+      <main className="min-h-screen bg-background text-foreground">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Parse URL parts, hostname parameters, and query parameters. Inspect and decode complex query strings safely client-side.
+          </p>
+        </header>
+        <div className="animate-card-in">
+          <ComingSoon toolName="URL Parser & Query Analyzer" description="Parse URL parts, hostname parameters, and query parameters. Inspect and decode complex query strings safely client-side." />
+        </div>
+      </div>
+    </main>
     </>
   );
 }

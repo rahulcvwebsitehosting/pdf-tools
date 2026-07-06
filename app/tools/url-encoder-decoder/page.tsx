@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import UrlEncoderDecoderTool from "@/components/tools/url-encoder-decoder";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "URL Encoder/Decoder";
 const toolUrl = "/tools/url-encoder-decoder";
 
@@ -48,30 +46,20 @@ export default function UrlEncoderDecoderToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free URL Encoder/Decoder Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            URL Encoder/Decoder
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <UrlEncoderDecoderTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free URL Encoder/Decoder Online utility encodes or decodes URL parameter components client-side."
-            howToUse={[
-              "Enter your URL component string in the text box.",
-              "Toggle encode or decode options to format query elements.",
-              "Copy the updated URL component string output."
-            ]}
-            whyClientSide="Encoding URL parameters containing tokens or hashes locally ensures complete safety."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }

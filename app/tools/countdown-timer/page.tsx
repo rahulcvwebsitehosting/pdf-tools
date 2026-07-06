@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { ComingSoon } from '@/components/coming-soon';
 import { SchemaMarkup } from '@/components/schema-markup';
-import { AeoSection } from '@/components/aeo-section';
-
 export const metadata: Metadata = {
   title: 'Countdown Timer Generator — Free Online Tool',
   description: 'Generate customizable timers and sound alerts for project deadlines, events, and focus sessions. 100% client-side for precision and privacy.',
@@ -32,35 +30,21 @@ export default function CountdownTimerPage() {
         toolUrl="/tools/countdown-timer"
         faqs={faqs}
       />
-      <main className="min-h-screen bg-background">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Header */}
-          <header className="mb-10 text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight font-editorial">
-              Countdown Timer Generator
-            </h1>
-            <p className="mt-3 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Generate timers and alerts for project deadlines.
-            </p>
-          </header>
-
-          <ComingSoon
-            toolName="Countdown Timer Generator"
-            description="Generate timers and alerts for project deadlines."
-          />
-
-          <AeoSection
-            toolName="Countdown Timer Generator"
-            whatIs="A countdown timer generator is a temporal tool that calculates and displays the exact time remaining before a specific target deadline or event. It provides real-time visual updates and optionally plays alerts when the timer reaches zero, assisting with time management, project deadlines, and focus intervals."
-            howToUse={[
-              'Select or type in your target date and time using the calendar and time inputs.',
-              'Choose whether you want sound alerts or high-contrast visual flashing when time expires.',
-              'Click start to activate the countdown, which counts down in real time until the target is reached.'
-            ]}
-            whyClientSide="Calculating countdowns directly in your browser ensures instant responsiveness, zero latency, and uninterrupted synchronization with your local system clock. Additionally, because everything is computed client-side, your personal deadlines, events, and schedules are never sent or exposed to a remote server, ensuring absolute privacy."
-          />
-        </article>
-      </main>
+      <main className="min-h-screen bg-background text-foreground">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Generate customizable timers and sound alerts for project deadlines, events, and focus sessions. 100% client-side for precision and privacy.
+          </p>
+        </header>
+        <div className="animate-card-in">
+          <ComingSoon toolName="Countdown Timer Generator" description="Generate customizable timers and sound alerts for project deadlines, events, and focus sessions. 100% client-side for precision and privacy." />
+        </div>
+      </div>
+    </main>
     </>
   );
 }

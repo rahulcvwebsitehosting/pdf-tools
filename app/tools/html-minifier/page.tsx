@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import HtmlMinifierTool from "@/components/tools/html-minifier";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { AeoSection } from "@/components/aeo-section";
-
 const toolName = "HTML Minifier";
 const toolUrl = "/tools/html-minifier";
 
@@ -48,30 +46,20 @@ export default function HtmlMinifierToolPage() {
       />
 
       <main className="min-h-screen bg-background text-foreground">
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-          <header className="space-y-4">
-            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight">
-              Free HTML Minifier Online
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-              {displayDescription}
-            </p>
-          </header>
-
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+        <header className="text-center mb-8">
+          <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            HTML Minifier
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            {displayDescription}
+          </p>
+        </header>
+        <div className="animate-card-in">
           <HtmlMinifierTool />
-
-          <AeoSection
-            toolName={toolName}
-            whatIs="A Free HTML Minifier Online utility minifies HTML pages by stripping comments and spaces locally."
-            howToUse={[
-              "Paste your raw HTML page template into the box.",
-              "Click 'Minify HTML' to strip developer notes and spaces.",
-              "Copy the minified HTML markup output."
-            ]}
-            whyClientSide="Minifying document designs locally protects source markup structures."
-          />
-        </article>
-      </main>
+        </div>
+      </div>
+    </main>
     </>
   );
 }
