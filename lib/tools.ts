@@ -52,6 +52,7 @@ import {
   FileMinus,
   FileUp,
   Settings,
+  Pen,
   type LucideIcon,
 } from "lucide-react";
 
@@ -263,6 +264,19 @@ const initialTools: Tool[] = [
     keywords: ["ppt to pdf", "powerpoint to pdf", "pptx to pdf", "slides converter", "client-side"],
     icon: FileText,
     href: "/tools/powerpoint-to-pdf",
+    isReady: true,
+    category: "pdf",
+  },
+  {
+    slug: "edit-pdf",
+    name: "Edit PDF",
+    targetSeoString: "Free Edit PDF Online | 100% Private | ToolsAtZero",
+    shortName: "Edit PDF",
+    description: "Add text, shapes, highlights, and sticky notes to your PDF documents.",
+    tagline: "Annotate and edit PDF files in the browser",
+    keywords: ["edit pdf", "pdf editor", "annotate pdf", "add text to pdf", "pdf annotation", "client-side"],
+    icon: Pen,
+    href: "/tools/edit-pdf",
     isReady: true,
     category: "pdf",
   },
