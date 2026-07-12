@@ -79,22 +79,22 @@ export default function ToolsExplorer() {
                 );
               })}
             </div>
+
+            {cat.slug === "pdf" && hasComingSoon && (
+              <div className="flex justify-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => setExploreAll((v) => !v)}
+                  className="editorial-btn-primary px-6 py-3 font-mono text-xs uppercase font-bold flex items-center gap-2"
+                >
+                  {exploreAll ? <Minus size={14} /> : <Plus size={14} />}
+                  {exploreAll ? "Show Less" : "Explore More Tools"}
+                </button>
+              </div>
+            )}
           </div>
         );
       })}
-
-      {hasComingSoon && (
-        <div className="flex justify-center">
-          <button
-            type="button"
-            onClick={() => setExploreAll((v) => !v)}
-            className="editorial-btn-primary px-6 py-3 font-mono text-xs uppercase font-bold flex items-center gap-2"
-          >
-            {exploreAll ? <Minus size={14} /> : <Plus size={14} />}
-            {exploreAll ? "Show Less" : "Explore More Tools"}
-          </button>
-        </div>
-      )}
     </div>
   );
 }
