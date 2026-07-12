@@ -7,7 +7,7 @@ export function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className="border-t border-white/10 bg-[#1a1f2e] mt-auto">
+    <footer className="border-t border-white/10 bg-[#1a1f2e] light:bg-white light:border-black/10 mt-auto">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6 text-sm text-muted-foreground">

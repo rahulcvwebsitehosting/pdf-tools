@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="space-y-12">
       <section className="text-center pt-8 pb-2">
-        <div className="mx-auto w-20 h-20 rounded-full bg-[#243044] border border-white/10 flex items-center justify-center mb-4 shadow-lg">
+        <div className="mx-auto w-20 h-20 rounded-full bg-[#243044] light:bg-white border border-white/10 light:border-black/10 flex items-center justify-center mb-4 shadow-lg">
           <span className="text-4xl">📄</span>
         </div>
         <h1 className="font-editorial text-3xl sm:text-4xl font-bold text-foreground">

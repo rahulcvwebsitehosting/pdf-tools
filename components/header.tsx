@@ -1,22 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { Sun } from "lucide-react";
-import { useState } from "react";
+import { Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 import { CommandPalette } from "@/components/command-palette";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const saved = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
+    if (saved === "light") {
+      setTheme("light");
+      document.documentElement.classList.add("light");
+    } else {
+      setTheme("dark");
+      document.documentElement.classList.remove("light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    if (next === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+    try { localStorage.setItem("theme", next); } catch {}
+  };
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#1a1f2e]/95 backdrop-blur border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-[#1a1f2e]/95 backdrop-blur border-b border-white/10 light:bg-white/95 light:border-black/10">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
           <Link href="/" className="hover:opacity-90 transition-opacity">
             <img src="/logo.svg" alt="ToolsAtZero" className="h-9 w-auto" />
           </Link>
 
-          <Link href="/pdf-tools" className="text-sm text-foreground/90 hover:text-white transition-colors flex items-center gap-1.5">
+          <Link href="/pdf-tools" className="text-sm text-foreground/90 hover:text-white light:hover:text-black transition-colors flex items-center gap-1.5">
             <span className="grid grid-cols-3 gap-0.5">
               {[...Array(9)].map((_, i) => (
                 <span key={i} className="w-1 h-1 bg-current rounded-sm" />
@@ -26,20 +49,13 @@ export function Header() {
           </Link>
 
           <div className="flex items-center gap-1">
-            <Link
-              href="#"
-              className="p-2 text-[#3b82f6] hover:text-[#60a5fa] transition-colors"
-              title="Download"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-              </svg>
-            </Link>
             <button
+              onClick={toggleTheme}
               className="p-2 text-[#3b82f6] hover:text-[#60a5fa] transition-colors"
-              title="Theme"
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label="Toggle theme"
             >
-              <Sun size={20} />
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
         </div>
