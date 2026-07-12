@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   description:
     "Free online PDF tools, image tools, text tools, developer tools, and calculators. 100% client-side processing.",
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   keywords: [
     "free online tools",
