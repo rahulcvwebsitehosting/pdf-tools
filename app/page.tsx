@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { tools } from "@/lib/tools";
-import { ArrowRight, Shield, Zap, WifiOff } from "lucide-react";
+import { Shield, Zap, WifiOff } from "lucide-react";
 import type { Metadata } from "next";
 import { FloatingCredit } from "@/components/floating-credit";
+import ToolsExplorer from "@/components/tools-explorer";
 
 export const metadata: Metadata = {
   title: "PDF Tools - Free Online PDF Utilities",
@@ -10,25 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const activeTools = tools.filter((t) => t.isReady);
-  const pdfTools = activeTools.filter((t) => t.category === "pdf");
-  const developerTools = activeTools.filter((t) => t.category === "developer");
-  const officeTools = activeTools.filter((t) => t.category === "office");
-  const imageTools = activeTools.filter((t) => t.category === "image");
-  const webTools = activeTools.filter((t) => t.category === "web");
-  const timeTools = activeTools.filter((t) => t.category === "time");
-  const calculatorTools = activeTools.filter((t) => t.category === "calculator");
-
-  const categories = [
-    { slug: "pdf", title: "PDF Tools", count: pdfTools.length, list: pdfTools },
-    { slug: "developer", title: "Developer Tools", count: developerTools.length, list: developerTools },
-    { slug: "office", title: "Office & Text Tools", count: officeTools.length, list: officeTools },
-    { slug: "image", title: "Image Tools", count: imageTools.length, list: imageTools },
-    { slug: "web", title: "Web Tools", count: webTools.length, list: webTools },
-    { slug: "time", title: "Time Tools", count: timeTools.length, list: timeTools },
-    { slug: "calculators", title: "Calculators", count: calculatorTools.length, list: calculatorTools },
-  ];
-
   return (
     <main className="min-h-screen bg-background text-foreground pb-12">
       {/* Intro */}
@@ -53,55 +33,8 @@ export default function HomePage() {
 
       {/* Tools Grid */}
       <section id="tools" className="px-4 md:px-8 lg:px-16 space-y-16">
-        <div className="max-w-6xl mx-auto space-y-16">
-          {categories.map((cat, catIdx) => (
-            <div key={cat.slug} id={cat.slug} className="space-y-6 animate-fade-in" style={{ animationDelay: `${catIdx * 100}ms` }}>
-              <div className="flex items-center justify-between border-b border-black pb-4">
-                <h2 className="font-editorial text-3xl sm:text-4xl font-bold uppercase tracking-tight">
-                  {cat.title}
-                </h2>
-                <span className="neon-badge px-3 py-1 text-xs">
-                  {cat.count}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 border-t border-l border-black bg-background">
-                {cat.list.map((tool, idx) => {
-                  const IconComponent = tool.icon;
-                  return (
-                    <Link
-                      key={tool.slug}
-                      href={tool.href}
-                      className="editorial-card flex flex-col justify-between p-6 group border-r border-b border-black animate-card-in"
-                      style={{ animationDelay: `${(catIdx * 10 + idx) * 50}ms` }}
-                    >
-                      <div className="space-y-4">
-                        <div className="card-icon shrink-0 text-foreground">
-                          <IconComponent size={24} strokeWidth={1.5} />
-                        </div>
-                        <div className="space-y-1">
-                          <span className="card-title font-bold text-base block group-hover:underline">
-                            {tool.name}
-                          </span>
-                          <p className="card-description text-xs text-muted-foreground leading-relaxed">
-                            {tool.tagline}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase font-bold tracking-wider pt-2 border-t border-dashed border-black/10">
-                        <span>Launch</span>
-                        <ArrowRight
-                          size={14}
-                          className="card-arrow text-muted-foreground transition-transform duration-200"
-                        />
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <ToolsExplorer />
         </div>
       </section>
 

@@ -7,7 +7,7 @@ import { TrustBadge } from "@/components/trust-badge";
 import {
   MousePointer, Type, Pencil, Square, PenLine,
   Trash2, Download, Loader2, ChevronLeft, ChevronRight,
-  Undo, Redo, Plus, Palette, Image as ImageIcon,
+  Undo, Redo, Plus, Palette, ImageIcon,
   Circle, Slash, ArrowRight, Bold, Italic,
   AlignLeft, AlignCenter, AlignRight, Copy,
   ZoomIn, ZoomOut, Maximize, ChevronUp, ChevronDown,
@@ -18,7 +18,7 @@ import {
    Types
    ============================================================ */
 
-type ToolMode = "select" | "text" | "draw" | "image" | "rect" | "ellipse" | "line" | "arrow" | "highlight";
+type ToolMode = "select" | "text" | "draw" | "highlightPen" | "image" | "rect" | "ellipse" | "line" | "arrow" | "highlight";
 
 interface Point { x: number; y: number; }
 
@@ -175,13 +175,14 @@ export default function EditPdfTool() {
   const [rotating, setRotating] = useState<{ id: string; cx: number; cy: number; startAng: number; startRot: number } | null>(null);
   const [drawPts, setDrawPts] = useState<Point[] | null>(null);
   const [shapeDraw, setShapeDraw] = useState<{ shape: "rect" | "ellipse" | "line" | "arrow"; start: Point; end: Point } | null>(null);
+  const [snapLines, setSnapLines] = useState<{ dir: "h" | "v"; pos: number }[]>([]);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imgInputRef = useRef<HTMLInputElement>(null);
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const origPdfRef = useRef<ArrayBuffer | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const textAreaRef = useRef<HTMLDivElement>(null);
 
   // history
   const past = useRef<Snap[]>([]);
@@ -298,7 +299,7 @@ export default function EditPdfTool() {
     const pos = stagePos(e);
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
 
-    if (tool === "draw") {
+    if (tool === "draw" || tool === "highlightPen") {
       setDrawPts([pos]);
       return;
     }
@@ -367,7 +368,15 @@ export default function EditPdfTool() {
   const onStagePointerUp = () => {
     if (drawPts && drawPts.length > 1) {
       pushHist();
-      const s: StrokeO = { id: uid(), kind: "stroke", points: drawPts, color, width: brushSize, pageIdx: curPage, rotation: 0, opacity: 1, z: nextZ() };
+      const isHL = tool === "highlightPen";
+      const s: StrokeO = {
+        id: uid(), kind: "stroke", points: drawPts,
+        color: isHL ? "#fde047" : color,
+        width: isHL ? 16 : brushSize,
+        pageIdx: curPage, rotation: 0,
+        opacity: isHL ? 0.35 : 1,
+        z: nextZ(),
+      };
       setAnnots(prev => [...prev, s]);
     }
     setDrawPts(null);
@@ -439,14 +448,51 @@ export default function EditPdfTool() {
       const py = (e.clientY - rect.top) / zoom;
       if (dragging) {
         const o = annots.find(a => a.id === dragging.id);
-        if (!o) return;
+        if (!o) { setSnapLines([]); return; }
+        const SNAP = 8;
+        // compute new position (raw, before snap)
+        let nx: number, ny: number;
         if (o.kind === "stroke") {
           const b = bbox(o);
           const dx = px - dragging.offX - b.x;
           const dy = py - dragging.offY - b.y;
-          if (dx || dy) setAnnots(prev => prev.map(a => a.id === o.id && a.kind === "stroke" ? { ...a, points: a.points.map(p => ({ x: p.x + dx, y: p.y + dy })) } : a));
+          nx = b.x + dx; ny = b.y + dy;
         } else {
-          updateItem(o.id, { x: px - dragging.offX, y: py - dragging.offY } as Partial<Overlay>);
+          nx = px - dragging.offX;
+          ny = py - dragging.offY;
+        }
+        // snap alignment: check edges against other non-stroke objects on same page
+        const b_o = o.kind === "stroke" ? bbox(o) : { x: nx, y: ny, w: o.w, h: o.h };
+        const others = annots.filter(a => a.id !== o.id && a.pageIdx === curPage && a.kind !== "stroke");
+        let snX = nx, snY = ny;
+        const guides: { dir: "h" | "v"; pos: number }[] = [];
+        for (const other of others) {
+          if (other.kind === "stroke") continue;
+          const tgt = other as TextO | ImgO | ShapeO;
+          // edges of other
+          const oL = tgt.x, oR = tgt.x + tgt.w, oT = tgt.y, oB = tgt.y + tgt.h;
+          const oCX = tgt.x + tgt.w / 2, oCY = tgt.y + tgt.h / 2;
+          // edges of moving bbox
+          const mL = b_o.x, mR = b_o.x + b_o.w, mT = b_o.y, mB = b_o.y + b_o.h;
+          const mCX = b_o.x + b_o.w / 2, mCY = b_o.y + b_o.h / 2;
+          // check horizontal alignments
+          if (Math.abs(mL - oL) < SNAP) { snX = oL - (b_o.x - nx); guides.push({ dir: "v", pos: oL }); }
+          else if (Math.abs(mR - oR) < SNAP) { snX = oR - b_o.w - (b_o.x - nx); guides.push({ dir: "v", pos: oR }); }
+          else if (Math.abs(mCX - oCX) < SNAP) { snX = oCX - b_o.w / 2 - (b_o.x - nx); guides.push({ dir: "v", pos: oCX }); }
+          else if (Math.abs(mR - oL) < SNAP) { snX = oL - b_o.w - (b_o.x - nx); guides.push({ dir: "v", pos: oL }); }
+          // check vertical alignments
+          if (Math.abs(mT - oT) < SNAP) { snY = oT - (b_o.y - ny); guides.push({ dir: "h", pos: oT }); }
+          else if (Math.abs(mB - oB) < SNAP) { snY = oB - b_o.h - (b_o.y - ny); guides.push({ dir: "h", pos: oB }); }
+          else if (Math.abs(mCY - oCY) < SNAP) { snY = oCY - b_o.h / 2 - (b_o.y - ny); guides.push({ dir: "h", pos: oCY }); }
+          else if (Math.abs(mB - oT) < SNAP) { snY = oT - b_o.h - (b_o.y - ny); guides.push({ dir: "h", pos: oT }); }
+        }
+        setSnapLines(guides.length ? guides : []);
+        snX = Math.round(snX); snY = Math.round(snY);
+        if (o.kind === "stroke") {
+          const dx2 = snX - bbox(o).x, dy2 = snY - bbox(o).y;
+          if (dx2 || dy2) setAnnots(prev => prev.map(a => a.id === o.id && a.kind === "stroke" ? { ...a, points: a.points.map(p => ({ x: p.x + dx2, y: p.y + dy2 })) } : a));
+        } else {
+          updateItem(o.id, { x: snX, y: snY } as Partial<Overlay>);
         }
         return;
       }
@@ -483,7 +529,7 @@ export default function EditPdfTool() {
         return;
       }
     };
-    const up = () => { setDragging(null); setResizing(null); setRotating(null); };
+    const up = () => { setDragging(null); setResizing(null); setRotating(null); setSnapLines([]); };
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerup", up);
     return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
@@ -621,7 +667,12 @@ export default function EditPdfTool() {
         setAnnots(prev => prev.map(a => a.id === id && a.kind === "text" ? { ...a, h: Math.max(ta.scrollHeight, a.fontSize * 1.2) } : a));
       };
       setH();
-      ta.focus(); ta.select();
+      ta.focus();
+      const range = document.createRange();
+      range.selectNodeContents(ta);
+      const sel = window.getSelection();
+      sel?.removeAllRanges();
+      sel?.addRange(range);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editingText]);
@@ -805,6 +856,7 @@ export default function EditPdfTool() {
           <ToolBtn icon={<MousePointer size={15} />} label="Select" active={tool === "select"} onClick={() => { setTool("select"); }} />
           <ToolBtn icon={<Type size={15} />} label="Text" active={tool === "text"} onClick={() => setTool("text")} />
           <ToolBtn icon={<Pencil size={15} />} label="Draw" active={tool === "draw"} onClick={() => setTool("draw")} />
+          <ToolBtn icon={<PenLine size={15} />} label="Pen HL" active={tool === "highlightPen"} onClick={() => setTool("highlightPen")} />
           <ToolBtn icon={<ImageIcon size={15} />} label="Image" active={tool === "image"} onClick={() => setTool("image")} />
           <ToolBtn icon={<Square size={15} />} label="Rect" active={tool === "rect"} onClick={() => setTool("rect")} />
           <ToolBtn icon={<Circle size={15} />} label="Ellipse" active={tool === "ellipse"} onClick={() => setTool("ellipse")} />
@@ -876,7 +928,7 @@ export default function EditPdfTool() {
               onStartMove={(e) => startMove(o, e)}
               onTextChange={(text) => updateItem(o.id, { text } as Partial<Overlay>)}
               onCommitText={() => setEditingText(null)}
-              textRef={textAreaRef}
+              textareaRef={textAreaRef}
             />
           ))}
 
@@ -912,6 +964,15 @@ export default function EditPdfTool() {
               onMoveStart={(e) => startMove(selected, e)}
             />
           )}
+
+          {/* snap guide lines */}
+          {snapLines.map((ln, i) => (
+            <div
+              key={`snap-${i}`}
+              className={`absolute z-[9998] opacity-80 ${ln.dir === "v" ? "border-l border-blue-500 top-0" : "border-t border-blue-500 left-0"}`}
+              style={ln.dir === "v" ? { left: ln.pos * zoom, height: stageH } : { top: ln.pos * zoom, width: stageW }}
+            />
+          ))}
         </div>
       </div>
 
@@ -1068,7 +1129,8 @@ function ContextToolbar({ selected, tool, update, reorder }: {
       <span>
         {tool === "select" && "Click an object to select • double-click text to edit • Del to delete • Ctrl+Z undo"}
         {tool === "text" && "Click on the page to add a text box you can type into"}
-        {tool === "draw" && "Draw freehand — pick a color & brush size above"}
+        {tool === "draw" && "Draw freehand — pick a color &amp; brush size above"}
+        {tool === "highlightPen" && "Draw freehand highlight — wide semi-transparent yellow strokes"}
         {tool === "image" && "Click on the page, then choose an image to place"}
         {tool === "highlight" && "Click to drop a highlight strip"}
         {(tool === "rect" || tool === "ellipse" || tool === "line" || tool === "arrow") && `Drag on the page to draw a ${tool}`}
@@ -1123,12 +1185,12 @@ function LayerControls({ reorder }: { reorder: (dir: "front" | "back" | "forward
 }
 
 /* ---------- Object view ---------- */
-function ObjectView({ o, zoom, selected, editing, onStartMove, onTextChange, onCommitText, textRef }: {
+function ObjectView({ o, zoom, selected, editing, onStartMove, onTextChange, onCommitText, textareaRef }: {
   o: Overlay; zoom: number; selected: boolean; editing: boolean;
   onStartMove: (e: React.PointerEvent) => void;
   onTextChange: (t: string) => void;
   onCommitText: () => void;
-  textRef: React.RefObject<HTMLTextAreaElement | null>;
+  textareaRef?: React.Ref<HTMLDivElement>;
 }) {
   if (o.kind === "text") {
     const t = o;
@@ -1151,21 +1213,26 @@ function ObjectView({ o, zoom, selected, editing, onStartMove, onTextChange, onC
         onDoubleClick={(e) => { e.stopPropagation(); }}
       >
         {editing ? (
-          <textarea
-            ref={textRef}
-            defaultValue={t.text}
-            onChange={(e) => { onTextChange(e.target.value); const ta = e.target; ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; }}
+          <div
+            contentEditable
+            suppressContentEditableWarning
+            onInput={(e) => {
+              const text = e.currentTarget.textContent || "";
+              onTextChange(text);
+            }}
             onMouseDown={(e) => e.stopPropagation()}
             onPointerDown={(e) => e.stopPropagation()}
             onBlur={onCommitText}
-            onKeyDown={(e) => { if (e.key === "Escape") (e.target as HTMLTextAreaElement).blur(); }}
-            className="w-full resize-none outline-none border border-dashed border-blue-500 overflow-hidden"
+            onKeyDown={(e) => { if (e.key === "Escape") (e.target as HTMLElement).blur(); }}
+            ref={textareaRef}
+            className="whitespace-pre-wrap break-words outline outline-2 outline-offset-0 outline-blue-400 overflow-hidden cursor-text"
             style={{
               fontFamily: FONT_CSS[t.fontFamily], fontSize: t.fontSize * zoom, fontWeight: t.bold ? 700 : 400,
               fontStyle: t.italic ? "italic" : "normal", color: t.color, textAlign: t.align,
               background: bgCss, border: borderCss, borderRadius: radius, padding: pad * zoom,
               lineHeight: 1.25, minHeight: t.h * zoom, boxSizing: "border-box",
             }}
+            dangerouslySetInnerHTML={{ __html: t.text }}
           />
         ) : (
           <div

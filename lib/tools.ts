@@ -1462,7 +1462,9 @@ const mappedCalculators: Tool[] = calculatorList.map((c) => {
   };
 });
 
-export const tools: Tool[] = [...initialTools, ...mappedCalculators];
+import { pdfCraftTools } from "@/lib/pdf-tools";
+
+export const tools: Tool[] = [...initialTools, ...mappedCalculators, ...pdfCraftTools];
 
 export const readyTools = tools.filter((t) => t.isReady);
 export const comingSoonTools = tools.filter((t) => !t.isReady);
