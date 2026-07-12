@@ -1,27 +1,27 @@
-<svg viewBox="0 0 200 56" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#243044"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2d3a4f"/>
       <stop offset="1" stop-color="#1a1f2e"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ff8a3d"/>
+    <linearGradient id="spark" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#ffb066"/>
       <stop offset="1" stop-color="#ff6d00"/>
     </linearGradient>
   </defs>
+
   <!-- Mark -->
   <g transform="translate(4,4)">
-    <rect width="48" height="48" rx="11" fill="url(#bg)"/>
-    <path d="M15 11h14l8 8v21a1.5 1.5 0 0 1-1.5 1.5H15a1.5 1.5 0 0 1-1.5-1.5v-27.5A1.5 1.5 0 0 1 15 11z" fill="#ffffff"/>
-    <path d="M29 11v8h8" fill="none" stroke="#243044" stroke-width="1.2" stroke-linejoin="round"/>
-    <path d="M29 11v8h8z" fill="rgba(36,48,68,0.15)"/>
-    <path d="M18 24h8M18 29h11M18 34h6" stroke="url(#accent)" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="35" cy="35" r="7" fill="url(#accent)"/>
-    <path d="M35 32v5M35 38v0.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+    <rect width="48" height="48" rx="12" fill="url(#bg)"/>
+    <path d="M13 11h16l8 8v21a1.5 1.5 0 0 1-1.5 1.5H13a1.5 1.5 0 0 1-1.5-1.5v-27.5A1.5 1.5 0 0 1 13 11z" fill="#ffffff"/>
+    <path d="M29 11v8h8L29 11z" fill="#cbd5e1"/>
+    <text x="23" y="32" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="900" fill="#1a1f2e" letter-spacing="-0.3">PDF</text>
+    <path d="M31 22l-5 8h4l-2 7 7-10h-4l2-5z" fill="url(#spark)" stroke="#1a1f2e" stroke-width="0.7" stroke-linejoin="round"/>
   </g>
+
   <!-- Wordmark -->
-  <g transform="translate(64,0)" fill="#ffffff">
-    <text x="0" y="28" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="800" letter-spacing="-0.5">PDF</text>
+  <g transform="translate(64,0)">
+    <text x="0" y="28" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="800" letter-spacing="-0.5" fill="#ffffff">PDF</text>
     <text x="40" y="28" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="500" letter-spacing="-0.3" fill="#8a94a6">Tools</text>
     <text x="0" y="46" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2" fill="#ff8a3d">TOOLSATZERO</text>
   </g>
