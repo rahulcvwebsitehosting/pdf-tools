@@ -105,7 +105,7 @@ export default function FreeAiAiSilenceRemoverTool() {
       <PrivacyBadge />
   
       <div className="space-y-4">
-        <div className="border-2 border-dashed border-black p-6 text-center bg-background">
+        <div className="border-2 border-dashed border-border p-6 text-center bg-background">
           <input type="file" accept="audio/*" onChange={handleAudioUpload} className="hidden" id="audio-input" />
           <label htmlFor="audio-input" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4">
             {audioUrl ? 'Change Audio File' : 'Upload Audio Track'}
@@ -126,7 +126,7 @@ export default function FreeAiAiSilenceRemoverTool() {
 
         {processedUrl && (
           <div className="editorial-panel p-4 space-y-2">
-            <h4 className="font-mono text-xs font-bold uppercase border-b border-black/10 pb-1">Cleaned Result</h4>
+            <h4 className="font-mono text-xs font-bold uppercase border-b border-border pb-1">Cleaned Result</h4>
             <audio src={processedUrl} controls className="w-full max-w-md" />
             <div>
               <a href={processedUrl} download="cleaned.wav" className="btn-primary inline-block text-center mt-2 text-[10px] py-1 px-3">

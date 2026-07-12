@@ -160,8 +160,8 @@ export default function AddPageNumbersTool() {
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
             onDrop={onDrop}
-            className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-none ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+            className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-lg ${
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -188,7 +188,7 @@ export default function AddPageNumbersTool() {
 
         {/* Error alert */}
         {error && (
-          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-none">
+          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-lg">
             ⚠️ {error}
           </div>
         )}
@@ -196,7 +196,7 @@ export default function AddPageNumbersTool() {
         {/* Customization controls & Document details */}
         {file && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-black bg-secondary/20 rounded-none gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-border bg-secondary/20 rounded-lg gap-4">
               <div className="flex items-center gap-3">
                 <FileText className="w-6 h-6 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -219,7 +219,7 @@ export default function AddPageNumbersTool() {
             </div>
 
             {/* Customization Options */}
-            <div className="border border-black p-6 bg-background rounded-none space-y-6">
+            <div className="border border-border p-6 bg-background rounded-lg space-y-6">
               <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                 <Settings className="w-4 h-4 text-black" /> Style & Position Controls
               </h3>
@@ -233,7 +233,7 @@ export default function AddPageNumbersTool() {
                   <select
                     value={placement}
                     onChange={(e) => setPlacement(e.target.value as any)}
-                    className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                    className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                   >
                     <option value="top_left">Top Left</option>
                     <option value="top_right">Top Right</option>
@@ -250,7 +250,7 @@ export default function AddPageNumbersTool() {
                   <select
                     value={style}
                     onChange={(e) => setStyle(e.target.value as any)}
-                    className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                    className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                   >
                     <option value="page_x">Simple Number (e.g. "1")</option>
                     <option value="page_x_of_y">X of Y (e.g. "Page 1 of 5")</option>
@@ -269,7 +269,7 @@ export default function AddPageNumbersTool() {
                       max="24"
                       value={fontSize}
                       onChange={(e) => setFontSize(Math.max(6, Math.min(24, parseInt(e.target.value) || 10)))}
-                      className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                      className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
@@ -282,7 +282,7 @@ export default function AddPageNumbersTool() {
                       max="100"
                       value={margin}
                       onChange={(e) => setMargin(Math.max(10, Math.min(100, parseInt(e.target.value) || 30)))}
-                      className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                      className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                     />
                   </div>
                 </div>
@@ -297,7 +297,7 @@ export default function AddPageNumbersTool() {
                     min="1"
                     value={startNumber}
                     onChange={(e) => setStartNumber(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                    className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                   />
                 </div>
               </div>

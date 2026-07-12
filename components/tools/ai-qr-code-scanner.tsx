@@ -103,7 +103,7 @@ export default function FreeAiAiQrCodeScannerTool() {
           <div className="p-3 border border-red-500 bg-red-50 text-red-700 text-xs font-mono">{error}</div>
         )}
 
-        <div className="relative flex justify-center max-w-lg mx-auto bg-black border border-black min-h-64">
+        <div className="relative flex justify-center max-w-lg mx-auto bg-black border border-border min-h-64">
           <video ref={videoRef} className="w-full object-cover" />
           <canvas ref={canvasRef} className="hidden" />
           {scanning && (
@@ -113,7 +113,7 @@ export default function FreeAiAiQrCodeScannerTool() {
 
         {result && (
           <div className="editorial-panel p-4 space-y-2">
-            <h4 className="font-mono text-xs font-bold uppercase border-b border-black/10 pb-1">Scan Result</h4>
+            <h4 className="font-mono text-xs font-bold uppercase border-b border-border pb-1">Scan Result</h4>
             <p className="font-mono text-sm break-all font-bold">{result}</p>
           </div>
         )}

@@ -159,7 +159,7 @@ export default function FreeAiAiBusinessCardScannerTool() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-black p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
+            <div className="border-2 border-dashed border-border p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
               <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" id="file-upload" />
               <label htmlFor="file-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4 hover:underline">
                 📁 Upload Card Snapshot
@@ -175,7 +175,7 @@ export default function FreeAiAiBusinessCardScannerTool() {
             </div>
 
             {image && (
-              <div className="border border-black p-2 bg-background flex flex-col items-center">
+              <div className="border border-border p-2 bg-background flex flex-col items-center">
                 <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground mb-1">Source Preview</span>
                 <img src={image} alt="Preview" className="max-h-48 object-contain" />
               </div>
@@ -200,9 +200,9 @@ export default function FreeAiAiBusinessCardScannerTool() {
             )}
           </div>
 
-          <div className="border border-black p-4 bg-background flex flex-col justify-between min-h-[300px]">
+          <div className="border border-border p-4 bg-background flex flex-col justify-between min-h-[300px]">
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-1">
+              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-1">
                 Contact Details Card
               </h3>
 
@@ -211,39 +211,39 @@ export default function FreeAiAiBusinessCardScannerTool() {
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Scanning borders...</div>
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Extracting text characters...</div>
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Analyzing contact fields...</div>
-                  <div className="w-full bg-secondary h-2 border border-black overflow-hidden mt-4">
+                  <div className="w-full bg-secondary h-2 border border-border overflow-hidden mt-4">
                     <div className="bg-accent h-full transition-all duration-300" style={{ width: `${ocrProgress || visionProgress || 0}%` }}></div>
                   </div>
                 </div>
               ) : metadata ? (
                 <div className="space-y-2 text-xs font-mono">
-                  <div className="border-b border-black/10 pb-2">
+                  <div className="border-b border-border pb-2">
                     <div className="font-bold text-sm text-accent">{metadata.name || 'N/A'}</div>
                     <div className="text-[10px] text-muted-foreground">{metadata.title || 'N/A'} at {metadata.company || 'N/A'}</div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <div>Full Name: <input value={metadata.name || ""} onChange={(e) => setMetadata({ ...metadata, name: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Company: <input value={metadata.company || ""} onChange={(e) => setMetadata({ ...metadata, company: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Job Title: <input value={metadata.title || ""} onChange={(e) => setMetadata({ ...metadata, title: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Phone Number: <input value={metadata.phone || ""} onChange={(e) => setMetadata({ ...metadata, phone: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Email Address: <input value={metadata.email || ""} onChange={(e) => setMetadata({ ...metadata, email: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Website: <input value={metadata.website || ""} onChange={(e) => setMetadata({ ...metadata, website: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
-                    <div>Address: <input value={metadata.address || ""} onChange={(e) => setMetadata({ ...metadata, address: e.target.value })} className="border border-black/10 p-1 w-full bg-background mt-1" /></div>
+                    <div>Full Name: <input value={metadata.name || ""} onChange={(e) => setMetadata({ ...metadata, name: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Company: <input value={metadata.company || ""} onChange={(e) => setMetadata({ ...metadata, company: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Job Title: <input value={metadata.title || ""} onChange={(e) => setMetadata({ ...metadata, title: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Phone Number: <input value={metadata.phone || ""} onChange={(e) => setMetadata({ ...metadata, phone: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Email Address: <input value={metadata.email || ""} onChange={(e) => setMetadata({ ...metadata, email: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Website: <input value={metadata.website || ""} onChange={(e) => setMetadata({ ...metadata, website: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
+                    <div>Address: <input value={metadata.address || ""} onChange={(e) => setMetadata({ ...metadata, address: e.target.value })} className="border border-border p-1 w-full bg-background mt-1" /></div>
                   </div>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-black/10">
+                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-border">
                   Ready to scan contact
                 </div>
               )}
             </div>
 
             {metadata && (
-              <div className="space-y-4 pt-4 border-t border-black/10">
+              <div className="space-y-4 pt-4 border-t border-border">
                 <button onClick={handleDownloadVcf} className="btn-secondary w-full text-xs py-2">
                   📥 Download Contact Card (.vcf)
                 </button>
-                <div className="bg-accent/5 p-3 border border-black/10 text-xs font-mono">
+                <div className="bg-accent/5 p-3 border border-border text-xs font-mono">
                   <div className="font-bold uppercase text-[10px] text-muted-foreground mb-1">💡 Next Step Option</div>
                   <div className="flex items-center justify-between">
                     <span>Analyze document readability levels</span>

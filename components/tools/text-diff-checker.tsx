@@ -72,7 +72,7 @@ export default function TextDiffCheckerTool() {
 
       {diff.length > 0 && (
         <div className="editorial-panel p-4 space-y-2">
-          <h3 className="font-mono text-xs font-bold uppercase border-b border-black pb-2">Diff Highlights</h3>
+          <h3 className="font-mono text-xs font-bold uppercase border-b border-border pb-2">Diff Highlights</h3>
           <div className="font-mono text-xs overflow-auto max-h-96 space-y-1 p-2 bg-secondary/10">
             {diff.map((line, idx) => (
               <div

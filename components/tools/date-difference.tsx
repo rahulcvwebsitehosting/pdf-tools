@@ -21,11 +21,11 @@ export default function DateDifferenceTool() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Start Date</label>
-          <input type="date" value={dateA} onChange={(e) => setDateA(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+          <input type="date" value={dateA} onChange={(e) => setDateA(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
         </div>
         <div>
           <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">End Date</label>
-          <input type="date" value={dateB} onChange={(e) => setDateB(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+          <input type="date" value={dateB} onChange={(e) => setDateB(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
         </div>
       </div>
       <button onClick={handleCalculate} className="btn-primary">Calculate Difference</button>

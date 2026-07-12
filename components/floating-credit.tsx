@@ -11,7 +11,7 @@ export function FloatingCredit() {
       {/* FAB */}
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-accent border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 flex items-center justify-center group"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-accent border-2 border-border shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 flex items-center justify-center group"
         title="About the developer"
       >
         <span className="font-bold text-lg text-black">R</span>
@@ -21,8 +21,8 @@ export function FloatingCredit() {
       {open && (
         <>
           <div className="fixed inset-0 z-50 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="fixed bottom-20 right-6 z-50 w-80 bg-background border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] animate-fade-in-scale">
-            <div className="flex items-center justify-between p-4 border-b border-black bg-accent">
+          <div className="fixed bottom-20 right-6 z-50 w-80 bg-background border-2 border-border shadow-lift animate-fade-in-scale">
+            <div className="flex items-center justify-between p-4 border-b border-border bg-accent">
               <h3 className="font-mono text-xs font-bold uppercase tracking-wider">Developer</h3>
               <button onClick={() => setOpen(false)} className="hover:opacity-60 transition-opacity">
                 <X size={16} />

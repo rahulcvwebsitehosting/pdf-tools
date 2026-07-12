@@ -195,7 +195,7 @@ export default function PdfExtractPagesTool() {
             onDragLeave={onDragLeave}
             onDrop={onDrop}
             className={`border-2 border-dashed flex flex-col items-center justify-center py-12 px-4 transition-colors cursor-pointer ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -225,7 +225,7 @@ export default function PdfExtractPagesTool() {
 
         {/* Success message */}
         {success && (
-          <div className="p-4 border border-black bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
+          <div className="p-4 border border-border bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
             🎉 {success}
           </div>
         )}
@@ -233,7 +233,7 @@ export default function PdfExtractPagesTool() {
         {file && pageCount > 0 && (
           <div className="space-y-6 font-mono text-sm">
             {/* File info card */}
-            <div className="flex items-center justify-between p-4 border border-black bg-background">
+            <div className="flex items-center justify-between p-4 border border-border bg-background">
               <div className="flex items-center gap-3 min-w-0">
                 <FileText className="w-5 h-5 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -247,7 +247,7 @@ export default function PdfExtractPagesTool() {
                 type="button"
                 onClick={removeFile}
                 disabled={isProcessing}
-                className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                 title="Change File"
               >
                 <Trash2 className="w-4 h-4" />
@@ -255,7 +255,7 @@ export default function PdfExtractPagesTool() {
             </div>
 
             {/* Inputs & options */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 border border-black bg-background">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 border border-border bg-background">
               {/* Range Input */}
               <div className="space-y-2">
                 <label htmlFor="page-range" className="block text-xs uppercase font-bold tracking-wide">
@@ -267,7 +267,7 @@ export default function PdfExtractPagesTool() {
                   value={rangeInput}
                   onChange={(e) => setRangeInput(e.target.value)}
                   placeholder="e.g. 1-3, 5"
-                  className="w-full p-2.5 border border-black bg-background focus:outline-none"
+                  className="w-full p-2.5 border border-border bg-background focus:outline-none"
                 />
                 <div className="flex items-center gap-1 text-[10px] text-muted-foreground uppercase">
                   <HelpCircle className="w-3.5 h-3.5" />
@@ -284,7 +284,7 @@ export default function PdfExtractPagesTool() {
                       {parsedPageIndices.map((idx) => (
                         <span
                           key={idx}
-                          className="px-1.5 py-0.5 border border-black bg-accent/20 text-[10px] font-bold"
+                          className="px-1.5 py-0.5 border border-border bg-accent/20 text-[10px] font-bold"
                         >
                           Page {idx + 1}
                         </span>
@@ -303,7 +303,7 @@ export default function PdfExtractPagesTool() {
                   id="extraction-mode"
                   value={mode}
                   onChange={(e) => setMode(e.target.value as "single" | "individual")}
-                  className="w-full p-2.5 border border-black bg-background focus:outline-none"
+                  className="w-full p-2.5 border border-border bg-background focus:outline-none"
                 >
                   <option value="single">Combine as a single PDF document</option>
                   <option value="individual">Save each page as an individual PDF</option>

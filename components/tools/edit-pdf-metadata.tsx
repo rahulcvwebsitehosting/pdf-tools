@@ -167,7 +167,7 @@ export default function EditPdfMetadataTool() {
             onDragLeave={onDragLeave}
             onDrop={onDrop}
             className={`border-2 border-dashed flex flex-col items-center justify-center py-12 px-4 transition-colors cursor-pointer ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -197,7 +197,7 @@ export default function EditPdfMetadataTool() {
 
         {/* Success message */}
         {success && (
-          <div className="p-4 border border-black bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
+          <div className="p-4 border border-border bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
             🎉 {success}
           </div>
         )}
@@ -206,7 +206,7 @@ export default function EditPdfMetadataTool() {
         {file && fileInfo && (
           <div className="space-y-6">
             {/* File info card */}
-            <div className="flex items-center justify-between p-4 border border-black bg-background">
+            <div className="flex items-center justify-between p-4 border border-border bg-background">
               <div className="flex items-center gap-3 min-w-0">
                 <FileText className="w-5 h-5 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -219,7 +219,7 @@ export default function EditPdfMetadataTool() {
               <button
                 type="button"
                 onClick={removeFile}
-                className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                 title="Change File"
               >
                 <Trash2 className="w-4 h-4" />
@@ -238,7 +238,7 @@ export default function EditPdfMetadataTool() {
                     value={metadata.title}
                     onChange={(e) => setMetadata({ ...metadata, title: e.target.value })}
                     placeholder="Enter PDF title"
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none focus:ring-1 focus:ring-black"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
 
@@ -252,7 +252,7 @@ export default function EditPdfMetadataTool() {
                     value={metadata.author}
                     onChange={(e) => setMetadata({ ...metadata, author: e.target.value })}
                     placeholder="Enter author name"
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none focus:ring-1 focus:ring-black"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
 
@@ -266,7 +266,7 @@ export default function EditPdfMetadataTool() {
                     value={metadata.subject}
                     onChange={(e) => setMetadata({ ...metadata, subject: e.target.value })}
                     placeholder="Enter document subject"
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none focus:ring-1 focus:ring-black"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
 
@@ -280,7 +280,7 @@ export default function EditPdfMetadataTool() {
                     value={metadata.keywords}
                     onChange={(e) => setMetadata({ ...metadata, keywords: e.target.value })}
                     placeholder="report, billing, internal"
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none focus:ring-1 focus:ring-black"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
               </div>

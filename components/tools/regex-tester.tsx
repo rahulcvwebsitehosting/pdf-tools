@@ -49,7 +49,7 @@ export default function RegexTesterTool() {
               type="text"
               value={regex}
               onChange={(e) => setRegex(e.target.value)}
-              className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none"
+              className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none"
               placeholder="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}"
             />
           </div>
@@ -59,7 +59,7 @@ export default function RegexTesterTool() {
               type="text"
               value={flags}
               onChange={(e) => setFlags(e.target.value)}
-              className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none"
+              className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none"
               placeholder="g, i, m"
             />
           </div>
@@ -76,7 +76,7 @@ export default function RegexTesterTool() {
         <button onClick={handleTest} className="btn-primary">Test Expression</button>
 
         {error && (
-          <div className="p-4 border border-black bg-accent text-black font-mono text-xs uppercase">
+          <div className="p-4 border border-border bg-accent text-accent-foreground font-mono text-xs uppercase">
             {error}
           </div>
         )}
@@ -85,8 +85,8 @@ export default function RegexTesterTool() {
           <h4 className="font-mono text-xs font-bold uppercase mb-2">Matches ({matches.length})</h4>
           <div className="space-y-2 max-h-40 overflow-auto">
             {matches.map((m, idx) => (
-              <div key={idx} className="font-mono text-xs p-1 border-b border-black/10">
-                Matched <span className="bg-accent text-black font-bold px-1">"{m.match}"</span> at position {m.index}
+              <div key={idx} className="font-mono text-xs p-1 border-b border-border">
+                Matched <span className="bg-accent text-accent-foreground font-bold px-1">"{m.match}"</span> at position {m.index}
               </div>
             ))}
           </div>

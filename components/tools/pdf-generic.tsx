@@ -77,14 +77,14 @@ export default function PdfGenericTool({ slug }: Props) {
     <div className="editorial-panel p-6 space-y-6">
       {/* Upload */}
       <div>
-        <label className="block font-mono text-[10px] uppercase font-bold mb-2">
+        <label className="block text-xs font-semibold text-foreground/80 mb-2">
           {isImageIn ? "Select image files" : "Select PDF file"}
           {multi && " (multiple)"}
         </label>
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="editorial-card w-full p-6 flex flex-col items-center justify-center gap-2 hover:border-black/40 transition-colors"
+          className="w-full p-8 flex flex-col items-center justify-center gap-3 border-2 border-dashed border-border hover:border-primary hover:bg-accent/40 transition-colors rounded-xl cursor-pointer"
         >
           <UploadCloud className="w-8 h-8 text-muted-foreground" />
           <span className="font-mono text-xs uppercase">
@@ -118,7 +118,7 @@ export default function PdfGenericTool({ slug }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {controls.includes("pages") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Pages (e.g. 1,3,5-7)
               </label>
               <input
@@ -146,7 +146,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("angle") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Angle (degrees)
               </label>
               <input
@@ -159,7 +159,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("quality") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Quality
               </label>
               <select
@@ -176,7 +176,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("format") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Output format
               </label>
               <select
@@ -194,7 +194,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("dpi") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 DPI
               </label>
               <input
@@ -207,7 +207,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("text") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Text
               </label>
               <input
@@ -219,7 +219,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("password") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Password
               </label>
               <input
@@ -231,7 +231,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("ownerPassword") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Owner password
               </label>
               <input
@@ -243,7 +243,7 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("startNumber") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">
                 Start number
               </label>
               <input
@@ -256,25 +256,25 @@ export default function PdfGenericTool({ slug }: Props) {
           )}
           {controls.includes("title") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">Title</label>
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">Title</label>
               <input className="editorial-input w-full" onChange={(e) => setOpt("title", e.target.value)} />
             </div>
           )}
           {controls.includes("author") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">Author</label>
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">Author</label>
               <input className="editorial-input w-full" onChange={(e) => setOpt("author", e.target.value)} />
             </div>
           )}
           {controls.includes("subject") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">Subject</label>
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">Subject</label>
               <input className="editorial-input w-full" onChange={(e) => setOpt("subject", e.target.value)} />
             </div>
           )}
           {controls.includes("keywords") && (
             <div>
-              <label className="block font-mono text-[10px] uppercase font-bold mb-1">Keywords</label>
+              <label className="block text-xs font-semibold text-foreground/80 mb-1">Keywords</label>
               <input className="editorial-input w-full" onChange={(e) => setOpt("keywords", e.target.value)} />
             </div>
           )}
@@ -287,7 +287,7 @@ export default function PdfGenericTool({ slug }: Props) {
           type="button"
           onClick={run}
           disabled={busy}
-          className="editorial-btn-primary px-5 py-2 font-mono text-xs uppercase font-bold disabled:opacity-50"
+          className="editorial-btn-primary px-5 py-2.5 text-sm disabled:opacity-50"
         >
           {busy ? "Processing…" : "Run Tool"}
         </button>
@@ -312,7 +312,7 @@ export default function PdfGenericTool({ slug }: Props) {
               key={i}
               type="button"
               onClick={() => download(b, results.filename, i)}
-              className="editorial-card w-full p-3 flex items-center justify-between hover:border-black/40 transition-colors"
+               className="editorial-card w-full p-3.5 flex items-center justify-between hover:border-primary transition-colors cursor-pointer"
             >
               <span className="font-mono text-xs flex items-center gap-2">
                 <Download className="w-4 h-4" />

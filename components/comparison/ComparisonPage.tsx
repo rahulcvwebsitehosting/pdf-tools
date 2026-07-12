@@ -27,7 +27,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 py-12">
       {/* Breadcrumbs */}
       <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-        <Link href="/" className="hover:text-black transition-colors">Home</Link>
+        <Link href="/" className="hover:text-primary transition-colors">Home</Link>
         <span>/</span>
         <span className="text-muted-foreground">Compare</span>
         <span>/</span>
@@ -35,7 +35,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
       </nav>
 
       {/* Header */}
-      <header className="space-y-4 border-b border-black pb-8">
+      <header className="space-y-4 border-b border-border pb-8">
         <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight leading-none">
           {c.formatA} <span className="text-muted-foreground">vs</span> {c.formatB}
         </h1>
@@ -56,8 +56,8 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
 
       {/* Quick Answer / AI Summary */}
       {c.aiBlocks.aiSummary && (
-        <div className="border border-black bg-secondary p-5 space-y-3">
-          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+        <div className="border border-border bg-secondary p-5 space-y-3">
+          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
             <Zap size={13} />
             <span>Quick Answer</span>
           </h4>
@@ -69,8 +69,8 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
 
       {/* Key Takeaways */}
       {c.aiBlocks.keyTakeaways.length > 0 && (
-        <div className="border border-black p-5 space-y-3">
-          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+        <div className="border border-border p-5 space-y-3">
+          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
             <Award size={13} />
             <span>Key Takeaways</span>
           </h4>
@@ -102,7 +102,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
         <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
           Key Differences
         </h3>
-        <div className="border border-black divide-y divide-black/10">
+        <div className="border border-border divide-y divide-border">
           {c.differences.map((item, idx) => (
             <div key={idx} className="p-3 text-sm text-muted-foreground leading-relaxed font-mono text-[11px]">
               {item}
@@ -112,7 +112,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
       </section>
 
       {/* Pros & Cons Side by Side */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-black/10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
         {/* Format A Pros */}
         <div className="space-y-3">
           <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
@@ -167,7 +167,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
       </div>
 
       {/* Performance */}
-      <section className="space-y-4 pt-6 border-t border-black/10">
+      <section className="space-y-4 pt-6 border-t border-border">
         <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
           Performance
         </h3>
@@ -191,7 +191,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
       </section>
 
       {/* Recommendation / Verdict */}
-      <div className="border-2 border-black bg-secondary p-6 space-y-3">
+      <div className="border-2 border-border bg-secondary p-6 space-y-3">
         <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
           <Award size={14} />
           <span>Verdict</span>
@@ -214,7 +214,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
 
       {/* FAQs */}
       {c.faqs.length > 0 && (
-        <section className="space-y-6 pt-12 border-t border-black">
+        <section className="space-y-6 pt-12 border-t border-border">
           <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
             <HelpCircle size={22} className="text-muted-foreground" />
             <span>Frequently Asked Questions</span>
@@ -236,11 +236,11 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
 
       {/* Glossary */}
       {c.glossary.length > 0 && (
-        <section className="space-y-4 pt-12 border-t border-black">
+        <section className="space-y-4 pt-12 border-t border-border">
           <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
             Glossary
           </h3>
-          <div className="border border-black divide-y divide-black/10">
+          <div className="border border-border divide-y divide-border">
             {c.glossary.map((entry, idx) => (
               <div key={idx} className="p-3 grid grid-cols-[120px_1fr] gap-3">
                 <span className="font-mono text-[10px] font-bold uppercase text-foreground">{entry.term}</span>
@@ -252,7 +252,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
       )}
 
       {/* Related Comparisons */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 border-t border-black">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 border-t border-border">
         <div className="space-y-3">
           <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground">
             More Comparisons
@@ -265,7 +265,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
                 <Link
                   key={comp.slug}
                   href={`/compare/${comp.slug}`}
-                  className="block p-3 border border-black bg-background hover:bg-accent transition-colors flex items-center justify-between"
+                  className="block p-3 border border-border bg-background hover:bg-accent transition-colors flex items-center justify-between"
                 >
                   <span>{comp.formatA} vs {comp.formatB}</span>
                   <ArrowRight size={12} className="text-muted-foreground" />
@@ -292,7 +292,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="block p-3 border border-black bg-background hover:bg-accent transition-colors"
+                  className="block p-3 border border-border bg-background hover:bg-accent transition-colors"
                 >
                   Free {tool.name} Online →
                 </Link>

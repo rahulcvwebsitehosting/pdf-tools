@@ -832,7 +832,7 @@ export default function EditPdfTool() {
           onDragOver={e => { e.preventDefault(); setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
-          className={`border-2 border-dashed flex flex-col items-center justify-center py-16 px-4 transition-colors cursor-pointer ${dragOver ? "border-accent bg-accent/5" : "border-black bg-background"}`}
+          className={`border-2 border-dashed flex flex-col items-center justify-center py-16 px-4 transition-colors cursor-pointer ${dragOver ? "border-accent bg-accent/5" : "border-border bg-background"}`}
           onClick={() => fileInputRef.current?.click()}
         >
           <input ref={fileInputRef} type="file" accept=".pdf,application/pdf" className="hidden" onChange={e => e.target.files?.[0] && loadPdf(e.target.files[0])} />
@@ -851,7 +851,7 @@ export default function EditPdfTool() {
 
       {/* ── Top toolbar ── */}
       <div className="editorial-panel p-3 space-y-3">
-        <div className="flex flex-wrap items-center gap-1.5 pb-3 border-b border-black">
+        <div className="flex flex-wrap items-center gap-1.5 pb-3 border-b border-border">
           {/* tools */}
           <ToolBtn icon={<MousePointer size={15} />} label="Select" active={tool === "select"} onClick={() => { setTool("select"); }} />
           <ToolBtn icon={<Type size={15} />} label="Text" active={tool === "text"} onClick={() => setTool("text")} />
@@ -869,13 +869,13 @@ export default function EditPdfTool() {
           {/* default color / brush */}
           <div className="flex items-center gap-1">
             {COLORS.map(c => (
-              <button key={c} className={`w-5 h-5 rounded-full border-2 transition-transform ${color === c ? "border-black scale-125" : "border-transparent"}`} style={{ backgroundColor: c }} onClick={() => setColor(c)} title={c} />
+              <button key={c} className={`w-5 h-5 rounded-full border-2 transition-transform ${color === c ? "border-border scale-125" : "border-transparent"}`} style={{ backgroundColor: c }} onClick={() => setColor(c)} title={c} />
             ))}
           </div>
           {(tool === "draw" || tool === "line" || tool === "arrow") && (
             <div className="flex items-center gap-1">
               {BRUSH_SIZES.map(s => (
-                <button key={s} className={`w-6 h-6 flex items-center justify-center border ${brushSize === s ? "border-black bg-accent" : "border-black/30"}`} onClick={() => setBrushSize(s)}>
+                <button key={s} className={`w-6 h-6 flex items-center justify-center border ${brushSize === s ? "border-border bg-accent" : "border-border/30"}`} onClick={() => setBrushSize(s)}>
                   <span className="rounded-full bg-black" style={{ width: s, height: s }} />
                 </button>
               ))}
@@ -898,7 +898,7 @@ export default function EditPdfTool() {
       </div>
 
       {/* ── Canvas area ── */}
-      <div ref={scrollRef} className="relative overflow-auto border border-black bg-[#e8e8e8] p-4 flex justify-center" style={{ maxHeight: "62vh" }}>
+      <div ref={scrollRef} className="relative overflow-auto border border-border bg-[#e8e8e8] p-4 flex justify-center" style={{ maxHeight: "62vh" }}>
         <div
           ref={stageRef}
           className="relative shadow-xl bg-white"
@@ -995,9 +995,9 @@ export default function EditPdfTool() {
           <button className="ctx-btn" onClick={() => setZoom(z => Math.min(3, z + 0.1))} title="Zoom in"><ZoomIn size={14} /></button>
           <button className="ctx-btn" onClick={fitWidth} title="Fit width"><Maximize size={14} /></button>
           <span className="w-px h-6 bg-black/20 mx-0.5" />
-          <button className="p-1.5 border border-black hover:bg-accent transition-colors disabled:opacity-30" disabled={curPage === 0} onClick={() => setCurPage(p => p - 1)}><ChevronLeft size={14} /></button>
+          <button className="p-1.5 border border-border hover:bg-accent transition-colors disabled:opacity-30" disabled={curPage === 0} onClick={() => setCurPage(p => p - 1)}><ChevronLeft size={14} /></button>
           <span className="font-mono text-xs font-bold min-w-[60px] text-center">{curPage + 1} / {pages.length}</span>
-          <button className="p-1.5 border border-black hover:bg-accent transition-colors disabled:opacity-30" disabled={curPage === pages.length - 1} onClick={() => setCurPage(p => p + 1)}><ChevronRight size={14} /></button>
+          <button className="p-1.5 border border-border hover:bg-accent transition-colors disabled:opacity-30" disabled={curPage === pages.length - 1} onClick={() => setCurPage(p => p + 1)}><ChevronRight size={14} /></button>
         </div>
 
         <div className="flex items-center gap-1.5">
@@ -1029,7 +1029,7 @@ export default function EditPdfTool() {
 function ToolBtn({ icon, label, active, onClick, disabled }: { icon: React.ReactNode; label: string; active?: boolean; onClick: () => void; disabled?: boolean }) {
   return (
     <button
-      className={`flex items-center gap-1 px-2.5 py-1.5 border text-xs font-mono font-bold uppercase tracking-wider transition-colors ${active ? "bg-accent border-black" : "border-black/40 hover:border-black"} ${disabled ? "opacity-30 cursor-not-allowed" : ""}`}
+      className={`flex items-center gap-1 px-2.5 py-1.5 border text-xs font-mono font-bold uppercase tracking-wider transition-colors ${active ? "bg-accent border-border" : "border-border/40 hover:border-border"} ${disabled ? "opacity-30 cursor-not-allowed" : ""}`}
       onClick={onClick} disabled={disabled} title={label}
     >
       {icon} <span className="hidden lg:inline">{label}</span>
@@ -1049,7 +1049,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
     return (
       <div className="flex flex-wrap items-center gap-2">
         <select
-          className="border border-black/40 px-2 py-1 text-xs font-mono bg-background"
+          className="border border-border/40 px-2 py-1 text-xs font-mono bg-background"
           value={t.fontFamily}
           onChange={e => update({ fontFamily: e.target.value as FontFamily })}
         >
@@ -1058,7 +1058,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
           <option value="mono">Mono</option>
         </select>
         <select
-          className="border border-black/40 px-2 py-1 text-xs font-mono bg-background"
+          className="border border-border/40 px-2 py-1 text-xs font-mono bg-background"
           value={t.fontSize}
           onChange={e => update({ fontSize: Number(e.target.value) })}
         >
@@ -1071,7 +1071,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
         <MiniToggle active={t.align === "right"} onClick={() => update({ align: "right" })} title="Right"><AlignRight size={14} /></MiniToggle>
         <SwatchPicker label="Text" value={t.color} onChange={c => update({ color: c })} />
         <span className="w-px h-6 bg-black/20" />
-        <select className="border border-black/40 px-2 py-1 text-xs font-mono bg-background" value={t.bg} onChange={e => update({ bg: e.target.value as BgMode })}>
+        <select className="border border-border/40 px-2 py-1 text-xs font-mono bg-background" value={t.bg} onChange={e => update({ bg: e.target.value as BgMode })}>
           <option value="none">No bg</option>
           <option value="solid">Solid bg</option>
           <option value="highlight">Highlight</option>
@@ -1085,7 +1085,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
         <span className="w-px h-6 bg-black/20" />
         <span className="text-xs font-mono uppercase opacity-60">Callouts:</span>
         {CALLOUTS.map(c => (
-          <button key={c.name} className="px-2 py-1 border border-black/40 text-xs font-mono hover:border-black hover:bg-accent" onClick={() => update(c.patch as Partial<Overlay>)}>{c.name}</button>
+          <button key={c.name} className="px-2 py-1 border border-border/40 text-xs font-mono hover:border-border hover:bg-accent" onClick={() => update(c.patch as Partial<Overlay>)}>{c.name}</button>
         ))}
         <span className="w-px h-6 bg-black/20" />
         <OpacityControl o={t} update={update} />
@@ -1104,7 +1104,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
         {!isLine && <SwatchPicker label="Fill" value={s.fill} onChange={c => update({ fill: c })} extra={FILLS} />}
         <label className="flex items-center gap-1 text-xs font-mono">
           Width
-          <input type="number" min={0} max={40} value={s.strokeWidth} className="w-14 border border-black/40 px-1 py-0.5 font-mono text-xs" onChange={e => update({ strokeWidth: Number(e.target.value) })} />
+          <input type="number" min={0} max={40} value={s.strokeWidth} className="w-14 border border-border/40 px-1 py-0.5 font-mono text-xs" onChange={e => update({ strokeWidth: Number(e.target.value) })} />
         </label>
         <OpacityControl o={s} update={update} />
         <LayerControls reorder={reorder} />
@@ -1141,7 +1141,7 @@ function ContextToolbar({ selected, tool, update, reorder }: {
 
 function MiniToggle({ active, onClick, title, children }: { active: boolean; onClick: () => void; title: string; children: React.ReactNode }) {
   return (
-    <button title={title} onClick={onClick} className={`w-7 h-7 flex items-center justify-center border ${active ? "bg-accent border-black" : "border-black/40 hover:border-black"}`}>
+    <button title={title} onClick={onClick} className={`w-7 h-7 flex items-center justify-center border ${active ? "bg-accent border-border" : "border-border/40 hover:border-border"}`}>
       {children}
     </button>
   );
@@ -1154,9 +1154,9 @@ function SwatchPicker({ label, value, onChange, extra }: { label: string; value:
       <span className="opacity-60">{label}</span>
       <span className="relative inline-flex">
         {opts.map(c => (
-          <button key={c} title={c} onClick={() => onChange(c)} className={`w-4 h-4 border ${value === c ? "border-black scale-125 z-10" : "border-black/20"}`} style={{ backgroundColor: c === "transparent" ? "repeating-conic-gradient(#bbb 0% 25%, #fff 0% 50%) 50% / 8px 8px" : c }} />
+          <button key={c} title={c} onClick={() => onChange(c)} className={`w-4 h-4 border ${value === c ? "border-border scale-125 z-10" : "border-border"}`} style={{ backgroundColor: c === "transparent" ? "repeating-conic-gradient(#bbb 0% 25%, #fff 0% 50%) 50% / 8px 8px" : c }} />
         ))}
-        <input type="color" value={value.startsWith("#") && value.length >= 7 ? value.slice(0, 7) : "#000000"} onChange={e => onChange(e.target.value)} className="w-5 h-5 border border-black/40 cursor-pointer" title="Custom" />
+        <input type="color" value={value.startsWith("#") && value.length >= 7 ? value.slice(0, 7) : "#000000"} onChange={e => onChange(e.target.value)} className="w-5 h-5 border border-border/40 cursor-pointer" title="Custom" />
       </span>
     </label>
   );

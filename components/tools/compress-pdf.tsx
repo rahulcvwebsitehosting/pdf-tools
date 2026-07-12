@@ -151,7 +151,7 @@ export default function CompressPdfTool() {
               onDragLeave={handleDragLeave}
               onClick={() => fileInputRef.current?.click()}
               className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
-                isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+                isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
               }`}
             >
               <input
@@ -183,7 +183,7 @@ export default function CompressPdfTool() {
                 <label className="font-mono text-xs font-bold uppercase tracking-wider text-foreground block">
                   Select Compression Level
                 </label>
-                <div className="grid grid-cols-3 border border-black divide-x divide-black">
+                <div className="grid grid-cols-3 border border-border divide-x divide-black">
                   <button
                     type="button"
                     onClick={() => setCompressionLevel("low")}
@@ -258,7 +258,7 @@ export default function CompressPdfTool() {
           /* Success Screen */
           <div className="space-y-6 text-center py-8">
             <div className="flex justify-center">
-              <CheckCircle className="w-16 h-16 text-black bg-accent p-1.5 border border-black" />
+              <CheckCircle className="w-16 h-16 text-accent-foreground bg-accent p-1.5 border border-border" />
             </div>
             <div className="space-y-2">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-wide">
@@ -271,7 +271,7 @@ export default function CompressPdfTool() {
 
             {/* Metrics Panel */}
             {sizeMetrics && (
-              <div className="max-w-md mx-auto border border-black bg-background grid grid-cols-3 divide-x divide-black text-center font-mono">
+              <div className="max-w-md mx-auto border border-border bg-background grid grid-cols-3 divide-x divide-black text-center font-mono">
                 <div className="p-3">
                   <p className="text-[10px] text-muted-foreground uppercase">Before</p>
                   <p className="font-bold text-sm mt-1">{sizeMetrics.original}</p>

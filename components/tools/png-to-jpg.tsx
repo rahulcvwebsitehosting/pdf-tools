@@ -44,7 +44,7 @@ export default function PngToJpgTool() {
       <div className="space-y-4">
         <div>
           <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Upload PNG Image</label>
-          <input type="file" accept="image/png" onChange={handleFileChange} className="p-2 border border-black bg-background font-mono text-xs w-full" />
+          <input type="file" accept="image/png" onChange={handleFileChange} className="p-2 border border-border bg-background font-mono text-xs w-full" />
         </div>
         {image && (
           <button onClick={handleConvert} className="btn-primary">Convert to JPG</button>

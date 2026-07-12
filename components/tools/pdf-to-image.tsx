@@ -212,7 +212,7 @@ export default function PdfToImageTool() {
             onDragLeave={onDragLeave}
             onDrop={onDrop}
             className={`border-2 border-dashed flex flex-col items-center justify-center py-12 px-4 transition-colors cursor-pointer ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -243,7 +243,7 @@ export default function PdfToImageTool() {
         {file && pageCount > 0 && (
           <div className="space-y-6">
             {/* File info card */}
-            <div className="flex items-center justify-between p-4 border border-black bg-background">
+            <div className="flex items-center justify-between p-4 border border-border bg-background">
               <div className="flex items-center gap-3 min-w-0">
                 <FileText className="w-5 h-5 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -257,7 +257,7 @@ export default function PdfToImageTool() {
                 type="button"
                 onClick={removeFile}
                 disabled={isProcessing}
-                className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                 title="Change File"
               >
                 <Trash2 className="w-4 h-4" />
@@ -266,7 +266,7 @@ export default function PdfToImageTool() {
 
             {/* Conversion settings form */}
             {convertedPages.length === 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 border border-black bg-background font-mono text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 border border-border bg-background font-mono text-sm">
                 <div className="space-y-2">
                   <label htmlFor="image-format" className="block text-xs uppercase font-bold tracking-wide">
                     Output Format
@@ -275,7 +275,7 @@ export default function PdfToImageTool() {
                     id="image-format"
                     value={format}
                     onChange={(e) => setFormat(e.target.value as "png" | "jpeg")}
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none"
                   >
                     <option value="png">PNG (.png) - Lossless quality</option>
                     <option value="jpeg">JPEG (.jpg) - Optimized size</option>
@@ -290,7 +290,7 @@ export default function PdfToImageTool() {
                     id="image-resolution"
                     value={resolution}
                     onChange={(e) => setResolution(e.target.value as "1x" | "2x" | "3x")}
-                    className="w-full p-2.5 border border-black bg-background focus:outline-none"
+                    className="w-full p-2.5 border border-border bg-background focus:outline-none"
                   >
                     <option value="1x">1x - Standard Resolution (96 DPI)</option>
                     <option value="2x">2x - High Resolution (192 DPI)</option>
@@ -323,7 +323,7 @@ export default function PdfToImageTool() {
             {/* Results Grid */}
             {convertedPages.length > 0 && (
               <div className="space-y-6">
-                <div className="flex items-center justify-between border-b border-black pb-2">
+                <div className="flex items-center justify-between border-b border-border pb-2">
                   <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     Converted Pages ({convertedPages.length})
                   </h3>
@@ -340,10 +340,10 @@ export default function PdfToImageTool() {
                   {convertedPages.map((page) => (
                     <div
                       key={page.pageNumber}
-                      className="border border-black bg-background flex flex-col p-2 group hover:bg-accent/5 transition-all"
+                      className="border border-border bg-background flex flex-col p-2 group hover:bg-accent/5 transition-all"
                     >
                       {/* Image container */}
-                      <div className="aspect-[3/4] border border-black relative overflow-hidden bg-background">
+                      <div className="aspect-[3/4] border border-border relative overflow-hidden bg-background">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={page.dataUrl}
@@ -358,7 +358,7 @@ export default function PdfToImageTool() {
                         <button
                           type="button"
                           onClick={() => downloadSinglePage(page)}
-                          className="p-1 border border-black hover:bg-accent transition-colors"
+                          className="p-1 border border-border hover:bg-accent transition-colors"
                           title={`Download Page ${page.pageNumber}`}
                         >
                           <Download className="w-3.5 h-3.5" />

@@ -12,7 +12,7 @@ export default function HubLanding({ config }: HubLandingProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb */}
         <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-          <Link href="/" className="hover:text-black transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
           <span>/</span>
@@ -20,7 +20,7 @@ export default function HubLanding({ config }: HubLandingProps) {
         </nav>
 
         {/* Header */}
-        <header className="space-y-4 border-b border-black pb-8">
+        <header className="space-y-4 border-b border-border pb-8">
           <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight leading-none">
             {config.title}
           </h1>
@@ -30,8 +30,8 @@ export default function HubLanding({ config }: HubLandingProps) {
         </header>
 
         {/* Takeaways */}
-        <div className="border border-black bg-accent/5 p-5 space-y-3">
-          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+        <div className="border border-border bg-accent/5 p-5 space-y-3">
+          <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
             <Sparkles size={13} className="text-yellow-600" />
             <span>Key Takeaways</span>
           </h4>
@@ -47,24 +47,24 @@ export default function HubLanding({ config }: HubLandingProps) {
           <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
             {config.comparisonTitle}
           </h3>
-          <div className="border border-black overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="border border-border overflow-x-auto shadow-soft">
             <table className="w-full text-left font-mono text-xs border-collapse">
               <thead>
-                <tr className="bg-secondary border-b border-black">
-                  <th className="p-3 font-bold border-r border-black">Tool Name</th>
-                  <th className="p-3 font-bold border-r border-black">Key Features</th>
+                <tr className="bg-secondary border-b border-border">
+                  <th className="p-3 font-bold border-r border-border">Tool Name</th>
+                  <th className="p-3 font-bold border-r border-border">Key Features</th>
                   <th className="p-3 font-bold">Privacy Rate</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-black/10">
+              <tbody className="divide-y divide-border">
                 {config.tools.map((t, idx) => (
                   <tr key={idx} className="hover:bg-accent/5">
-                    <td className="p-3 border-r border-black font-bold whitespace-nowrap">
+                    <td className="p-3 border-r border-border font-bold whitespace-nowrap">
                       <Link href={`/tools/${t.slug}`} className="hover:underline text-foreground">
                         {t.name} →
                       </Link>
                     </td>
-                    <td className="p-3 border-r border-black text-muted-foreground">{t.features}</td>
+                    <td className="p-3 border-r border-border text-muted-foreground">{t.features}</td>
                     <td className="p-3 whitespace-nowrap">
                       <span className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-green-700/20 bg-green-700/5 text-green-700 font-bold text-[9px] uppercase">
                         <CheckCircle size={8} />
@@ -91,7 +91,7 @@ export default function HubLanding({ config }: HubLandingProps) {
 
         {/* FAQs */}
         {config.faqs && config.faqs.length > 0 && (
-          <section className="space-y-6 pt-12 border-t border-black">
+          <section className="space-y-6 pt-12 border-t border-border">
             <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
               <HelpCircle size={22} className="text-muted-foreground" />
               <span>Frequently Asked Questions</span>
@@ -112,18 +112,18 @@ export default function HubLanding({ config }: HubLandingProps) {
         )}
 
         {/* Footer Navigation */}
-        <footer className="pt-12 border-t border-black space-y-4">
+        <footer className="pt-12 border-t border-border space-y-4">
           <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground">
             Quick Exploration links
           </h4>
           <div className="flex flex-wrap gap-2">
-            <Link href="/" className="font-mono text-[10px] px-3 py-1.5 border border-black bg-background hover:bg-accent transition-colors">
+            <Link href="/" className="font-mono text-[10px] px-3 py-1.5 border border-border bg-background hover:bg-accent transition-colors">
               ← Home Page
             </Link>
-            <Link href="/calculators" className="font-mono text-[10px] px-3 py-1.5 border border-black bg-background hover:bg-accent transition-colors">
+            <Link href="/calculators" className="font-mono text-[10px] px-3 py-1.5 border border-border bg-background hover:bg-accent transition-colors">
               Free Calculators
             </Link>
-            <Link href="/pdf-tools" className="font-mono text-[10px] px-3 py-1.5 border border-black bg-background hover:bg-accent transition-colors">
+            <Link href="/pdf-tools" className="font-mono text-[10px] px-3 py-1.5 border border-border bg-background hover:bg-accent transition-colors">
               Free PDF Tools
             </Link>
           </div>

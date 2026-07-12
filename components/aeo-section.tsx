@@ -44,13 +44,13 @@ export function AeoSection({
   ];
 
   return (
-    <section className="mt-16 pt-12 border-t border-black space-y-12">
+    <section className="mt-16 pt-12 border-t border-border space-y-12">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* AEO Panel */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Quick Answer */}
-          <div className="md:col-span-2 border border-black bg-accent/5 p-5 space-y-3">
-            <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+          <div className="md:col-span-2 border border-border bg-accent/5 p-5 space-y-3">
+            <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground flex items-center gap-1.5 border-b border-border pb-2">
               <Sparkles size={13} className="text-yellow-600" />
               <span>Quick AI Answer</span>
             </h4>
@@ -60,7 +60,7 @@ export function AeoSection({
           </div>
 
           {/* Metadata info */}
-          <div className="border border-black bg-secondary p-5 space-y-2 font-mono text-[10px]">
+          <div className="border border-border bg-secondary p-5 space-y-2 font-mono text-[10px]">
             <div>
               <span className="font-bold block text-muted-foreground uppercase">Privacy Status</span>
               <span className="font-bold text-green-700 flex items-center gap-1 mt-0.5">
@@ -108,7 +108,7 @@ export function AeoSection({
         </article>
 
         {/* Key Takeaways & Mistakes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
           <div className="space-y-3">
             <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
               <CheckCircle size={13} className="text-green-700" />
@@ -145,7 +145,7 @@ export function AeoSection({
         </div>
 
         {/* Related Tools Panel (8-12 links) */}
-        <div className="space-y-6 pt-12 border-t border-black">
+        <div className="space-y-6 pt-12 border-t border-border">
           <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
             Related Privacy-First Tools & Resources
           </h3>
@@ -154,7 +154,7 @@ export function AeoSection({
               <Link
                 key={item.slug}
                 href={item.href}
-                className="editorial-card p-3 border border-black bg-background hover:bg-accent/25 hover:text-black transition-all flex flex-col justify-between"
+                className="editorial-card p-3 border border-border bg-background hover:bg-accent/25 hover:text-primary transition-all flex flex-col justify-between"
               >
                 <div className="space-y-1.5">
                   <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground">

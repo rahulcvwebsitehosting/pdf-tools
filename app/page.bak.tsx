@@ -35,7 +35,7 @@ export default function HomePage() {
       <section className="px-6 pt-24 pb-12 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto text-center md:text-left">
           <div className="flex justify-center md:justify-start mb-6">
-            <div className="w-16 h-16 bg-accent border-2 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+            <div className="w-16 h-16 bg-accent border-2 border-border flex items-center justify-center shadow-soft hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-soft transition-all duration-200">
               <Logo className="w-10 h-10 text-black transition-transform duration-700 hover:rotate-90" />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
           HIGH-VISIBILITY NEON TRUST BANNER
           ════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 mb-16">
-        <div className="max-w-6xl mx-auto bg-accent border border-black p-5 sm:p-6 text-black">
+        <div className="max-w-6xl mx-auto bg-accent border border-border p-5 sm:p-6 text-black">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="text-2xl shrink-0">🔒</span>
@@ -67,7 +67,7 @@ export default function HomePage() {
                 100% LOCAL PROCESSING: Your files and data never leave your browser.
               </p>
             </div>
-            <span className="shrink-0 font-mono text-[10px] uppercase font-black border border-black px-2 py-1 bg-background">
+            <span className="shrink-0 font-mono text-[10px] uppercase font-black border border-border px-2 py-1 bg-background">
               Local Sandbox Active
             </span>
           </div>
@@ -78,10 +78,10 @@ export default function HomePage() {
           VALUE PROPOSITIONS
           ════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 mb-24">
-        <div className="max-w-6xl mx-auto border border-black bg-background">
+        <div className="max-w-6xl mx-auto border border-border bg-background">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {/* Local Computing */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-black flex flex-col justify-between">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between">
               <div>
                 <div className="mb-4 text-accent bg-black p-2 w-fit">
                   <Cpu className="w-5 h-5" />
@@ -94,7 +94,7 @@ export default function HomePage() {
             </div>
 
             {/* Complete Privacy */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-black flex flex-col justify-between">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between">
               <div>
                 <div className="mb-4 text-accent bg-black p-2 w-fit">
                   <ShieldCheck className="w-5 h-5" />
@@ -129,7 +129,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto space-y-20">
           {categories.map((cat) => (
             <div key={cat.slug} className="space-y-6">
-              <div className="flex items-center justify-between border-b border-black pb-4">
+              <div className="flex items-center justify-between border-b border-border pb-4">
                 <h2 className="font-editorial text-3xl sm:text-4xl font-bold uppercase tracking-tight">
                   {cat.title}
                 </h2>
@@ -138,14 +138,14 @@ export default function HomePage() {
                 </span>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 border-t border-l border-black bg-background">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 border-t border-l border-border bg-background">
                 {cat.list.map((tool) => {
                   const IconComponent = tool.icon;
                   return (
                     <Link
                       key={tool.slug}
                       href={tool.href}
-                      className="editorial-card flex flex-col justify-between p-6 group border-r border-b border-black"
+                      className="editorial-card flex flex-col justify-between p-6 group border-r border-b border-border"
                     >
                       <div className="space-y-4">
                         <div className="card-icon shrink-0 text-foreground">
@@ -161,7 +161,7 @@ export default function HomePage() {
                         </div>
                       </div>
                       
-                      <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase font-bold tracking-wider pt-2 border-t border-dashed border-black/10">
+                      <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase font-bold tracking-wider pt-2 border-t border-dashed border-border">
                         <span>Launch Tool</span>
                         <ArrowRight
                           size={14}

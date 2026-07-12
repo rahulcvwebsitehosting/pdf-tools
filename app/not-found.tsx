@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center py-16 sm:py-24 text-center space-y-8 animate-fade-in-scale">
       {/* Animated Brand Emblem */}
-      <div className="w-20 h-20 bg-accent border-2 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+      <div className="w-20 h-20 bg-accent border-2 border-border flex items-center justify-center shadow-lift hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-soft transition-all duration-200">
         <Logo className="w-12 h-12 text-black transition-transform duration-1000 hover:rotate-180" />
       </div>
 
@@ -21,7 +21,7 @@ export default function NotFound() {
       </div>
 
       {/* Neo-brutalist Box with Interactive CTA Button */}
-      <div className="p-6 bg-accent border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] max-w-md w-full">
+      <div className="p-6 bg-accent border-2 border-border shadow-lift max-w-md w-full">
         <Link
           href="/"
           className="btn-primary w-full text-center flex items-center justify-center gap-2 py-3"

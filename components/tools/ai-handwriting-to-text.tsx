@@ -179,7 +179,7 @@ export default function FreeAiAiHandwritingToTextTool() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-black p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
+            <div className="border-2 border-dashed border-border p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
               <input type="file" accept="image/*,application/pdf" onChange={handleFileChange} className="hidden" id="file-upload" />
               <label htmlFor="file-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4 hover:underline">
                 📁 Drag & Drop or Click to Select File
@@ -198,7 +198,7 @@ export default function FreeAiAiHandwritingToTextTool() {
             </div>
 
             {image && (
-              <div className="border border-black p-2 bg-background flex flex-col items-center">
+              <div className="border border-border p-2 bg-background flex flex-col items-center">
                 <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground mb-1">Source Preview</span>
                 <img src={image} alt="Preview" className="max-h-48 object-contain" />
               </div>
@@ -223,9 +223,9 @@ export default function FreeAiAiHandwritingToTextTool() {
             )}
           </div>
 
-          <div className="border border-black p-4 bg-background flex flex-col justify-between min-h-[300px]">
+          <div className="border border-border p-4 bg-background flex flex-col justify-between min-h-[300px]">
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-1">
+              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-1">
                 Editable Output Zone
               </h3>
               
@@ -233,7 +233,7 @@ export default function FreeAiAiHandwritingToTextTool() {
                 <div className="space-y-2 py-4">
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Grayscale Conversion & Thresholding...</div>
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Run Segmenting Stroke Extraction...</div>
-                  <div className="w-full bg-secondary h-2 border border-black overflow-hidden mt-4">
+                  <div className="w-full bg-secondary h-2 border border-border overflow-hidden mt-4">
                     <div className="bg-accent h-full transition-all duration-300" style={{ width: `${ocrProgress || progress || 0}%` }}></div>
                   </div>
                 </div>
@@ -241,17 +241,17 @@ export default function FreeAiAiHandwritingToTextTool() {
                 <SecureTextarea
                   value={manualOutput}
                   onChange={(e) => setManualOutput(e.target.value)}
-                  className="w-full h-48 border border-black/10"
+                  className="w-full h-48 border border-border"
                 />
               ) : (
-                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-black/10">
+                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-border">
                   Ready for text extraction
                 </div>
               )}
             </div>
 
             {manualOutput && (
-              <div className="space-y-4 pt-4 border-t border-black/10">
+              <div className="space-y-4 pt-4 border-t border-border">
                 <div className="flex flex-wrap gap-2">
                   <button onClick={handleCopy} className="btn-secondary text-[10px] py-1 px-3">
                     📋 Copy Text
@@ -263,7 +263,7 @@ export default function FreeAiAiHandwritingToTextTool() {
                     📥 Download DOCX
                   </button>
                 </div>
-                <div className="bg-accent/5 p-3 border border-black/10 text-xs font-mono">
+                <div className="bg-accent/5 p-3 border border-border text-xs font-mono">
                   <div className="font-bold uppercase text-[10px] text-muted-foreground mb-1">💡 Next Step Option</div>
                   <div className="flex items-center justify-between">
                     <span>Analyze writing readability & grade score</span>

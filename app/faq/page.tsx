@@ -130,7 +130,7 @@ function FAQAccordionItem({
   toggle: () => void;
 }) {
   return (
-    <div className="border-2 border-black bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+    <div className="border-2 border-border bg-background shadow-soft transition-shadow hover:shadow-lift">
       <button
         onClick={toggle}
         className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer group"
@@ -161,7 +161,7 @@ function FAQAccordionItem({
         }`}
       >
         <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
-          <div className="border-t border-black/20 pt-4">
+          <div className="border-t border-border pt-4">
             <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
               {item.answer}
             </p>
@@ -218,7 +218,7 @@ export default function FAQPage() {
             <span className="neon-badge px-3 py-1 text-xs">
               KNOWLEDGE BASE
             </span>
-            <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-black pb-6">
+            <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-border pb-6">
               Frequently Asked Questions
             </h1>
             <p className="font-mono text-xs text-muted-foreground uppercase">
@@ -228,7 +228,7 @@ export default function FAQPage() {
           </div>
 
           {/* Giant Yellow Banner */}
-          <div className="bg-accent border-2 border-black p-6 sm:p-8 text-black mb-12 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+          <div className="bg-accent border-2 border-border p-6 sm:p-8 text-black mb-12 shadow-lift">
             <p className="font-mono text-sm sm:text-base font-black uppercase tracking-wider leading-relaxed">
               🛡️ ZERO-UPLOAD ARCHITECTURE: All 102 tools run 100% inside your
               browser. No files are uploaded. No accounts required. No data
@@ -244,13 +244,13 @@ export default function FAQPage() {
             <div className="flex gap-2">
               <button
                 onClick={expandAll}
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-black px-3 py-1.5 hover:bg-accent hover:text-black transition-colors cursor-pointer"
+                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-3 py-1.5 hover:bg-accent hover:text-primary transition-colors cursor-pointer"
               >
                 Expand All
               </button>
               <button
                 onClick={collapseAll}
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-black px-3 py-1.5 hover:bg-accent hover:text-black transition-colors cursor-pointer"
+                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-3 py-1.5 hover:bg-accent hover:text-primary transition-colors cursor-pointer"
               >
                 Collapse All
               </button>
@@ -271,7 +271,7 @@ export default function FAQPage() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="mt-16 border-2 border-black p-6 sm:p-8 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mt-16 border-2 border-border p-6 sm:p-8 text-center shadow-soft">
             <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight mb-3">
               Still Have Questions?
             </h2>
@@ -282,13 +282,13 @@ export default function FAQPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href="mailto:support@toolsatzero.com"
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-black bg-accent text-black px-6 py-3 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
+                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border bg-accent text-accent-foreground px-6 py-3 hover:shadow-soft transition-shadow"
               >
                 Email Support
               </a>
               <Link
                 href="/"
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-black px-6 py-3 hover:bg-accent hover:text-black transition-colors"
+                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-6 py-3 hover:bg-accent hover:text-primary transition-colors"
               >
                 Browse All Tools
               </Link>

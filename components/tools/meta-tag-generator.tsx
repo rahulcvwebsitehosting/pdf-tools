@@ -24,7 +24,7 @@ export default function MetaTagGeneratorTool() {
         <div className="space-y-3">
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Website Title</label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
           </div>
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Meta Description</label>
@@ -32,7 +32,7 @@ export default function MetaTagGeneratorTool() {
           </div>
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Keywords</label>
-            <input type="text" value={keys} onChange={(e) => setKeys(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+            <input type="text" value={keys} onChange={(e) => setKeys(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
           </div>
           <button onClick={handleGenerate} className="btn-primary">Generate Tags</button>
         </div>

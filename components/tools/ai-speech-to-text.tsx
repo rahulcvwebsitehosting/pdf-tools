@@ -34,7 +34,7 @@ export default function FreeAiAiSpeechToTextTool() {
       <PrivacyBadge />
   
       <div className="space-y-4">
-        <div className="border-2 border-dashed border-black p-6 text-center bg-background">
+        <div className="border-2 border-dashed border-border p-6 text-center bg-background">
           <input type="file" accept="audio/*" onChange={handleAudioUpload} className="hidden" id="audio-upload" />
           <label htmlFor="audio-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4">
             {audioUrl ? 'Change Audio File' : 'Drop or Select Audio Track'}
@@ -69,7 +69,7 @@ export default function FreeAiAiSpeechToTextTool() {
 
         {output && (
           <div className="editorial-panel p-4 space-y-2">
-            <h4 className="font-mono text-xs font-bold uppercase border-b border-black/10 pb-1">Transcript</h4>
+            <h4 className="font-mono text-xs font-bold uppercase border-b border-border pb-1">Transcript</h4>
             <p className="font-mono text-xs leading-relaxed">{output}</p>
           </div>
         )}

@@ -244,8 +244,8 @@ export default function PowerpointToPdfTool() {
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
           onDrop={onDrop}
-          className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-none ${
-            isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+          className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-lg ${
+            isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
           }`}
           onClick={() => document.getElementById("file-input")?.click()}
         >
@@ -267,7 +267,7 @@ export default function PowerpointToPdfTool() {
         </div>
 
         {error && (
-          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-none">
+          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-lg">
             ⚠️ {error}
           </div>
         )}
@@ -275,7 +275,7 @@ export default function PowerpointToPdfTool() {
         {slides.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Sidebar Controls */}
-            <div className="border border-black p-5 bg-background rounded-none space-y-5 lg:col-span-1">
+            <div className="border border-border p-5 bg-background rounded-lg space-y-5 lg:col-span-1">
               <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                 <Sliders className="w-4 h-4 text-black" /> Layout Settings
               </h3>
@@ -285,12 +285,12 @@ export default function PowerpointToPdfTool() {
                 <label className="block font-mono text-xs uppercase font-bold text-foreground">
                   Slide Orientation
                 </label>
-                <div className="flex border border-black">
+                <div className="flex border border-border">
                   <button
                     type="button"
                     onClick={() => setOrientation("landscape")}
-                    className={`flex-1 py-2 font-mono text-xs uppercase font-bold text-center border-r border-black rounded-none ${
-                      orientation === "landscape" ? "bg-accent text-black" : "hover:bg-secondary/50"
+                    className={`flex-1 py-2 font-mono text-xs uppercase font-bold text-center border-r border-border rounded-lg ${
+                      orientation === "landscape" ? "bg-accent text-accent-foreground" : "hover:bg-secondary/50"
                     }`}
                   >
                     Landscape
@@ -298,8 +298,8 @@ export default function PowerpointToPdfTool() {
                   <button
                     type="button"
                     onClick={() => setOrientation("portrait")}
-                    className={`flex-1 py-2 font-mono text-xs uppercase font-bold text-center rounded-none ${
-                      orientation === "portrait" ? "bg-accent text-black" : "hover:bg-secondary/50"
+                    className={`flex-1 py-2 font-mono text-xs uppercase font-bold text-center rounded-lg ${
+                      orientation === "portrait" ? "bg-accent text-accent-foreground" : "hover:bg-secondary/50"
                     }`}
                   >
                     Portrait
@@ -315,7 +315,7 @@ export default function PowerpointToPdfTool() {
                 <select
                   value={fitToPage}
                   onChange={(e) => setFitToPage(e.target.value as any)}
-                  className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                 >
                   <option value="fit">Fit Content (Maintain Aspect Ratio)</option>
                   <option value="fill">Fill Slide (Crop margins)</option>
@@ -334,7 +334,7 @@ export default function PowerpointToPdfTool() {
                   max="60"
                   value={margin}
                   onChange={(e) => setMargin(parseInt(e.target.value))}
-                  className="w-full accent-black h-1 bg-secondary border border-black rounded-none cursor-pointer"
+                  className="w-full accent-primary h-1 bg-secondary border border-border rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -360,16 +360,16 @@ export default function PowerpointToPdfTool() {
             </div>
 
             {/* Slides Order / Preview Panel */}
-            <div className="border border-black p-5 bg-background rounded-none space-y-4 lg:col-span-2">
+            <div className="border border-border p-5 bg-background rounded-lg space-y-4 lg:col-span-2">
               <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
                 <Presentation className="w-4 h-4 text-black" /> Slides list ({slides.length})
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto p-1 border border-black bg-secondary/5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto p-1 border border-border bg-secondary/5">
                 {slides.map((item, index) => (
                   <div
                     key={item.id}
-                    className="border border-black bg-background p-3 flex flex-col justify-between space-y-3 relative group"
+                    className="border border-border bg-background p-3 flex flex-col justify-between space-y-3 relative group"
                   >
                     <div className="flex gap-2">
                       <span className="font-mono text-xs font-bold bg-black text-white px-2 py-0.5 shrink-0 select-none">
@@ -382,7 +382,7 @@ export default function PowerpointToPdfTool() {
 
                     {/* Image Slide Thumbnail */}
                     {item.previewUrl ? (
-                      <div className="w-full h-24 border border-black bg-secondary/30 relative overflow-hidden flex items-center justify-center">
+                      <div className="w-full h-24 border border-border bg-secondary/30 relative overflow-hidden flex items-center justify-center">
                         <img
                           src={item.previewUrl}
                           alt={item.name}
@@ -390,7 +390,7 @@ export default function PowerpointToPdfTool() {
                         />
                       </div>
                     ) : (
-                      <div className="w-full h-24 border border-black bg-accent/10 flex flex-col items-center justify-center text-center p-2">
+                      <div className="w-full h-24 border border-border bg-accent/10 flex flex-col items-center justify-center text-center p-2">
                         <FileVideo className="w-6 h-6 text-foreground mb-1" />
                         <span className="text-[9px] uppercase font-bold text-foreground">
                           PPTX PRESENTATION
@@ -407,7 +407,7 @@ export default function PowerpointToPdfTool() {
                         type="button"
                         disabled={index === 0}
                         onClick={() => moveSlide(index, "up")}
-                        className="p-1 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                        className="p-1 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                         title="Move Left/Up"
                       >
                         <ArrowUp className="w-3.5 h-3.5" />
@@ -416,7 +416,7 @@ export default function PowerpointToPdfTool() {
                         type="button"
                         disabled={index === slides.length - 1}
                         onClick={() => moveSlide(index, "down")}
-                        className="p-1 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                        className="p-1 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                         title="Move Right/Down"
                       >
                         <ArrowDown className="w-3.5 h-3.5" />
@@ -424,7 +424,7 @@ export default function PowerpointToPdfTool() {
                       <button
                         type="button"
                         onClick={() => removeSlide(item.id)}
-                        className="p-1 border border-black hover:bg-destructive hover:text-white transition-colors"
+                        className="p-1 border border-border hover:bg-destructive hover:text-white transition-colors"
                         title="Delete Slide"
                       >
                         <Trash2 className="w-3.5 h-3.5" />

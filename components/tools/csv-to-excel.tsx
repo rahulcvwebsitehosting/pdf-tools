@@ -192,7 +192,7 @@ export default function CsvToExcelTool() {
         </h2>
 
         {error && (
-          <div className="p-4 border border-black bg-accent text-black font-mono text-xs uppercase tracking-wide flex items-start gap-3">
+          <div className="p-4 border border-border bg-accent text-accent-foreground font-mono text-xs uppercase tracking-wide flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 shrink-0" />
             <div>
               <p className="font-bold mb-1">Sandbox System Warning:</p>
@@ -215,7 +215,7 @@ export default function CsvToExcelTool() {
             }
           }}
           onClick={() => fileInputRef.current?.click()}
-          className={`border border-dashed border-black py-8 px-4 text-center cursor-pointer transition-colors ${
+          className={`border border-dashed border-border py-8 px-4 text-center cursor-pointer transition-colors ${
             isDragOver ? "bg-accent/15" : "bg-background"
           }`}
         >
@@ -232,7 +232,7 @@ export default function CsvToExcelTool() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-black p-4 bg-background">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-border p-4 bg-background">
           <div className="space-y-1">
             <label className="block font-mono text-[10px] uppercase font-bold text-muted-foreground">
               CSV Delimiter
@@ -240,7 +240,7 @@ export default function CsvToExcelTool() {
             <select
               value={delimiter}
               onChange={(e) => setDelimiter(e.target.value)}
-              className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none rounded-none"
+              className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none rounded-lg"
             >
               <option value=",">Comma (,)</option>
               <option value=";">Semicolon (;)</option>
@@ -255,7 +255,7 @@ export default function CsvToExcelTool() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-black">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-border">
           <div className="p-4 bg-background border-r border-r-black flex flex-col space-y-2">
             <label className="font-mono text-xs font-bold uppercase tracking-wide block">
               INPUT CSV DATA
@@ -277,7 +277,7 @@ export default function CsvToExcelTool() {
                 <button
                   onClick={handleCopy}
                   disabled={!excelOutput}
-                  className="p-1 border border-black hover:bg-accent disabled:opacity-35 transition-colors"
+                  className="p-1 border border-border hover:bg-accent disabled:opacity-35 transition-colors"
                   title="Copy XML data"
                 >
                   {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}

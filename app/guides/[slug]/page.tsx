@@ -114,7 +114,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Breadcrumbs */}
           <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-            <Link href="/" className="hover:text-black transition-colors">Home</Link>
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
             <span className="text-muted-foreground">Guides</span>
             <span>/</span>
@@ -122,7 +122,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           </nav>
 
           {/* Header */}
-          <header className="space-y-4 border-b border-black pb-8">
+          <header className="space-y-4 border-b border-border pb-8">
             <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight leading-none">
               {guide.title}
             </h1>
@@ -144,7 +144,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 1. Quick Answer */}
           {guide.quickAnswer && (
-            <div className="border-2 border-black bg-secondary p-5 space-y-2">
+            <div className="border-2 border-border bg-secondary p-5 space-y-2">
               <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
                 <Zap size={13} />
                 <span>Quick Answer</span>
@@ -172,8 +172,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 4. Table of Contents */}
           {guide.toc.length > 0 && (
-            <div className="border border-black bg-secondary p-5 space-y-3">
-              <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+            <div className="border border-border bg-secondary p-5 space-y-3">
+              <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                 <FileText size={13} />
                 <span>Table of Contents</span>
               </h4>
@@ -224,7 +224,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           )}
 
           {/* 8. Best Practices & 9. Common Mistakes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-black/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
             {guide.bestPractices.length > 0 && (
               <div className="space-y-3">
                 <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
@@ -255,7 +255,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 10. Pro Tips */}
           {guide.proTips.length > 0 && (
-            <section className="space-y-3 pt-6 border-t border-black/10">
+            <section className="space-y-3 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
                 <Lightbulb size={20} className="text-yellow-600" />
                 <span>Pro Tips</span>
@@ -273,14 +273,14 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 11. Troubleshooting */}
           {guide.troubleshooting.length > 0 && (
-            <section className="space-y-4 pt-6 border-t border-black/10">
+            <section className="space-y-4 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
                 <Wrench size={20} className="text-muted-foreground" />
                 <span>Troubleshooting</span>
               </h3>
               <div className="space-y-3">
                 {guide.troubleshooting.map((item, idx) => (
-                  <div key={idx} className="border border-black/10 p-3 space-y-1">
+                  <div key={idx} className="border border-border p-3 space-y-1">
                     <h4 className="font-mono text-[11px] font-bold text-foreground">{item.question}</h4>
                     <p className="font-mono text-[10px] text-muted-foreground leading-relaxed">{item.answer}</p>
                   </div>
@@ -291,7 +291,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 12. Benefits & 13. Limitations */}
           {(guide.benefits.length > 0 || guide.limitations.length > 0) && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-black/10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
               {guide.benefits.length > 0 && (
                 <div className="space-y-3">
                   <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
@@ -352,7 +352,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 16. Industry Use Cases */}
           {guide.useCases.length > 0 && (
-            <section className="space-y-3 pt-6 border-t border-black/10">
+            <section className="space-y-3 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
                 <Globe size={20} className="text-muted-foreground" />
                 <span>Industry Use Cases</span>
@@ -367,7 +367,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 17. Frequently Asked Questions */}
           {guide.faqs.length > 0 && (
-            <section className="space-y-6 pt-12 border-t border-black">
+            <section className="space-y-6 pt-12 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
                 <HelpCircle size={22} className="text-muted-foreground" />
                 <span>Frequently Asked Questions</span>
@@ -389,14 +389,14 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 18. People Also Ask (Related Questions) */}
           {guide.relatedQuestions.length > 0 && (
-            <section className="space-y-4 pt-6 border-t border-black/10">
+            <section className="space-y-4 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
                 <List size={20} className="text-muted-foreground" />
                 <span>People Also Ask</span>
               </h3>
               <div className="space-y-3">
                 {guide.relatedQuestions.map((rq, idx) => (
-                  <div key={idx} className="border border-black/10 p-3 space-y-1">
+                  <div key={idx} className="border border-border p-3 space-y-1">
                     <h4 className="font-mono text-[11px] font-bold text-foreground">{rq.question}</h4>
                     <p className="font-mono text-[10px] text-muted-foreground leading-relaxed">{rq.answer}</p>
                   </div>
@@ -407,11 +407,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 19. Glossary */}
           {guide.glossary.length > 0 && (
-            <section className="space-y-4 pt-6 border-t border-black/10">
+            <section className="space-y-4 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
                 Glossary
               </h3>
-              <div className="border border-black divide-y divide-black/10">
+              <div className="border border-border divide-y divide-border">
                 {guide.glossary.map((entry, idx) => (
                   <div key={idx} className="p-3 grid grid-cols-[120px_1fr] gap-3">
                     <span className="font-mono text-[10px] font-bold uppercase text-foreground">{entry.term}</span>
@@ -423,7 +423,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           )}
 
           {/* 20. Related Tools & 21. Related Guides */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 border-t border-black">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 border-t border-border">
             <div className="space-y-3">
               <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground">
                 Related Utilities
@@ -436,7 +436,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                     <Link
                       key={toolSlug}
                       href={`/tools/${toolSlug}`}
-                      className="block p-3 border border-black bg-background hover:bg-accent transition-colors flex items-center justify-between"
+                      className="block p-3 border border-border bg-background hover:bg-accent transition-colors flex items-center justify-between"
                     >
                       <span>Free {tObj.name} Online</span>
                       <ArrowRight size={12} className="text-muted-foreground" />
@@ -458,7 +458,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                     <Link
                       key={guideSlug}
                       href={`/guides/${guideSlug}`}
-                      className="block p-3 border border-black bg-background hover:bg-accent transition-colors flex items-center justify-between"
+                      className="block p-3 border border-border bg-background hover:bg-accent transition-colors flex items-center justify-between"
                     >
                       <span>{gObj.title}</span>
                       <ArrowRight size={12} className="text-muted-foreground" />
@@ -471,7 +471,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* 22. Conclusion */}
           {guide.conclusion && (
-            <section className="space-y-3 pt-6 border-t border-black/10">
+            <section className="space-y-3 pt-6 border-t border-border">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight text-foreground">
                 Conclusion
               </h3>
@@ -481,8 +481,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           {/* AI Key Takeaways */}
           {guide.aiBlocks.keyTakeaways.length > 0 && (
-            <div className="border border-black bg-secondary p-5 space-y-3">
-              <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+            <div className="border border-border bg-secondary p-5 space-y-3">
+              <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                 <Award size={13} />
                 <span>Key Takeaways</span>
               </h4>

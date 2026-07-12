@@ -10,7 +10,7 @@ export default function CurrencyBadge({ code, className = "" }: CurrencyBadgePro
 
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 border border-black bg-accent font-mono text-[9px] font-bold uppercase select-none ${className}`}
+      className={`inline-flex items-center gap-1 px-2 py-0.5 border border-border bg-accent font-mono text-[9px] font-bold uppercase select-none ${className}`}
       title={`${code} Currency`}
     >
       <span>{currencyInfo.symbol}</span>

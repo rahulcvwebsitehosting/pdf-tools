@@ -95,9 +95,9 @@ export default function MoneyInput({
         {label}
       </label>
       
-      <div className="flex border border-black bg-background focus-within:ring-1 focus-within:ring-black">
+      <div className="flex border border-border bg-background focus-within:ring-1 focus-within:ring-black">
         {/* Currency Prefix Badge */}
-        <span className="flex items-center px-3 border-r border-black bg-secondary font-mono text-xs font-bold text-muted-foreground select-none">
+        <span className="flex items-center px-3 border-r border-border bg-secondary font-mono text-xs font-bold text-muted-foreground select-none">
           {currencyInfo.symbol}
         </span>
         
@@ -112,7 +112,7 @@ export default function MoneyInput({
         />
 
         {/* Currency Code Suffix Badge */}
-        <span className="flex items-center px-3 border-l border-black bg-secondary font-mono text-[10px] font-bold text-muted-foreground select-none">
+        <span className="flex items-center px-3 border-l border-border bg-secondary font-mono text-[10px] font-bold text-muted-foreground select-none">
           {currencyInfo.code}
         </span>
       </div>

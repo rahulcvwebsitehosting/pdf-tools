@@ -23,15 +23,15 @@ export default function TimeCalculatorTool() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Start Date</label>
-            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
           </div>
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Days offset</label>
-            <input type="number" value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+            <input type="number" value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
           </div>
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Operation</label>
-            <select value={operation} onChange={(e) => setOperation(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none">
+            <select value={operation} onChange={(e) => setOperation(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none">
               <option value="add">Add</option>
               <option value="subtract">Subtract</option>
             </select>

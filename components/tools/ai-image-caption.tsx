@@ -33,7 +33,7 @@ export default function FreeAiAiImageCaptionTool() {
       <PrivacyBadge />
   
       <div className="space-y-4">
-        <div className="border-2 border-dashed border-black p-6 text-center bg-background">
+        <div className="border-2 border-dashed border-border p-6 text-center bg-background">
           <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" id="image-upload" />
           <label htmlFor="image-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4">
             {image ? 'Change Image File' : 'Drag & Drop or Click to Select Document/Image'}
@@ -41,7 +41,7 @@ export default function FreeAiAiImageCaptionTool() {
         </div>
 
         {image && (
-          <div className="flex justify-center max-h-64 overflow-hidden border border-black/10 p-2">
+          <div className="flex justify-center max-h-64 overflow-hidden border border-border p-2">
             <img src={image} alt="Source Preview" className="object-contain" />
           </div>
         )}
@@ -68,7 +68,7 @@ export default function FreeAiAiImageCaptionTool() {
 
         {output && (
           <div className="editorial-panel p-4 space-y-2">
-            <h4 className="font-mono text-xs font-bold uppercase border-b border-black/10 pb-1">Extracted Text Results</h4>
+            <h4 className="font-mono text-xs font-bold uppercase border-b border-border pb-1">Extracted Text Results</h4>
             <div className="font-mono text-xs whitespace-pre-wrap leading-relaxed">
               {output}
             </div>

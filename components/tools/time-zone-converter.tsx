@@ -25,11 +25,11 @@ export default function TimeZoneConverterTool() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Select Local Time</label>
-            <input type="datetime-local" value={dateVal} onChange={(e) => setDateVal(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" />
+            <input type="datetime-local" value={dateVal} onChange={(e) => setDateVal(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" />
           </div>
           <div>
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Target Timezone</label>
-            <select value={targetZone} onChange={(e) => setTargetZone(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none">
+            <select value={targetZone} onChange={(e) => setTargetZone(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none">
               <option value="UTC">UTC</option>
               <option value="America/New_York">EST (America/New_York)</option>
               <option value="Europe/London">GMT (Europe/London)</option>

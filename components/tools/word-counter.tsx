@@ -128,7 +128,7 @@ export default function WordCounterTool() {
                 <button
                   onClick={handleCopy}
                   disabled={!text}
-                  className="p-1 border border-black hover:bg-accent disabled:opacity-35 transition-colors"
+                  className="p-1 border border-border hover:bg-accent disabled:opacity-35 transition-colors"
                   title="Copy Text"
                 >
                   {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
@@ -136,7 +136,7 @@ export default function WordCounterTool() {
                 <button
                   onClick={clearAll}
                   disabled={!text}
-                  className="p-1 border border-black hover:bg-destructive hover:text-white disabled:opacity-35 transition-colors"
+                  className="p-1 border border-border hover:bg-destructive hover:text-white disabled:opacity-35 transition-colors"
                   title="Clear Input"
                 >
                   <RefreshCw className="w-4 h-4" />
@@ -152,33 +152,33 @@ export default function WordCounterTool() {
           </div>
 
           {/* Right panel: statistics dashboard */}
-          <div className="lg:col-span-1 border border-black p-5 bg-background space-y-6 flex flex-col">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2 border-b border-black pb-2">
+          <div className="lg:col-span-1 border border-border p-5 bg-background space-y-6 flex flex-col">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2 border-b border-border pb-2">
               <BarChart3 className="w-4 h-4 text-black" /> Document Statistics
             </h3>
 
             {/* Metrics grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="border border-black p-3 bg-secondary/10">
+              <div className="border border-border p-3 bg-secondary/10">
                 <span className="block font-mono text-[9px] text-muted-foreground uppercase font-bold">Words</span>
                 <span className="font-editorial text-2xl font-bold">{wordCount}</span>
               </div>
-              <div className="border border-black p-3 bg-secondary/10">
+              <div className="border border-border p-3 bg-secondary/10">
                 <span className="block font-mono text-[9px] text-muted-foreground uppercase font-bold">Characters</span>
                 <span className="font-editorial text-2xl font-bold">{charCountWithSpaces}</span>
               </div>
-              <div className="border border-black p-3 bg-secondary/10">
+              <div className="border border-border p-3 bg-secondary/10">
                 <span className="block font-mono text-[9px] text-muted-foreground uppercase font-bold">Sentences</span>
                 <span className="font-editorial text-2xl font-bold">{sentenceCount}</span>
               </div>
-              <div className="border border-black p-3 bg-secondary/10">
+              <div className="border border-border p-3 bg-secondary/10">
                 <span className="block font-mono text-[9px] text-muted-foreground uppercase font-bold">Paragraphs</span>
                 <span className="font-editorial text-2xl font-bold">{paragraphCount}</span>
               </div>
             </div>
 
             {/* Additional metrics info */}
-            <div className="border-t border-black pt-4 space-y-3">
+            <div className="border-t border-border pt-4 space-y-3">
               {/* Reading time */}
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="text-muted-foreground uppercase font-bold flex items-center gap-1">
@@ -198,7 +198,7 @@ export default function WordCounterTool() {
 
             {/* Keyword Density List */}
             {densityList.length > 0 && (
-              <div className="space-y-2 border-t border-black pt-4 flex-1">
+              <div className="space-y-2 border-t border-border pt-4 flex-1">
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
                   Keyword Density (Excl. Stopwords)
                 </h4>

@@ -11,13 +11,13 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-background editorial-border-b">
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="w-7 h-7 rounded-md bg-gradient-to-br from-[#A0522D] to-[#6B3410] flex items-center justify-center text-xs font-bold text-white group-hover:scale-110 transition-transform duration-300 shadow-sm">
+      <header className="sticky top-0 z-50 bg-background/85 backdrop-blur border-b border-border">
+        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1E40AF] flex items-center justify-center text-sm font-extrabold text-white shadow-sm group-hover:scale-105 transition-transform duration-300">
               P
             </span>
-            <span className="font-editorial text-xl font-black tracking-tight text-foreground uppercase">
+            <span className="font-editorial text-xl font-extrabold tracking-tight text-foreground">
               PDF Tools
             </span>
           </Link>
@@ -25,47 +25,47 @@ export function Header() {
           <div className="hidden md:flex flex-1 max-w-md mx-8 justify-center">
             <button
               onClick={() => setCommandOpen(true)}
-              className="w-full flex items-center justify-between px-4 py-1.5 border border-black bg-background text-muted-foreground hover:bg-accent hover:text-black transition-all font-mono text-xs cursor-pointer"
+              className="w-full flex items-center justify-between px-4 py-2 rounded-full border border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground transition-all text-sm shadow-sm cursor-pointer"
             >
               <div className="flex items-center gap-2">
-                <Search className="w-3.5 h-3.5 text-foreground" />
+                <Search className="w-4 h-4" />
                 <span>Search tools...</span>
               </div>
-              <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-secondary text-[9px] font-mono text-foreground border border-black">
+              <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-secondary text-[10px] font-mono text-muted-foreground rounded">
                 Ctrl K
               </kbd>
             </button>
           </div>
 
-          <nav className="hidden lg:flex items-center h-full">
-            <div className="flex items-center h-full border-r border-black">
-              <a href="#pdf" className="px-4 text-xs font-mono uppercase font-bold text-foreground hover:bg-accent h-14 flex items-center transition-colors border-l border-black">
-                PDF
-              </a>
-              <a href="#developer" className="px-4 text-xs font-mono uppercase font-bold text-foreground hover:bg-accent h-14 flex items-center transition-colors border-l border-black">
-                Dev
-              </a>
-              <a href="#office" className="px-4 text-xs font-mono uppercase font-bold text-foreground hover:bg-accent h-14 flex items-center transition-colors border-l border-black">
-                Text
-              </a>
-              <a href="#calculators" className="px-4 text-xs font-mono uppercase font-bold text-foreground hover:bg-accent h-14 flex items-center transition-colors border-l border-black">
-                Calc
-              </a>
-            </div>
+          <nav className="hidden lg:flex items-center gap-1">
+            <a href="#pdf" className="px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+              PDF
+            </a>
+            <a href="#developer" className="px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+              Dev
+            </a>
+            <a href="#office" className="px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+              Text
+            </a>
+            <a href="#calculators" className="px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+              Calc
+            </a>
+            <Link href="/" className="ml-2 editorial-btn-primary px-4 py-2 text-sm">
+              All Tools
+            </Link>
           </nav>
 
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setCommandOpen(true)}
-              className="p-2 border border-black hover:bg-accent transition-colors"
+              className="p-2.5 rounded-full border border-border bg-card hover:border-primary transition-colors"
               title="Search"
             >
               <Search className="w-4 h-4 text-foreground" />
             </button>
-
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
-              className="p-2 border border-black hover:bg-accent transition-colors"
+              className="p-2.5 rounded-full border border-border bg-card hover:border-primary transition-colors"
               title="Menu"
             >
               {drawerOpen ? <X className="w-4 h-4 text-foreground" /> : <Menu className="w-4 h-4 text-foreground" />}
@@ -77,52 +77,36 @@ export function Header() {
       {drawerOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+            className="fixed inset-0 z-40 bg-black/30 lg:hidden"
             onClick={() => setDrawerOpen(false)}
           />
-          <div className="fixed top-14 right-0 bottom-0 z-40 w-64 bg-background border-l border-black p-6 flex flex-col justify-between lg:hidden animate-fade-in-scale">
-            <div className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase font-bold text-muted-foreground border-b border-black pb-2">
+          <div className="fixed top-16 right-0 bottom-0 z-40 w-64 bg-card border-l border-border p-6 flex flex-col justify-between lg:hidden animate-fade-in-scale shadow-2xl">
+            <div className="space-y-2">
+              <h3 className="font-mono text-[10px] uppercase font-bold text-muted-foreground border-b border-border pb-2 mb-2">
                 Navigation
               </h3>
-              <ul className="space-y-4 font-mono text-sm font-bold uppercase">
-                <li>
-                  <a href="#pdf" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    PDF Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#developer" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Developer Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#office" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Office Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#image" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Image Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#web" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Web Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#time" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Time Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#calculators" onClick={() => setDrawerOpen(false)} className="block hover:bg-accent p-2 border border-transparent hover:border-black transition-all">
-                    Calculators
-                  </a>
-                </li>
-              </ul>
+              {[
+                ["PDF Tools", "#pdf"],
+                ["Developer Tools", "#developer"],
+                ["Office Tools", "#office"],
+                ["Image Tools", "#image"],
+                ["Web Tools", "#web"],
+                ["Time Tools", "#time"],
+                ["Calculators", "#calculators"],
+              ].map(([label, href]) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setDrawerOpen(false)}
+                  className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-secondary transition-colors"
+                >
+                  {label}
+                </a>
+              ))}
             </div>
+            <Link href="/" onClick={() => setDrawerOpen(false)} className="editorial-btn-primary justify-center">
+              All Tools
+            </Link>
           </div>
         </>
       )}

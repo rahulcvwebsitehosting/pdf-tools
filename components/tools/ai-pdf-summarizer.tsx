@@ -212,7 +212,7 @@ export default function FreeAiAiPdfSummarizerTool() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-black p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
+            <div className="border-2 border-dashed border-border p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
               <input type="file" accept=".txt,.md,.pdf" onChange={handleFileChange} className="hidden" id="file-upload" />
               <label htmlFor="file-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4 hover:underline">
                 📁 Upload Document / PDF / Text
@@ -246,9 +246,9 @@ export default function FreeAiAiPdfSummarizerTool() {
             )}
           </div>
 
-          <div className="border border-black p-4 bg-background flex flex-col justify-between min-h-[300px]">
+          <div className="border border-border p-4 bg-background flex flex-col justify-between min-h-[300px]">
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-1">
+              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-1">
                 SaaS Summary Panel
               </h3>
 
@@ -259,14 +259,14 @@ export default function FreeAiAiPdfSummarizerTool() {
                 </div>
               ) : (output || stream) ? (
                 <div className="space-y-4 font-mono text-xs">
-                  <div className="flex border-b border-black/10 overflow-x-auto gap-1">
-                    <button onClick={() => setActiveTab("exec")} className={`px-2 py-1 border-t border-x border-black/10 text-[10px] ${activeTab === 'exec' ? 'bg-accent/10 font-bold' : ''}`}>Summary</button>
-                    <button onClick={() => setActiveTab("bullets")} className={`px-2 py-1 border-t border-x border-black/10 text-[10px] ${activeTab === 'bullets' ? 'bg-accent/10 font-bold' : ''}`}>Key Points</button>
-                    <button onClick={() => setActiveTab("dates")} className={`px-2 py-1 border-t border-x border-black/10 text-[10px] ${activeTab === 'dates' ? 'bg-accent/10 font-bold' : ''}`}>Dates</button>
-                    <button onClick={() => setActiveTab("numbers")} className={`px-2 py-1 border-t border-x border-black/10 text-[10px] ${activeTab === 'numbers' ? 'bg-accent/10 font-bold' : ''}`}>Numbers</button>
-                    <button onClick={() => setActiveTab("actions")} className={`px-2 py-1 border-t border-x border-black/10 text-[10px] ${activeTab === 'actions' ? 'bg-accent/10 font-bold' : ''}`}>Action Items</button>
+                  <div className="flex border-b border-border overflow-x-auto gap-1">
+                    <button onClick={() => setActiveTab("exec")} className={`px-2 py-1 border-t border-x border-border text-[10px] ${activeTab === 'exec' ? 'bg-accent/10 font-bold' : ''}`}>Summary</button>
+                    <button onClick={() => setActiveTab("bullets")} className={`px-2 py-1 border-t border-x border-border text-[10px] ${activeTab === 'bullets' ? 'bg-accent/10 font-bold' : ''}`}>Key Points</button>
+                    <button onClick={() => setActiveTab("dates")} className={`px-2 py-1 border-t border-x border-border text-[10px] ${activeTab === 'dates' ? 'bg-accent/10 font-bold' : ''}`}>Dates</button>
+                    <button onClick={() => setActiveTab("numbers")} className={`px-2 py-1 border-t border-x border-border text-[10px] ${activeTab === 'numbers' ? 'bg-accent/10 font-bold' : ''}`}>Numbers</button>
+                    <button onClick={() => setActiveTab("actions")} className={`px-2 py-1 border-t border-x border-border text-[10px] ${activeTab === 'actions' ? 'bg-accent/10 font-bold' : ''}`}>Action Items</button>
                   </div>
-                  <div className="p-3 border border-black/10 bg-secondary/5 whitespace-pre-wrap leading-relaxed h-48 overflow-y-auto">
+                  <div className="p-3 border border-border bg-secondary/5 whitespace-pre-wrap leading-relaxed h-48 overflow-y-auto">
                     {activeTab === 'exec' && (parsedReport.summary || "No summary available.")}
                     {activeTab === 'bullets' && (parsedReport.points || "No key points detected.")}
                     {activeTab === 'dates' && (parsedReport.dates || "No key dates detected.")}
@@ -275,18 +275,18 @@ export default function FreeAiAiPdfSummarizerTool() {
                   </div>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-black/10">
+                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-border">
                   Ready to compile report
                 </div>
               )}
             </div>
 
             {(output || stream) && (
-              <div className="space-y-4 pt-4 border-t border-black/10">
+              <div className="space-y-4 pt-4 border-t border-border">
                 <button onClick={handleCopy} className="btn-secondary w-full text-xs py-2">
                   📋 Copy Active Report
                 </button>
-                <div className="bg-accent/5 p-3 border border-black/10 text-xs font-mono">
+                <div className="bg-accent/5 p-3 border border-border text-xs font-mono">
                   <div className="font-bold uppercase text-[10px] text-muted-foreground mb-1">💡 Next Step Option</div>
                   <div className="flex items-center justify-between">
                     <span>Extract primary SEO keywords from summary</span>

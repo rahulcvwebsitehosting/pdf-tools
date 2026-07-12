@@ -170,7 +170,7 @@ export default function CropPdfTool() {
               onDragLeave={handleDragLeave}
               onClick={() => fileInputRef.current?.click()}
               className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
-                isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+                isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
               }`}
             >
               <input
@@ -199,7 +199,7 @@ export default function CropPdfTool() {
             {/* Margin Inputs */}
             {file && (
               <div className="space-y-4 pt-2">
-                <div className="flex items-center gap-2 border-b border-black pb-2">
+                <div className="flex items-center gap-2 border-b border-border pb-2">
                   <Sliders className="w-4 h-4" />
                   <span className="font-mono text-xs font-bold uppercase tracking-wide">
                     Set Crop Margins (in millimeters)
@@ -216,7 +216,7 @@ export default function CropPdfTool() {
                       min="0"
                       value={topMargin}
                       onChange={(e) => setTopMargin(e.target.value)}
-                      className="w-full p-2.5 bg-background border border-black focus:outline-none focus:ring-1 focus:ring-black rounded-none text-sm font-mono"
+                      className="w-full p-2.5 bg-background border border-border focus:outline-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-mono"
                       required
                     />
                   </div>
@@ -229,7 +229,7 @@ export default function CropPdfTool() {
                       min="0"
                       value={bottomMargin}
                       onChange={(e) => setBottomMargin(e.target.value)}
-                      className="w-full p-2.5 bg-background border border-black focus:outline-none focus:ring-1 focus:ring-black rounded-none text-sm font-mono"
+                      className="w-full p-2.5 bg-background border border-border focus:outline-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-mono"
                       required
                     />
                   </div>
@@ -242,7 +242,7 @@ export default function CropPdfTool() {
                       min="0"
                       value={leftMargin}
                       onChange={(e) => setLeftMargin(e.target.value)}
-                      className="w-full p-2.5 bg-background border border-black focus:outline-none focus:ring-1 focus:ring-black rounded-none text-sm font-mono"
+                      className="w-full p-2.5 bg-background border border-border focus:outline-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-mono"
                       required
                     />
                   </div>
@@ -255,7 +255,7 @@ export default function CropPdfTool() {
                       min="0"
                       value={rightMargin}
                       onChange={(e) => setRightMargin(e.target.value)}
-                      className="w-full p-2.5 bg-background border border-black focus:outline-none focus:ring-1 focus:ring-black rounded-none text-sm font-mono"
+                      className="w-full p-2.5 bg-background border border-border focus:outline-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-mono"
                       required
                     />
                   </div>
@@ -291,7 +291,7 @@ export default function CropPdfTool() {
           /* Success Screen */
           <div className="space-y-6 text-center py-8">
             <div className="flex justify-center">
-              <CheckCircle className="w-16 h-16 text-black bg-accent p-1.5 border border-black" />
+              <CheckCircle className="w-16 h-16 text-accent-foreground bg-accent p-1.5 border border-border" />
             </div>
             <div className="space-y-2">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-wide">
@@ -302,7 +302,7 @@ export default function CropPdfTool() {
               </p>
             </div>
 
-            <div className="p-4 max-w-xl mx-auto border border-black bg-accent text-xs font-mono uppercase tracking-wide text-left">
+            <div className="p-4 max-w-xl mx-auto border border-border bg-accent text-xs font-mono uppercase tracking-wide text-left">
               <p className="font-bold mb-1">Cropping Bounds Applied:</p>
               <div className="grid grid-cols-4 gap-2 text-[10px] mt-2">
                 <div>Top: {topMargin} mm</div>

@@ -189,7 +189,7 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
         </h2>
 
         {error && (
-          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-none">
+          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-lg">
             ⚠️ {error}
           </div>
         )}
@@ -212,9 +212,9 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
           </div>
 
           {/* Configuration sidebar */}
-          <div className="lg:col-span-1 border border-black p-5 bg-background rounded-none space-y-6 flex flex-col justify-between">
+          <div className="lg:col-span-1 border border-border p-5 bg-background rounded-lg space-y-6 flex flex-col justify-between">
             <div className="space-y-6">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2 border-b border-black pb-2">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2 border-b border-border pb-2">
                 <Settings className="w-4 h-4 text-black" /> Layout & Typography
               </h3>
 
@@ -226,7 +226,7 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
                 <select
                   value={fontSize}
                   onChange={(e) => setFontSize(parseInt(e.target.value))}
-                  className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                 >
                   <option value={10}>10px (Compact)</option>
                   <option value={12}>12px (Standard)</option>
@@ -243,7 +243,7 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
                 <select
                   value={margin}
                   onChange={(e) => setMargin(parseInt(e.target.value))}
-                  className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                 >
                   <option value={20}>Small (20px)</option>
                   <option value={40}>Medium (40px)</option>
@@ -252,7 +252,7 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
               </div>
 
               {/* Page layout hint */}
-              <div className="p-4 border border-black bg-secondary/20 font-mono text-[10px] space-y-1 rounded-none">
+              <div className="p-4 border border-border bg-secondary/20 font-mono text-[10px] space-y-1 rounded-lg">
                 <span className="font-bold block uppercase">Output Specs</span>
                 <span className="block">• Standard A4 Page Format</span>
                 <span className="block">• Automatic word wrapping</span>
@@ -261,7 +261,7 @@ We use pdf-lib for processing documents on the client side. This eliminates serv
             </div>
 
             {/* Generate Trigger */}
-            <div className="pt-4 border-t border-black">
+            <div className="pt-4 border-t border-border">
               <button
                 type="button"
                 onClick={handleGeneratePdf}

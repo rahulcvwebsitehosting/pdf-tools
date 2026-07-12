@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           <span className="neon-badge px-3 py-1 text-xs">
             PRIVACY
           </span>
-          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-black pb-6">
+          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-border pb-6">
             Privacy Policy
           </h1>
           <p className="font-mono text-xs text-muted-foreground uppercase">
@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </div>
 
-        <div className="bg-accent border-2 border-black p-6 sm:p-8 text-black mb-12 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-accent border-2 border-border p-6 sm:p-8 text-black mb-12 shadow-lift">
           <p className="font-mono text-sm sm:text-base font-black uppercase tracking-wider leading-relaxed">
             All tools run 100% locally inside your browser. Your files never leave your device.
           </p>
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-10 font-sans text-sm sm:text-base leading-relaxed">
 
           <section className="space-y-4">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-black pb-2 flex items-center gap-2">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-border pb-2 flex items-center gap-2">
               <ServerOff className="w-6 h-6" /> Local Processing
             </h2>
             <p>
@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-black pb-2 flex items-center gap-2">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-border pb-2 flex items-center gap-2">
               <EyeOff className="w-6 h-6" /> Information We Collect
             </h2>
             <p>
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-black pb-2 flex items-center gap-2">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-border pb-2 flex items-center gap-2">
               <Shield className="w-6 h-6" /> Third-Party Services
             </h2>
             <p>
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-black pb-2 flex items-center gap-2">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-border pb-2 flex items-center gap-2">
               <RefreshCw className="w-6 h-6" /> Changes to This Policy
             </h2>
             <p>
@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-black pb-2 flex items-center gap-2">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight border-b border-border pb-2 flex items-center gap-2">
               <Mail className="w-6 h-6" /> Contact
             </h2>
             <p>

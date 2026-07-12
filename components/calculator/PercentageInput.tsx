@@ -36,7 +36,7 @@ export default function PercentageInput({
         {label}
       </label>
       
-      <div className="flex border border-black bg-background focus-within:ring-1 focus-within:ring-black">
+      <div className="flex border border-border bg-background focus-within:ring-1 focus-within:ring-black">
         <input
           id={id}
           type="number"
@@ -49,7 +49,7 @@ export default function PercentageInput({
           className="w-full p-2.5 bg-transparent font-mono text-xs focus:outline-none border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         />
         
-        <span className="flex items-center px-3 border-l border-black bg-secondary font-mono text-xs font-bold text-muted-foreground select-none">
+        <span className="flex items-center px-3 border-l border-border bg-secondary font-mono text-xs font-bold text-muted-foreground select-none">
           %
         </span>
       </div>

@@ -43,7 +43,7 @@ export default async function ToolPage({ params }: PageProps) {
   if (calc) {
     const relatedLinksElement = (
       <div className="editorial-panel p-6 space-y-4">
-        <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-black/10 pb-2">
+        <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-border pb-2">
           Related Calculators
         </h4>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -70,9 +70,9 @@ export default async function ToolPage({ params }: PageProps) {
         <main className="min-h-screen bg-background text-foreground py-12">
           <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-              <Link href="/" className="hover:text-black transition-colors">Home</Link>
+              <Link href="/" className="hover:text-primary transition-colors">Home</Link>
               <span>/</span>
-              <Link href="/#calculators" className="hover:text-black transition-colors">Calculators</Link>
+              <Link href="/#calculators" className="hover:text-primary transition-colors">Calculators</Link>
               <span>/</span>
               <span className="text-foreground">{calc.shortTitle}</span>
             </nav>
@@ -105,9 +105,9 @@ export default async function ToolPage({ params }: PageProps) {
       <main className="min-h-screen bg-background text-foreground py-12">
         <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-            <Link href="/" className="hover:text-black transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/#pdf" className="hover:text-black transition-colors">PDF Tools</Link>
+              <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/#pdf" className="hover:text-primary transition-colors">PDF Tools</Link>
             <span>/</span>
             <span className="text-foreground">{name}</span>
           </nav>

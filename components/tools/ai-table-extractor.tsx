@@ -159,23 +159,23 @@ export default function FreeAiAiTableExtractorTool() {
     setFile(null);
     setOcrStatus("Sample loaded. Ready to extract table.");
     setTableHtml(`
-      <table class="w-full text-left font-mono text-[10px] border-collapse border border-black/10">
+      <table class="w-full text-left font-mono text-[10px] border-collapse border border-border">
         <thead>
-          <tr class="bg-secondary/20 border-b border-black/10">
-            <th class="p-2 border-r border-black/10">Product Name</th>
-            <th class="p-2 border-r border-black/10">Quantity</th>
+          <tr class="bg-secondary/20 border-b border-border">
+            <th class="p-2 border-r border-border">Product Name</th>
+            <th class="p-2 border-r border-border">Quantity</th>
             <th class="p-2">Unit Price</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b border-black/10">
-            <td class="p-2 border-r border-black/10">Widget A</td>
-            <td class="p-2 border-r border-black/10">100</td>
+          <tr class="border-b border-border">
+            <td class="p-2 border-r border-border">Widget A</td>
+            <td class="p-2 border-r border-border">100</td>
             <td class="p-2">$1.50</td>
           </tr>
           <tr>
-            <td class="p-2 border-r border-black/10">Widget B</td>
-            <td class="p-2 border-r border-black/10">200</td>
+            <td class="p-2 border-r border-border">Widget B</td>
+            <td class="p-2 border-r border-border">200</td>
             <td class="p-2">$2.75</td>
           </tr>
         </tbody>
@@ -190,17 +190,17 @@ export default function FreeAiAiTableExtractorTool() {
         let html = aiResult;
         if (aiResult.includes("|")) {
           const lines = aiResult.trim().split("\n");
-          let table = '<table class="w-full text-left font-mono text-[10px] border-collapse border border-black/10">';
+          let table = '<table class="w-full text-left font-mono text-[10px] border-collapse border border-border">';
           lines.forEach((l, index) => {
             if (l.trim().startsWith("|")) {
               const cells = l.split("|").map(c => c.trim()).filter((c, i, a) => i > 0 && i < a.length - 1);
               if (index === 0) {
-                table += '<thead class="bg-secondary/20 border-b border-black/10"><tr>';
-                cells.forEach(c => table += `<th class="p-2 border-r border-black/10">${c}</th>`);
+                table += '<thead class="bg-secondary/20 border-b border-border"><tr>';
+                cells.forEach(c => table += `<th class="p-2 border-r border-border">${c}</th>`);
                 table += '</tr></thead><tbody>';
               } else if (index !== 1) {
-                table += '<tr class="border-b border-black/10">';
-                cells.forEach(c => table += `<td class="p-2 border-r border-black/10">${c}</td>`);
+                table += '<tr class="border-b border-border">';
+                cells.forEach(c => table += `<td class="p-2 border-r border-border">${c}</td>`);
                 table += '</tr>';
               }
             }
@@ -234,7 +234,7 @@ export default function FreeAiAiTableExtractorTool() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-black p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
+            <div className="border-2 border-dashed border-border p-6 text-center bg-background flex flex-col items-center justify-center min-h-[200px]">
               <input type="file" accept="image/*,application/pdf" onChange={handleFileChange} className="hidden" id="file-upload" />
               <label htmlFor="file-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4 hover:underline">
                 📁 Upload Table Snapshot / PDF
@@ -250,7 +250,7 @@ export default function FreeAiAiTableExtractorTool() {
             </div>
 
             {image && (
-              <div className="border border-black p-2 bg-background flex flex-col items-center">
+              <div className="border border-border p-2 bg-background flex flex-col items-center">
                 <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground mb-1">Source Preview</span>
                 <img src={image} alt="Preview" className="max-h-48 object-contain" />
               </div>
@@ -275,9 +275,9 @@ export default function FreeAiAiTableExtractorTool() {
             )}
           </div>
 
-          <div className="border border-black p-4 bg-background flex flex-col justify-between min-h-[300px]">
+          <div className="border border-border p-4 bg-background flex flex-col justify-between min-h-[300px]">
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-1">
+              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-1">
                 Interactive Grid Sheet
               </h3>
 
@@ -285,25 +285,25 @@ export default function FreeAiAiTableExtractorTool() {
                 <div className="space-y-2 py-4">
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Detecting grid cells...</div>
                   <div className="text-xs font-mono text-muted-foreground animate-pulse">⚡ Running structured OCR alignment...</div>
-                  <div className="w-full bg-secondary h-2 border border-black overflow-hidden mt-4">
+                  <div className="w-full bg-secondary h-2 border border-border overflow-hidden mt-4">
                     <div className="bg-accent h-full transition-all duration-300" style={{ width: `${ocrProgress || visionProgress || 0}%` }}></div>
                   </div>
                 </div>
               ) : tableHtml ? (
-                <div className="overflow-x-auto border border-black/10" dangerouslySetInnerHTML={{ __html: tableHtml }}></div>
+                <div className="overflow-x-auto border border-border" dangerouslySetInnerHTML={{ __html: tableHtml }}></div>
               ) : (
-                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-black/10">
+                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-border">
                   Ready for table layout
                 </div>
               )}
             </div>
 
             {tableHtml && (
-              <div className="space-y-4 pt-4 border-t border-black/10">
+              <div className="space-y-4 pt-4 border-t border-border">
                 <button onClick={handleCopyMarkdown} className="btn-secondary w-full text-xs py-2">
                   📋 Copy Markdown Table
                 </button>
-                <div className="bg-accent/5 p-3 border border-black/10 text-xs font-mono">
+                <div className="bg-accent/5 p-3 border border-border text-xs font-mono">
                   <div className="font-bold uppercase text-[10px] text-muted-foreground mb-1">💡 Next Step Option</div>
                   <div className="flex items-center justify-between">
                     <span>Summarize data or report findings</span>

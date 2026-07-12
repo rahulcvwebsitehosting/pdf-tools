@@ -157,19 +157,19 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
       <TrustBadge />
 
       {/* Tabs */}
-      <div className="flex border-b border-black font-mono text-xs uppercase font-bold bg-background">
+      <div className="flex border-b border-border font-mono text-xs uppercase font-bold bg-background">
         <button
           onClick={() => setActiveTab("calc")}
-          className={`px-4 py-3 border-r border-black hover:bg-accent transition-colors ${
-            activeTab === "calc" ? "bg-accent text-black" : "text-muted-foreground"
+          className={`px-4 py-3 border-r border-border hover:bg-accent transition-colors ${
+            activeTab === "calc" ? "bg-accent text-accent-foreground" : "text-muted-foreground"
           }`}
         >
           Calculator
         </button>
         <button
           onClick={() => setActiveTab("formula")}
-          className={`px-4 py-3 border-r border-black hover:bg-accent transition-colors ${
-            activeTab === "formula" ? "bg-accent text-black" : "text-muted-foreground"
+          className={`px-4 py-3 border-r border-border hover:bg-accent transition-colors ${
+            activeTab === "formula" ? "bg-accent text-accent-foreground" : "text-muted-foreground"
           }`}
         >
           How It Works / Formula
@@ -177,7 +177,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
         <button
           onClick={() => setActiveTab("faq")}
           className={`px-4 py-3 hover:bg-accent transition-colors ${
-            activeTab === "faq" ? "bg-accent text-black" : "text-muted-foreground"
+            activeTab === "faq" ? "bg-accent text-accent-foreground" : "text-muted-foreground"
           }`}
         >
           FAQs
@@ -187,8 +187,8 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
       {activeTab === "calc" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Inputs Section */}
-          <div className="lg:col-span-1 border border-black bg-background p-6 space-y-6">
-            <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black pb-2 flex items-center gap-2">
+          <div className="lg:col-span-1 border border-border bg-background p-6 space-y-6">
+            <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-2 flex items-center gap-2">
               <Calculator size={14} />
               <span>Configure Inputs</span>
             </h3>
@@ -254,7 +254,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         id={inp.name}
                         value={inputs[inp.name] || ""}
                         onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
-                        className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none appearance-none cursor-pointer"
+                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg appearance-none cursor-pointer"
                       >
                         {(tool.slug === "currency-converter" && (inp.name === "from" || inp.name === "to")
                           ? currenciesList.map(c => ({ label: `${c.code} - ${c.name}`, value: c.code }))
@@ -272,7 +272,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                           type="checkbox"
                           checked={!!inputs[inp.name]}
                           onChange={(e) => handleChange(inp.name, e.target.checked, inp.type)}
-                          className="w-4 h-4 accent-black border border-black rounded-none"
+                          className="w-4 h-4 accent-primary border border-border rounded-lg"
                         />
                         <span className="font-mono text-xs text-muted-foreground">Enabled</span>
                       </label>
@@ -282,7 +282,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         type="date"
                         value={inputs[inp.name] || ""}
                         onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
-                        className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                        className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
                     ) : (
                       <input
@@ -297,7 +297,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         onChange={(e) =>
                           handleChange(inp.name, e.target.value, inp.type, inp.min, inp.max)
                         }
-                        className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                     )}
 
@@ -312,7 +312,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             </div>
 
             {/* Core Action Panel */}
-            <div className="grid grid-cols-2 gap-2 border-t border-black pt-6">
+            <div className="grid grid-cols-2 gap-2 border-t border-border pt-6">
               <button
                 onClick={handleReset}
                 className="btn-secondary flex items-center justify-center gap-1.5 py-2 text-[10px] font-bold"
@@ -356,7 +356,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
 
             {/* AEO GEO Highlights */}
             <div className="editorial-panel p-6 space-y-4">
-              <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-black/10 pb-2">
+              <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-border pb-2">
                 Quick AI Answer & Insights
               </h4>
               <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
@@ -367,7 +367,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                   <strong className="text-foreground">Quick Answer:</strong> {tool.aeo.quickAnswer}
                 </p>
                 {tool.geo.regionalVariations && (
-                  <p className="bg-secondary p-3 border-l-4 border-black text-xs font-mono">
+                  <p className="bg-secondary p-3 border-l-4 border-border text-xs font-mono">
                     <strong>Regional Notes:</strong> {tool.geo.regionalVariations}
                   </p>
                 )}

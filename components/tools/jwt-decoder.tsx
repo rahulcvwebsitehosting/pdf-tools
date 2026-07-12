@@ -75,7 +75,7 @@ export default function JwtDecoderTool() {
         <button onClick={handleDecode} className="btn-primary">Decode JWT</button>
 
         {error && (
-          <div className="p-4 border border-black bg-accent text-black font-mono text-xs uppercase">
+          <div className="p-4 border border-border bg-accent text-accent-foreground font-mono text-xs uppercase">
             {error}
           </div>
         )}

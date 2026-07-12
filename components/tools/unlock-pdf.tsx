@@ -140,7 +140,7 @@ export default function UnlockPdfTool() {
               onDragLeave={handleDragLeave}
               onClick={() => fileInputRef.current?.click()}
               className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
-                isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+                isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
               }`}
             >
               <input
@@ -177,7 +177,7 @@ export default function UnlockPdfTool() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter file password if prompt is required"
-                  className="w-full p-3 bg-background border border-black focus:outline-none focus:ring-1 focus:ring-black rounded-none text-sm font-mono"
+                  className="w-full p-3 bg-background border border-border focus:outline-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-mono"
                 />
                 <p className="text-[11px] text-muted-foreground font-mono uppercase">
                   Leave empty if you just want to remove edit/copy restrictions
@@ -213,7 +213,7 @@ export default function UnlockPdfTool() {
           /* Success Screen */
           <div className="space-y-6 text-center py-8">
             <div className="flex justify-center">
-              <CheckCircle className="w-16 h-16 text-black bg-accent p-1.5 border border-black" />
+              <CheckCircle className="w-16 h-16 text-accent-foreground bg-accent p-1.5 border border-border" />
             </div>
             <div className="space-y-2">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-wide">
@@ -224,7 +224,7 @@ export default function UnlockPdfTool() {
               </p>
             </div>
 
-            <div className="p-4 max-w-xl mx-auto border border-black bg-accent text-xs font-mono uppercase tracking-wide text-left flex items-start gap-3">
+            <div className="p-4 max-w-xl mx-auto border border-border bg-accent text-xs font-mono uppercase tracking-wide text-left flex items-start gap-3">
               <ShieldAlert className="w-5 h-5 shrink-0 text-black" />
               <div>
                 <p className="font-bold mb-1">Decryption Complete:</p>

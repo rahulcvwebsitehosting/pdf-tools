@@ -69,7 +69,7 @@ export default function FreeAiAiEmojiSuggestionTool() {
 
         {(output || stream) && (
           <div className="editorial-panel p-4 space-y-2">
-            <h4 className="font-mono text-xs font-bold uppercase border-b border-black/10 pb-1">AI Output</h4>
+            <h4 className="font-mono text-xs font-bold uppercase border-b border-border pb-1">AI Output</h4>
             <div className="font-mono text-xs whitespace-pre-wrap leading-relaxed">
               {output || stream}
             </div>

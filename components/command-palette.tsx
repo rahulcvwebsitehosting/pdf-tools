@@ -141,7 +141,7 @@ function CommandPaletteInner({
                         <p className="text-sm font-semibold text-foreground truncate">
                           {item.title}
                         </p>
-                        <span className="font-mono text-[9px] uppercase px-1.5 py-0.5 border border-black/10 bg-secondary text-muted-foreground shrink-0 select-none">
+                        <span className="font-mono text-[9px] uppercase px-1.5 py-0.5 border border-border bg-secondary text-muted-foreground shrink-0 select-none">
                           {item.type}
                         </span>
                       </div>

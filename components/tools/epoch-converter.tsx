@@ -22,7 +22,7 @@ export default function EpochConverterTool() {
         <div className="flex gap-2 items-end">
           <div className="flex-1">
             <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Unix Epoch Timestamp (sec or ms)</label>
-            <input type="text" value={epoch} onChange={(e) => setEpoch(e.target.value)} className="w-full p-2 border border-black bg-background font-mono text-xs focus:outline-none" placeholder="1718300000" />
+            <input type="text" value={epoch} onChange={(e) => setEpoch(e.target.value)} className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none" placeholder="1718300000" />
           </div>
           <button onClick={handleConvert} className="btn-primary h-fit">Convert Epoch</button>
         </div>

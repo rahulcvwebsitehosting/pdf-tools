@@ -44,7 +44,7 @@ export default function FindReplaceTool() {
             type="text"
             value={findStr}
             onChange={(e) => setFindStr(e.target.value)}
-            className="p-2 border border-black bg-background font-mono text-xs focus:outline-none"
+            className="p-2 border border-border bg-background font-mono text-xs focus:outline-none"
             placeholder="find pattern"
           />
         </div>
@@ -54,7 +54,7 @@ export default function FindReplaceTool() {
             type="text"
             value={replaceStr}
             onChange={(e) => setReplaceStr(e.target.value)}
-            className="p-2 border border-black bg-background font-mono text-xs focus:outline-none"
+            className="p-2 border border-border bg-background font-mono text-xs focus:outline-none"
             placeholder="replacement"
           />
         </div>

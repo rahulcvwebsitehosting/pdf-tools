@@ -53,7 +53,7 @@ export default function CurrencySelector({ selectedCode, onChange }: CurrencySel
     <div className="relative inline-block w-full">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 border border-black bg-background font-mono text-xs focus:outline-none cursor-pointer hover:bg-accent/10 transition-colors"
+        className="w-full flex items-center justify-between px-3 py-2 border border-border bg-background font-mono text-xs focus:outline-none cursor-pointer hover:bg-accent/10 transition-colors"
         title="Select regional currency"
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -71,9 +71,9 @@ export default function CurrencySelector({ selectedCode, onChange }: CurrencySel
           {/* Click away backdrop */}
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
 
-          <div className="absolute left-0 right-0 mt-1 z-40 bg-background border border-black max-h-64 overflow-y-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-fade-in-scale">
+          <div className="absolute left-0 right-0 mt-1 z-40 bg-background border border-border max-h-64 overflow-y-auto shadow-soft animate-fade-in-scale">
             {/* Search Input */}
-            <div className="sticky top-0 bg-background border-b border-black px-3 py-2 flex items-center gap-2 z-10">
+            <div className="sticky top-0 bg-background border-b border-border px-3 py-2 flex items-center gap-2 z-10">
               <Search size={14} className="text-muted-foreground shrink-0" />
               <input
                 type="text"
@@ -86,7 +86,7 @@ export default function CurrencySelector({ selectedCode, onChange }: CurrencySel
             </div>
 
             {/* List */}
-            <div className="divide-y divide-black/10" role="listbox">
+            <div className="divide-y divide-border" role="listbox">
               {sortedCurrencies.map((c) => {
                 const isSelected = c.code === selectedCode;
                 const isFav = favorites.includes(c.code);

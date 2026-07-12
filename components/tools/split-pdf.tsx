@@ -229,7 +229,7 @@ export default function SplitPdfTool() {
 
         {/* High-visibility Neon Yellow Warning for invalid inputs/corrupted uploads */}
         {error && (
-          <div className="p-4 border border-black bg-accent text-black font-mono text-xs uppercase tracking-wide flex items-start gap-3">
+          <div className="p-4 border border-border bg-accent text-accent-foreground font-mono text-xs uppercase tracking-wide flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 shrink-0 text-black" />
             <div>
               <p className="font-bold mb-1">Sandbox System Warning:</p>
@@ -246,7 +246,7 @@ export default function SplitPdfTool() {
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onClick={() => fileInputRef.current?.click()}
-              className={`border border-dashed border-black flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
+              className={`border border-dashed border-border flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
                 isDragOver ? "bg-accent/10" : "bg-background"
               }`}
             >
@@ -276,7 +276,7 @@ export default function SplitPdfTool() {
             {/* Split Settings */}
             {file && (
               <div className="space-y-4 pt-2">
-                <div className="flex items-center gap-2 border-b border-black pb-2">
+                <div className="flex items-center gap-2 border-b border-border pb-2">
                   <Settings className="w-4 h-4" />
                   <span className="font-mono text-xs font-bold uppercase tracking-wide">
                     Configure Page Extraction
@@ -297,7 +297,7 @@ export default function SplitPdfTool() {
                     value={rangeInput}
                     onChange={(e) => setRangeInput(e.target.value)}
                     placeholder="e.g. 1-3, 5, 7-9 or 'all'"
-                    className="w-full p-3 bg-background border border-black focus:outline-none rounded-none text-sm font-mono"
+                    className="w-full p-3 bg-background border border-border focus:outline-none rounded-lg text-sm font-mono"
                     required
                   />
                   <p className="text-[10px] text-muted-foreground font-mono uppercase leading-relaxed">
@@ -328,7 +328,7 @@ export default function SplitPdfTool() {
           /* Success Screen */
           <div className="space-y-6 text-center py-8">
             <div className="flex justify-center">
-              <CheckCircle className="w-16 h-16 text-black bg-accent p-1.5 border border-black" />
+              <CheckCircle className="w-16 h-16 text-accent-foreground bg-accent p-1.5 border border-border" />
             </div>
             <div className="space-y-2">
               <h3 className="font-editorial text-2xl font-bold uppercase tracking-wide">
@@ -339,7 +339,7 @@ export default function SplitPdfTool() {
               </p>
             </div>
 
-            <div className="p-4 max-w-xl mx-auto border border-black bg-accent text-xs font-mono uppercase tracking-wide text-left flex items-start gap-3">
+            <div className="p-4 max-w-xl mx-auto border border-border bg-accent text-xs font-mono uppercase tracking-wide text-left flex items-start gap-3">
               <FileText className="w-5 h-5 shrink-0 text-black" />
               <div>
                 <p className="font-bold mb-1">Local Splitting Complete:</p>

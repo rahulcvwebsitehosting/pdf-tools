@@ -14,7 +14,7 @@ export default function FAQSection({ faq }: FAQSectionProps) {
 
   return (
     <section className="space-y-6">
-      <h3 className="font-editorial text-2xl font-bold uppercase border-b border-black pb-2">
+      <h3 className="font-editorial text-2xl font-bold uppercase border-b border-border pb-2">
         Frequently Asked Questions
       </h3>
       <div className="space-y-3">
@@ -36,7 +36,7 @@ export default function FAQSection({ faq }: FAQSectionProps) {
                 </span>
               </button>
               {isOpen && (
-                <div className="p-4 border-t border-black bg-background text-sm leading-relaxed text-muted-foreground animate-fade-in">
+                <div className="p-4 border-t border-border bg-background text-sm leading-relaxed text-muted-foreground animate-fade-in">
                   {item.answer}
                 </div>
               )}

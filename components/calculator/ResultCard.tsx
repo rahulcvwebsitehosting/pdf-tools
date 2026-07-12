@@ -57,7 +57,7 @@ export default function ResultCard({ outputsSchema, values, slug, currencyCode =
           return (
             <div
               key={out.name}
-              className="editorial-panel p-4 flex flex-col justify-between group relative hover:border-black/70 transition-colors"
+              className="editorial-panel p-4 flex flex-col justify-between group relative hover:border-border/70 transition-colors"
             >
               <div>
                 <span className="block font-mono text-[10px] uppercase font-bold text-muted-foreground">
@@ -73,10 +73,10 @@ export default function ResultCard({ outputsSchema, values, slug, currencyCode =
                 )}
               </div>
 
-              <div className="mt-4 pt-2 border-t border-dashed border-black/10 flex justify-end">
+              <div className="mt-4 pt-2 border-t border-dashed border-border flex justify-end">
                 <button
                   onClick={() => handleCopy(out.label, displayVal)}
-                  className="flex items-center gap-1.5 font-mono text-[10px] uppercase font-bold text-muted-foreground hover:text-black transition-colors cursor-pointer"
+                  className="flex items-center gap-1.5 font-mono text-[10px] uppercase font-bold text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   title="Copy to clipboard"
                 >
                   <Copy size={12} />

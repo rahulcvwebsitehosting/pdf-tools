@@ -17,7 +17,7 @@ export default function FinancialSummaryCard({
   const formatted = formatMonetaryValue(amount, currencyCode);
 
   return (
-    <div className="editorial-panel p-6 bg-accent/5 border-2 border-black space-y-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <div className="editorial-panel p-6 bg-accent/5 border-2 border-border space-y-4 shadow-soft">
       <div className="flex items-center justify-between">
         <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground">
           {title}

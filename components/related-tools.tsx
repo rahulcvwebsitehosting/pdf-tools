@@ -21,7 +21,7 @@ export function RelatedTools({ currentSlug, category }: RelatedToolsProps) {
   }
 
   return (
-    <div className="space-y-4 pt-12 border-t border-black mt-16">
+    <div className="space-y-4 pt-12 border-t border-border mt-16">
       <h3 className="font-editorial text-xl sm:text-2xl font-bold uppercase tracking-tight">
         Related Privacy-First Tools
       </h3>
@@ -29,7 +29,7 @@ export function RelatedTools({ currentSlug, category }: RelatedToolsProps) {
         {/* Permanent Required Link */}
         <Link
           href="/tools/time-calculator"
-          className="editorial-card flex flex-col justify-between p-4 border border-black hover:bg-accent hover:text-black transition-all duration-200"
+          className="editorial-card flex flex-col justify-between p-4 border border-border hover:bg-accent hover:text-primary transition-all duration-200"
         >
           <div className="space-y-2">
             <span className="font-bold text-sm block group-hover:underline">
@@ -46,7 +46,7 @@ export function RelatedTools({ currentSlug, category }: RelatedToolsProps) {
           <Link
             key={t.slug}
             href={`/tools/${t.slug}`}
-            className="editorial-card flex flex-col justify-between p-4 border border-black hover:bg-accent hover:text-black transition-all duration-200"
+            className="editorial-card flex flex-col justify-between p-4 border border-border hover:bg-accent hover:text-primary transition-all duration-200"
           >
             <div className="space-y-2">
               <span className="font-bold text-sm block group-hover:underline">

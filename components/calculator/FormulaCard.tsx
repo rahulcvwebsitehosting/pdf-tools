@@ -11,7 +11,7 @@ export default function FormulaCard({ formula }: FormulaCardProps) {
         <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground mb-2">
           Mathematical Formula
         </h3>
-        <div className="bg-secondary p-4 border border-black font-mono text-sm sm:text-base font-bold overflow-x-auto">
+        <div className="bg-secondary p-4 border border-border font-mono text-sm sm:text-base font-bold overflow-x-auto">
           {formula.equation}
         </div>
       </div>
@@ -26,12 +26,12 @@ export default function FormulaCard({ formula }: FormulaCardProps) {
       </div>
 
       {formula.workedExample && (
-        <div className="border-t border-black pt-6 space-y-4">
+        <div className="border-t border-border pt-6 space-y-4">
           <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground">
             Worked Step-by-Step Example
           </h4>
           <div className="space-y-3">
-            <div className="font-mono text-xs font-bold uppercase text-foreground bg-accent/10 w-fit px-2 py-1 border border-black">
+            <div className="font-mono text-xs font-bold uppercase text-foreground bg-accent/10 w-fit px-2 py-1 border border-border">
               Given: {formula.workedExample.expression}
             </div>
             <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground leading-relaxed">
@@ -41,7 +41,7 @@ export default function FormulaCard({ formula }: FormulaCardProps) {
                 </li>
               ))}
             </ol>
-            <div className="font-mono text-sm font-bold border-l-4 border-black pl-3 py-1">
+            <div className="font-mono text-sm font-bold border-l-4 border-border pl-3 py-1">
               Result: {formula.workedExample.result}
             </div>
           </div>

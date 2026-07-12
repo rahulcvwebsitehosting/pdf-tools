@@ -19,17 +19,17 @@ export default function PaymentBreakdownCard({
 }: PaymentBreakdownCardProps) {
   return (
     <div className="editorial-panel p-6 space-y-4">
-      <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-2">
+      <h4 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-2">
         {title}
       </h4>
 
       <div className="space-y-3 font-mono text-xs">
         {items.map((item, idx) => (
-          <div key={idx} className="flex items-center justify-between py-1 border-b border-dashed border-black/10 last:border-b-0">
+          <div key={idx} className="flex items-center justify-between py-1 border-b border-dashed border-border last:border-b-0">
             <span className="text-muted-foreground uppercase">{item.label}</span>
             <div className="flex items-center gap-3">
               {item.percentage !== undefined && (
-                <span className="text-[10px] bg-secondary px-1.5 py-0.5 border border-black/15">
+                <span className="text-[10px] bg-secondary px-1.5 py-0.5 border border-border">
                   {item.percentage.toFixed(1)}%
                 </span>
               )}

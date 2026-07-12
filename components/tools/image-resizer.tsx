@@ -42,17 +42,17 @@ export default function ImageResizerTool() {
       <div className="space-y-4">
         <div>
           <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Upload Image</label>
-          <input type="file" accept="image/*" onChange={handleFileChange} className="p-2 border border-black bg-background font-mono text-xs w-full" />
+          <input type="file" accept="image/*" onChange={handleFileChange} className="p-2 border border-border bg-background font-mono text-xs w-full" />
         </div>
         {image && (
           <div className="flex gap-2 items-end">
             <div>
               <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Width (px)</label>
-              <input type="number" value={width} onChange={(e) => setWidth(parseInt(e.target.value, 10))} className="p-2 border border-black bg-background font-mono text-xs w-24" />
+              <input type="number" value={width} onChange={(e) => setWidth(parseInt(e.target.value, 10))} className="p-2 border border-border bg-background font-mono text-xs w-24" />
             </div>
             <div>
               <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Height (px)</label>
-              <input type="number" value={height} onChange={(e) => setHeight(parseInt(e.target.value, 10))} className="p-2 border border-black bg-background font-mono text-xs w-24" />
+              <input type="number" value={height} onChange={(e) => setHeight(parseInt(e.target.value, 10))} className="p-2 border border-border bg-background font-mono text-xs w-24" />
             </div>
             <button onClick={handleResize} className="btn-primary h-fit">Resize</button>
           </div>

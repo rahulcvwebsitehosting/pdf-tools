@@ -43,15 +43,15 @@ export default function HashGeneratorTool() {
         <div className="space-y-3">
           <div className="editorial-panel p-4">
             <h4 className="font-mono text-xs font-bold uppercase mb-1">SHA-256</h4>
-            <input readOnly value={sha256} className="w-full p-2 border border-black bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
+            <input readOnly value={sha256} className="w-full p-2 border border-border bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
           </div>
           <div className="editorial-panel p-4">
             <h4 className="font-mono text-xs font-bold uppercase mb-1">SHA-512</h4>
-            <input readOnly value={sha512} className="w-full p-2 border border-black bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
+            <input readOnly value={sha512} className="w-full p-2 border border-border bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
           </div>
           <div className="editorial-panel p-4">
             <h4 className="font-mono text-xs font-bold uppercase mb-1">SHA-1</h4>
-            <input readOnly value={sha1} className="w-full p-2 border border-black bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
+            <input readOnly value={sha1} className="w-full p-2 border border-border bg-secondary/10 font-mono text-xs select-all focus:outline-none" />
           </div>
         </div>
       </div>

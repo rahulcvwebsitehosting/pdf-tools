@@ -22,7 +22,7 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
   if (!config) {
     return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center font-mono text-xs">
+      <div className="min-h-[50vh] bg-background text-foreground flex items-center justify-center text-sm text-muted-foreground">
         Category config not found for slug: {slug}
       </div>
     );
@@ -77,20 +77,20 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
   ];
 
   return (
-    <main className="min-h-screen bg-background text-foreground py-12">
+    <main className="text-foreground">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb */}
-        <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-          <Link href="/" className="hover:text-black transition-colors">
+        <nav className="text-sm text-muted-foreground flex items-center gap-1.5">
+          <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
           <span>/</span>
-          <span className="text-foreground">{config.title}</span>
+          <span className="text-foreground font-medium">{config.title}</span>
         </nav>
 
         {/* Header */}
-        <header className="space-y-4 border-b border-black pb-8">
-          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight leading-none">
+        <header className="space-y-4 border-b border-border pb-8">
+          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none">
             {config.title}
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -101,11 +101,11 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
-            <div key={i} className="border border-black bg-secondary p-4 font-mono">
-              <span className="text-[9px] uppercase font-bold text-muted-foreground block">
+            <div key={i} className="border border-border bg-secondary p-4 rounded-xl">
+              <span className="text-[10px] uppercase font-semibold tracking-wide text-muted-foreground block">
                 {stat.label}
               </span>
-              <span className="text-sm font-black text-foreground block mt-1">
+              <span className="text-sm font-bold text-foreground block mt-1">
                 {stat.value}
               </span>
             </div>
@@ -114,27 +114,27 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* Featured / Popular Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="border border-black bg-accent/5 p-5 space-y-3 md:col-span-2">
-            <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
-              <Sparkles size={13} className="text-yellow-600" />
-              <span>Category AI Summary & Takeaways</span>
+          <div className="border border-border bg-secondary/60 p-5 rounded-xl space-y-3 md:col-span-2">
+            <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+              <Sparkles size={13} className="text-[#D97706]" />
+              <span>Category AI Summary &amp; Takeaways</span>
             </h4>
             <p className="text-xs leading-relaxed text-muted-foreground">
               {config.aiSummary}
             </p>
-            <ul className="list-disc list-inside space-y-1 font-mono text-[10px] text-muted-foreground">
+            <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
               {config.keyTakeaways.map((k, idx) => (
                 <li key={idx}>{k}</li>
               ))}
             </ul>
           </div>
 
-          <div className="border border-black p-5 space-y-3">
-            <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5">
-              <Calendar size={13} className="text-blue-600" />
+          <div className="border border-border bg-card p-5 rounded-xl space-y-3">
+            <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+              <Calendar size={13} className="text-[#2563EB]" />
               <span>Recently Added</span>
             </h4>
-            <div className="divide-y divide-black/10 font-mono text-[10px]">
+            <div className="divide-y divide-border text-sm">
               {recentlyAdded.map((t) => (
                 <Link
                   key={t.slug}
@@ -149,15 +149,15 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
         </div>
 
         {/* Search & Alphabetical Filter */}
-        <div className="space-y-4 pt-6 border-t border-black">
+        <div className="space-y-4 pt-6 border-t border-border">
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-            <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight">
+            <h3 className="font-editorial text-2xl font-bold tracking-tight">
               Browse All {config.title}
             </h3>
 
             {/* Search Input */}
-            <div className="flex border border-black bg-background w-full sm:w-64">
-              <span className="p-2 border-r border-black flex items-center">
+            <div className="flex border border-border bg-card rounded-lg overflow-hidden w-full sm:w-64">
+              <span className="p-2 border-r border-border flex items-center">
                 <Search size={14} className="text-muted-foreground" />
               </span>
               <input
@@ -165,18 +165,18 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
                 placeholder="Search tools..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full p-2 bg-transparent font-mono text-xs outline-none focus:ring-0 border-none"
+                className="w-full p-2 bg-transparent text-sm outline-none focus:ring-0 border-none"
               />
             </div>
           </div>
 
           {/* Alphabet Index filter */}
           {alphabet.length > 0 && (
-            <div className="flex flex-wrap gap-1 font-mono text-[10px] border-b border-black/10 pb-4">
+            <div className="flex flex-wrap gap-1.5 pb-4">
               <button
                 onClick={() => setActiveLetter(null)}
-                className={`px-2 py-1 border border-black ${
-                  activeLetter === null ? "bg-accent text-black font-bold" : "bg-background hover:bg-accent/10"
+                className={`px-2.5 py-1 rounded-md border border-border text-xs font-medium ${
+                  activeLetter === null ? "bg-primary text-primary-foreground" : "bg-card hover:bg-secondary"
                 }`}
               >
                 ALL
@@ -185,8 +185,8 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
                 <button
                   key={letter}
                   onClick={() => setActiveLetter(letter)}
-                  className={`px-2 py-1 border border-black ${
-                    activeLetter === letter ? "bg-accent text-black font-bold" : "bg-background hover:bg-accent/10"
+                  className={`px-2.5 py-1 rounded-md border border-border text-xs font-medium ${
+                    activeLetter === letter ? "bg-primary text-primary-foreground" : "bg-card hover:bg-secondary"
                   }`}
                 >
                   {letter}
@@ -202,24 +202,24 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
             <Link
               key={t.slug}
               href={`/tools/${t.slug}`}
-              className="editorial-card p-5 border border-black bg-background hover:bg-accent/15 hover:text-black transition-all flex flex-col justify-between shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] duration-100"
+              className="editorial-card p-5 flex flex-col justify-between hover:border-primary"
             >
               <div className="space-y-2">
-                <h4 className="font-bold text-sm block tracking-tight">
+                <h4 className="font-semibold text-sm block tracking-tight">
                   Free {t.name} Online
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   {t.description}
                 </p>
               </div>
-              <span className="font-mono text-[9px] text-muted-foreground text-right mt-6 block">
+              <span className="text-[11px] text-muted-foreground text-right mt-6 block">
                 Open Tool →
               </span>
             </Link>
           ))}
 
           {filteredTools.length === 0 && (
-            <div className="col-span-full border border-black bg-secondary p-8 text-center text-muted-foreground font-mono text-xs">
+            <div className="col-span-full border border-border bg-secondary p-8 rounded-xl text-center text-muted-foreground text-sm">
               <AlertCircle size={16} className="mx-auto mb-2 text-muted-foreground" />
               <span>No tools found matching selections.</span>
             </div>
@@ -228,14 +228,14 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* 1. Overview & Beginner Guide */}
         {(config.overview || config.beginnerGuide) && (
-          <section className="pt-12 border-t border-black space-y-6">
-            <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight">
-              Knowledge Center & Overview
+          <section className="pt-12 border-t border-border space-y-6">
+            <h3 className="font-editorial text-2xl font-bold tracking-tight">
+              Knowledge Center &amp; Overview
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {config.overview && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                     <BookOpen size={13} />
                     <span>Topic Overview</span>
                   </h4>
@@ -246,7 +246,7 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
               )}
               {config.beginnerGuide && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                     <FileText size={13} />
                     <span>Beginner's Guide</span>
                   </h4>
@@ -261,15 +261,15 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* 2. Recommended Workflow & Common Problems */}
         {(config.recommendedWorkflow || config.commonProblems) && (
-          <section className="pt-12 border-t border-black space-y-6">
+          <section className="pt-12 border-t border-border space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {config.recommendedWorkflow && config.recommendedWorkflow.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                     <Workflow size={13} />
                     <span>Recommended Workflow</span>
                   </h4>
-                  <ol className="list-decimal list-inside space-y-2 font-mono text-[10px] text-muted-foreground">
+                  <ol className="list-decimal list-inside space-y-2 text-xs text-muted-foreground">
                     {config.recommendedWorkflow.map((item, idx) => (
                       <li key={idx} className="leading-relaxed">{item}</li>
                     ))}
@@ -278,11 +278,11 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
               )}
               {config.commonProblems && config.commonProblems.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
-                    <AlertTriangle size={13} className="text-orange-600" />
-                    <span>Common Problems & Gotchas</span>
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
+                    <AlertTriangle size={13} className="text-[#D97706]" />
+                    <span>Common Problems &amp; Gotchas</span>
                   </h4>
-                  <ul className="list-disc list-inside space-y-2 font-mono text-[10px] text-muted-foreground">
+                  <ul className="list-disc list-inside space-y-2 text-xs text-muted-foreground">
                     {config.commonProblems.map((item, idx) => (
                       <li key={idx} className="leading-relaxed">{item}</li>
                     ))}
@@ -295,15 +295,15 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* 3. Use Cases & Industry Applications */}
         {(config.useCases || config.industryApplications) && (
-          <section className="pt-12 border-t border-black space-y-6">
+          <section className="pt-12 border-t border-border space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {config.useCases && config.useCases.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                     <Award size={13} />
                     <span>Practical Use Cases</span>
                   </h4>
-                  <ul className="list-disc list-inside space-y-2 font-mono text-[10px] text-muted-foreground">
+                  <ul className="list-disc list-inside space-y-2 text-xs text-muted-foreground">
                     {config.useCases.map((uc, idx) => (
                       <li key={idx} className="leading-relaxed">{uc}</li>
                     ))}
@@ -312,11 +312,11 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
               )}
               {config.industryApplications && config.industryApplications.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-1.5 border-b border-black/15 pb-2">
+                  <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 border-b border-border pb-2">
                     <Globe size={13} />
                     <span>Industry Applications</span>
                   </h4>
-                  <ul className="list-disc list-inside space-y-2 font-mono text-[10px] text-muted-foreground">
+                  <ul className="list-disc list-inside space-y-2 text-xs text-muted-foreground">
                     {config.industryApplications.map((app, idx) => (
                       <li key={idx} className="leading-relaxed">{app}</li>
                     ))}
@@ -329,14 +329,14 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* 4. Glossary */}
         {config.glossary && config.glossary.length > 0 && (
-          <section className="pt-12 border-t border-black space-y-4">
-            <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight">
+          <section className="pt-12 border-t border-border space-y-4">
+            <h3 className="font-editorial text-2xl font-bold tracking-tight">
               Glossary of Terms
             </h3>
-            <div className="border border-black divide-y divide-black/10">
+            <div className="border border-border divide-y divide-border rounded-xl overflow-hidden">
               {config.glossary.map((entry, idx) => (
-                <div key={idx} className="p-3 grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-2">
-                  <span className="font-mono text-[10px] font-bold uppercase text-foreground">{entry.term}</span>
+                <div key={idx} className="p-3 grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-2 bg-card">
+                  <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground">{entry.term}</span>
                   <span className="text-xs text-muted-foreground leading-relaxed">{entry.definition}</span>
                 </div>
               ))}
@@ -345,22 +345,22 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
         )}
 
         {/* 5. Related Guides & Comparisons */}
-        <section className="pt-12 border-t border-black space-y-6">
+        <section className="pt-12 border-t border-border space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Related Guides */}
             <div className="space-y-4">
-              <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
+              <h4 className="text-[11px] uppercase tracking-wide font-semibold text-muted-foreground flex items-center gap-1.5">
                 <FileText size={12} />
                 <span>Related Guides</span>
               </h4>
-              <div className="space-y-2 font-mono text-[11px]">
+              <div className="space-y-2 text-sm">
                 {guidesConfig
                   .filter((g) => config.relatedGuides.includes(g.slug))
                   .map((guide) => (
                     <Link
                       key={guide.slug}
                       href={`/guides/${guide.slug}`}
-                      className="block p-3 border border-black bg-background hover:bg-accent transition-colors flex items-center justify-between"
+                      className="block p-3 border border-border bg-card hover:bg-secondary transition-colors rounded-lg flex items-center justify-between"
                     >
                       <span>{guide.title}</span>
                       <ArrowRight size={12} className="text-muted-foreground" />
@@ -371,18 +371,18 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
             {/* Related Comparisons */}
             <div className="space-y-4">
-              <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
+              <h4 className="text-[11px] uppercase tracking-wide font-semibold text-muted-foreground flex items-center gap-1.5">
                 <List size={12} />
                 <span>Format Comparisons</span>
               </h4>
-              <div className="space-y-2 font-mono text-[11px]">
+              <div className="space-y-2 text-sm">
                 {comparisonsConfig
                   .filter((comp) => comp.entityIds.some((eid) => config.entityIds?.includes(eid)))
                   .map((comp) => (
                     <Link
                       key={comp.slug}
                       href={`/compare/${comp.slug}`}
-                      className="block p-3 border border-black bg-background hover:bg-accent transition-colors flex items-center justify-between"
+                      className="block p-3 border border-border bg-card hover:bg-secondary transition-colors rounded-lg flex items-center justify-between"
                     >
                       <span>{comp.formatA} vs {comp.formatB}</span>
                       <ArrowRight size={12} className="text-muted-foreground" />
@@ -395,14 +395,14 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
 
         {/* FAQs */}
         {config.faq && config.faq.length > 0 && (
-          <section className="pt-12 border-t border-black space-y-6">
-            <h3 className="font-editorial text-2xl font-bold uppercase tracking-tight">
+          <section className="pt-12 border-t border-border space-y-6">
+            <h3 className="font-editorial text-2xl font-bold tracking-tight">
               Frequently Asked Questions
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {config.faq.map((item, idx) => (
-                <div key={idx} className="space-y-2 font-mono">
-                  <h4 className="text-xs font-bold text-foreground">
+                <div key={idx} className="space-y-2">
+                  <h4 className="text-sm font-semibold text-foreground">
                     Q: {item.question}
                   </h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -415,8 +415,8 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
         )}
 
         {/* Related Categories */}
-        <footer className="pt-12 border-t border-black space-y-4">
-          <h4 className="font-mono text-[10px] uppercase font-bold text-muted-foreground">
+        <footer className="pt-12 border-t border-border space-y-4">
+          <h4 className="text-[11px] uppercase tracking-wide font-semibold text-muted-foreground">
             Explore Other Tool Categories
           </h4>
           <div className="flex flex-wrap gap-2">
@@ -424,7 +424,7 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
               <Link
                 key={cat.slug}
                 href={cat.href}
-                className="font-mono text-[10px] px-3 py-1.5 border border-black bg-background hover:bg-accent transition-colors"
+                className="text-[11px] px-3 py-1.5 border border-border bg-card rounded-full hover:bg-secondary hover:text-primary transition-colors"
               >
                 {cat.name} →
               </Link>

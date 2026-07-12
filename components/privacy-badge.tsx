@@ -7,7 +7,7 @@ export function PrivacyBadge() {
   return (
     <div className="relative w-full">
       <div 
-        className="neon-badge w-full text-center px-4 py-3.5 text-xs sm:text-sm font-bold border border-black uppercase tracking-wider bg-accent/10 cursor-help flex flex-col sm:flex-row items-center justify-center gap-1 select-none"
+        className="neon-badge w-full text-center px-4 py-3.5 text-xs sm:text-sm font-bold border border-border uppercase tracking-wider bg-accent/10 cursor-help flex flex-col sm:flex-row items-center justify-center gap-1 select-none"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         onClick={() => setShowTooltip(!showTooltip)}

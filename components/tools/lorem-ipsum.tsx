@@ -43,7 +43,7 @@ export default function LoremIpsumTool() {
             type="number"
             value={count}
             onChange={(e) => setCount(parseInt(e.target.value, 10))}
-            className="p-1 border border-black w-20 bg-background font-mono text-xs focus:outline-none"
+            className="p-1 border border-border w-20 bg-background font-mono text-xs focus:outline-none"
             min={1}
             max={50}
           />

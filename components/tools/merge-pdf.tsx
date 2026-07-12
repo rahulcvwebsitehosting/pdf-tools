@@ -164,7 +164,7 @@ export default function MergePdfTool() {
           onDragLeave={onDragLeave}
           onDrop={onDrop}
           className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
-            isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+            isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
           }`}
           onClick={() => document.getElementById("file-input")?.click()}
         >
@@ -199,7 +199,7 @@ export default function MergePdfTool() {
               Files to merge ({files.length})
             </h3>
 
-            <div className="border border-black divide-y divide-black bg-background overflow-hidden">
+            <div className="border border-border divide-y divide-black bg-background overflow-hidden">
               {files.map((item, index) => (
                 <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-4 bg-background">
                   <div className="flex items-center gap-3 min-w-0">
@@ -218,7 +218,7 @@ export default function MergePdfTool() {
                       type="button"
                       disabled={index === 0}
                       onClick={() => moveFile(index, "up")}
-                      className="p-1.5 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                      className="p-1.5 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                       title="Move Up"
                     >
                       <ArrowUp className="w-4 h-4" />
@@ -227,7 +227,7 @@ export default function MergePdfTool() {
                       type="button"
                       disabled={index === files.length - 1}
                       onClick={() => moveFile(index, "down")}
-                      className="p-1.5 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                      className="p-1.5 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                       title="Move Down"
                     >
                       <ArrowDown className="w-4 h-4" />
@@ -235,7 +235,7 @@ export default function MergePdfTool() {
                     <button
                       type="button"
                       onClick={() => removeFile(item.id)}
-                      className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                      className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                       title="Remove File"
                     >
                       <Trash2 className="w-4 h-4" />

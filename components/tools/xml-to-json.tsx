@@ -86,7 +86,7 @@ export default function XmlToJsonTool() {
       </div>
       <button onClick={handleConvert} className="btn-primary">Convert XML to JSON</button>
       {error && (
-        <div className="p-4 border border-black bg-accent text-black font-mono text-xs uppercase">
+        <div className="p-4 border border-border bg-accent text-accent-foreground font-mono text-xs uppercase">
           {error}
         </div>
       )}

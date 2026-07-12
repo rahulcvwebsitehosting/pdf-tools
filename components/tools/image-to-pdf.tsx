@@ -223,7 +223,7 @@ export default function ImageToPdfTool() {
           onDragLeave={onDragLeave}
           onDrop={onDrop}
           className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer ${
-            isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+            isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
           }`}
           onClick={() => document.getElementById("file-input")?.click()}
         >
@@ -255,7 +255,7 @@ export default function ImageToPdfTool() {
         {images.length > 0 && (
           <div className="space-y-6">
             {/* Options layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 border border-black bg-background font-mono text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 border border-border bg-background font-mono text-sm">
               <div className="space-y-2">
                 <label htmlFor="page-size" className="block text-xs uppercase font-bold tracking-wide">
                   Page Dimensions
@@ -264,7 +264,7 @@ export default function ImageToPdfTool() {
                   id="page-size"
                   value={pageSize}
                   onChange={(e) => setPageSize(e.target.value as "a4" | "letter" | "fit")}
-                  className="w-full p-2.5 border border-black bg-background focus:outline-none"
+                  className="w-full p-2.5 border border-border bg-background focus:outline-none"
                 >
                   <option value="a4">A4 (Standard document size)</option>
                   <option value="letter">Letter (US format)</option>
@@ -281,7 +281,7 @@ export default function ImageToPdfTool() {
                   value={orientation}
                   disabled={pageSize === "fit"}
                   onChange={(e) => setOrientation(e.target.value as "portrait" | "landscape")}
-                  className="w-full p-2.5 border border-black bg-background focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full p-2.5 border border-border bg-background focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <option value="portrait">Portrait</option>
                   <option value="landscape">Landscape</option>
@@ -295,7 +295,7 @@ export default function ImageToPdfTool() {
                 Selected Images ({images.length})
               </h3>
 
-              <div className="border border-black divide-y divide-black bg-background overflow-hidden">
+              <div className="border border-border divide-y divide-black bg-background overflow-hidden">
                 {images.map((item, index) => (
                   <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-4 bg-background">
                     <div className="flex items-center gap-3 min-w-0">
@@ -304,7 +304,7 @@ export default function ImageToPdfTool() {
                       <img
                         src={item.previewUrl}
                         alt="Preview"
-                        className="w-12 h-12 object-cover border border-black shrink-0 bg-background"
+                        className="w-12 h-12 object-cover border border-border shrink-0 bg-background"
                       />
                       <div className="min-w-0">
                         <p className="font-semibold text-sm truncate">{item.name}</p>
@@ -320,7 +320,7 @@ export default function ImageToPdfTool() {
                         type="button"
                         disabled={index === 0}
                         onClick={() => moveImage(index, "up")}
-                        className="p-1.5 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                        className="p-1.5 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                         title="Move Up"
                       >
                         <ArrowUp className="w-4 h-4" />
@@ -329,7 +329,7 @@ export default function ImageToPdfTool() {
                         type="button"
                         disabled={index === images.length - 1}
                         onClick={() => moveImage(index, "down")}
-                        className="p-1.5 border border-black hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                        className="p-1.5 border border-border hover:bg-accent disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
                         title="Move Down"
                       >
                         <ArrowDown className="w-4 h-4" />
@@ -337,7 +337,7 @@ export default function ImageToPdfTool() {
                       <button
                         type="button"
                         onClick={() => removeImage(item.id)}
-                        className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                        className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                         title="Remove Image"
                       >
                         <Trash2 className="w-4 h-4" />

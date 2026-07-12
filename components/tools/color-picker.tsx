@@ -50,18 +50,18 @@ export default function ColorPickerTool() {
       <div className="space-y-4">
         <div>
           <label className="block text-xs font-mono uppercase font-bold text-muted-foreground mb-1">Upload Image</label>
-          <input type="file" accept="image/*" onChange={handleFileChange} className="p-2 border border-black bg-background font-mono text-xs w-full" />
+          <input type="file" accept="image/*" onChange={handleFileChange} className="p-2 border border-border bg-background font-mono text-xs w-full" />
         </div>
 
         {image && (
           <div className="editorial-panel p-4 space-y-2">
             <h4 className="font-mono text-xs font-bold uppercase mb-1">Click on Canvas to Extract Colors</h4>
-            <canvas ref={canvasRef} onClick={handleCanvasClick} className="cursor-crosshair max-h-[300px] max-w-full mx-auto block border border-black" />
+            <canvas ref={canvasRef} onClick={handleCanvasClick} className="cursor-crosshair max-h-[300px] max-w-full mx-auto block border border-border" />
           </div>
         )}
 
         <div className="editorial-panel p-4 flex items-center gap-4">
-          <div className="w-12 h-12 border border-black" style={{ backgroundColor: color }} />
+          <div className="w-12 h-12 border border-border" style={{ backgroundColor: color }} />
           <div>
             <h4 className="font-mono text-xs font-bold uppercase">Selected Color</h4>
             <p className="font-mono text-sm uppercase">{color}</p>

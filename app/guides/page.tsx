@@ -24,7 +24,7 @@ export default function GuidesPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
         {/* Breadcrumb */}
         <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
-          <Link href="/" className="hover:text-black transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
           <span>/</span>
@@ -34,7 +34,7 @@ export default function GuidesPage() {
         {/* Page Header */}
         <div className="space-y-4">
           <span className="neon-badge px-3 py-1 text-xs">KNOWLEDGE HUB</span>
-          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-black pb-6">
+          <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-border pb-6">
             Guides & Documentation
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">

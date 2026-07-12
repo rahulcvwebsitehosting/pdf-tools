@@ -190,8 +190,8 @@ export default function AddWatermarkTool() {
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
             onDrop={onDrop}
-            className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-none ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+            className={`border-2 border-dashed flex flex-col items-center justify-center py-10 px-4 transition-colors cursor-pointer rounded-lg ${
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -218,7 +218,7 @@ export default function AddWatermarkTool() {
 
         {/* Error alert */}
         {error && (
-          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-none">
+          <div className="p-4 border border-destructive bg-destructive/5 text-destructive font-mono text-xs uppercase tracking-wide rounded-lg">
             ⚠️ {error}
           </div>
         )}
@@ -226,7 +226,7 @@ export default function AddWatermarkTool() {
         {/* Workspace controls & Document details */}
         {file && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-black bg-secondary/20 rounded-none gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-border bg-secondary/20 rounded-lg gap-4">
               <div className="flex items-center gap-3">
                 <FileText className="w-6 h-6 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -249,18 +249,18 @@ export default function AddWatermarkTool() {
             </div>
 
             {/* Customization Options */}
-            <div className="border border-black p-6 bg-background rounded-none space-y-6">
+            <div className="border border-border p-6 bg-background rounded-lg space-y-6">
               <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                 <Settings className="w-4 h-4 text-black" /> Watermark Customization
               </h3>
 
               {/* Watermark Type Selector */}
-              <div className="flex border-b border-black">
+              <div className="flex border-b border-border">
                 <button
                   type="button"
                   onClick={() => setWatermarkType("text")}
-                  className={`flex-1 py-2 font-mono text-xs uppercase font-bold flex items-center justify-center gap-2 rounded-none transition-colors border-r border-black ${
-                    watermarkType === "text" ? "bg-accent text-black" : "hover:bg-secondary/50 text-muted-foreground"
+                  className={`flex-1 py-2 font-mono text-xs uppercase font-bold flex items-center justify-center gap-2 rounded-lg transition-colors border-r border-border ${
+                    watermarkType === "text" ? "bg-accent text-accent-foreground" : "hover:bg-secondary/50 text-muted-foreground"
                   }`}
                 >
                   <Type className="w-4 h-4" /> Text Watermark
@@ -268,8 +268,8 @@ export default function AddWatermarkTool() {
                 <button
                   type="button"
                   onClick={() => setWatermarkType("image")}
-                  className={`flex-1 py-2 font-mono text-xs uppercase font-bold flex items-center justify-center gap-2 rounded-none transition-colors ${
-                    watermarkType === "image" ? "bg-accent text-black" : "hover:bg-secondary/50 text-muted-foreground"
+                  className={`flex-1 py-2 font-mono text-xs uppercase font-bold flex items-center justify-center gap-2 rounded-lg transition-colors ${
+                    watermarkType === "image" ? "bg-accent text-accent-foreground" : "hover:bg-secondary/50 text-muted-foreground"
                   }`}
                 >
                   <ImageIcon className="w-4 h-4" /> Image Watermark
@@ -289,7 +289,7 @@ export default function AddWatermarkTool() {
                         value={watermarkText}
                         onChange={(e) => setWatermarkText(e.target.value)}
                         placeholder="e.g. CONFIDENTIAL, DRAFT"
-                        className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
                     </div>
                     <div className="space-y-2">
@@ -302,7 +302,7 @@ export default function AddWatermarkTool() {
                         max="144"
                         value={fontSize}
                         onChange={(e) => setFontSize(Math.max(12, Math.min(144, parseInt(e.target.value) || 60)))}
-                        className="w-full p-2.5 border border-black bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-black rounded-none"
+                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
                     </div>
                   </div>
@@ -313,7 +313,7 @@ export default function AddWatermarkTool() {
                       <label className="block font-mono text-xs uppercase font-bold text-foreground">
                         Select PNG/JPG Image
                       </label>
-                      <div className="relative border border-black p-2 bg-background flex items-center justify-between">
+                      <div className="relative border border-border p-2 bg-background flex items-center justify-between">
                         <span className="font-mono text-xs text-muted-foreground truncate max-w-[180px]">
                           {watermarkImageName || "No file selected"}
                         </span>
@@ -343,7 +343,7 @@ export default function AddWatermarkTool() {
                         max="100"
                         value={imageScale}
                         onChange={(e) => setImageScale(parseInt(e.target.value))}
-                        className="w-full accent-black h-1 bg-secondary border border-black rounded-none cursor-pointer"
+                        className="w-full accent-primary h-1 bg-secondary border border-border rounded-lg cursor-pointer"
                       />
                     </div>
                   </div>
@@ -361,7 +361,7 @@ export default function AddWatermarkTool() {
                       max="100"
                       value={opacity * 100}
                       onChange={(e) => setOpacity(parseInt(e.target.value) / 100)}
-                      className="w-full accent-black h-1 bg-secondary border border-black rounded-none cursor-pointer"
+                      className="w-full accent-primary h-1 bg-secondary border border-border rounded-lg cursor-pointer"
                     />
                   </div>
                   <div className="space-y-2">
@@ -374,7 +374,7 @@ export default function AddWatermarkTool() {
                       max="90"
                       value={rotation}
                       onChange={(e) => setRotation(parseInt(e.target.value))}
-                      className="w-full accent-black h-1 bg-secondary border border-black rounded-none cursor-pointer"
+                      className="w-full accent-primary h-1 bg-secondary border border-border rounded-lg cursor-pointer"
                     />
                   </div>
                 </div>

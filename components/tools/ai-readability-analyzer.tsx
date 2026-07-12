@@ -223,7 +223,7 @@ export default function FreeAiAiReadabilityAnalyzerTool() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <div className="border-2 border-dashed border-black p-4 text-center bg-background flex flex-col items-center justify-center min-h-[120px]">
+            <div className="border-2 border-dashed border-border p-4 text-center bg-background flex flex-col items-center justify-center min-h-[120px]">
               <input type="file" accept=".txt,.md,.pdf,image/*" onChange={handleFileChange} className="hidden" id="file-upload" />
               <label htmlFor="file-upload" className="cursor-pointer font-mono text-[10px] font-bold uppercase block py-2 hover:underline">
                 📁 Upload PDF / Image / Text
@@ -262,9 +262,9 @@ export default function FreeAiAiReadabilityAnalyzerTool() {
             )}
           </div>
 
-          <div className="border border-black p-4 bg-background flex flex-col justify-between min-h-[300px]">
+          <div className="border border-border p-4 bg-background flex flex-col justify-between min-h-[300px]">
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-black/10 pb-1">
+              <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-1">
                 Readability Indices
               </h3>
 
@@ -276,33 +276,33 @@ export default function FreeAiAiReadabilityAnalyzerTool() {
               ) : metrics ? (
                 <div className="space-y-4 text-xs font-mono">
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="border border-black/10 p-2 bg-secondary/10">
+                    <div className="border border-border p-2 bg-secondary/10">
                       <div className="text-[10px] text-muted-foreground uppercase font-bold">Flesch Reading Ease</div>
                       <div className="font-bold">{metrics.ease}</div>
                     </div>
-                    <div className="border border-black/10 p-2 bg-secondary/10">
+                    <div className="border border-border p-2 bg-secondary/10">
                       <div className="text-[10px] text-muted-foreground uppercase font-bold">Target Grade level</div>
                       <div className="font-bold text-accent">{metrics.grade}</div>
                     </div>
-                    <div className="border border-black/10 p-2 bg-secondary/10">
+                    <div className="border border-border p-2 bg-secondary/10">
                       <div className="text-[10px] text-muted-foreground uppercase font-bold">Passive Voice Usage</div>
                       <div className="font-bold">{metrics.passiveVoice}</div>
                     </div>
-                    <div className="border border-black/10 p-2 bg-secondary/10">
+                    <div className="border border-border p-2 bg-secondary/10">
                       <div className="text-[10px] text-muted-foreground uppercase font-bold">Average Sentence length</div>
                       <div className="font-bold">{metrics.avgSentLength}</div>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-black/10">
+                <div className="h-48 flex items-center justify-center font-mono text-xs text-muted-foreground border border-dashed border-border">
                   Ready to calculate indexes
                 </div>
               )}
             </div>
 
             {metrics && (
-              <div className="bg-accent/5 p-3 border border-black/10 text-xs font-mono">
+              <div className="bg-accent/5 p-3 border border-border text-xs font-mono">
                 <div className="font-bold uppercase text-[10px] text-muted-foreground mb-1">💡 Next Step Option</div>
                 <div className="flex items-center justify-between">
                   <span>Extract keyword clusters from parsed content</span>

@@ -188,7 +188,7 @@ export default function RemovePdfPagesTool() {
             onDragLeave={onDragLeave}
             onDrop={onDrop}
             className={`border-2 border-dashed flex flex-col items-center justify-center py-12 px-4 transition-colors cursor-pointer ${
-              isDragOver ? "border-accent bg-accent/5" : "border-black bg-background"
+              isDragOver ? "border-accent bg-accent/5" : "border-border bg-background"
             }`}
             onClick={() => document.getElementById("file-input")?.click()}
           >
@@ -218,7 +218,7 @@ export default function RemovePdfPagesTool() {
 
         {/* Success message */}
         {success && (
-          <div className="p-4 border border-black bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
+          <div className="p-4 border border-border bg-accent text-foreground font-mono text-xs uppercase tracking-wide">
             🎉 {success}
           </div>
         )}
@@ -226,7 +226,7 @@ export default function RemovePdfPagesTool() {
         {file && pages.length > 0 && (
           <div className="space-y-6">
             {/* File info card */}
-            <div className="flex items-center justify-between p-4 border border-black bg-background">
+            <div className="flex items-center justify-between p-4 border border-border bg-background">
               <div className="flex items-center gap-3 min-w-0">
                 <FileText className="w-5 h-5 shrink-0 text-foreground" />
                 <div className="min-w-0">
@@ -240,7 +240,7 @@ export default function RemovePdfPagesTool() {
                 type="button"
                 onClick={removeFile}
                 disabled={isProcessing}
-                className="p-1.5 border border-black hover:bg-destructive hover:text-white transition-colors"
+                className="p-1.5 border border-border hover:bg-destructive hover:text-white transition-colors"
                 title="Change File"
               >
                 <Trash2 className="w-4 h-4" />
@@ -252,14 +252,14 @@ export default function RemovePdfPagesTool() {
               <button
                 type="button"
                 onClick={resetAllMarks}
-                className="flex items-center gap-1.5 px-3 py-2 border border-black bg-background hover:bg-muted"
+                className="flex items-center gap-1.5 px-3 py-2 border border-border bg-background hover:bg-muted"
               >
                 <Square className="w-3.5 h-3.5" /> Keep All
               </button>
               <button
                 type="button"
                 onClick={markAllForDeletion}
-                className="flex items-center gap-1.5 px-3 py-2 border border-black bg-background hover:bg-muted"
+                className="flex items-center gap-1.5 px-3 py-2 border border-border bg-background hover:bg-muted"
               >
                 <CheckSquare className="w-3.5 h-3.5 text-destructive" /> Mark All for Deletion
               </button>
@@ -279,7 +279,7 @@ export default function RemovePdfPagesTool() {
                     className={`border cursor-pointer select-none transition-all duration-150 p-2 flex flex-col items-center justify-between aspect-[3/4] relative ${
                       isDel
                         ? "border-destructive bg-destructive/5 text-destructive"
-                        : "border-black bg-background text-foreground hover:border-black hover:bg-accent/5"
+                        : "border-border bg-background text-foreground hover:border-border hover:bg-accent/5"
                     }`}
                   >
                     {/* Visual paper layout */}

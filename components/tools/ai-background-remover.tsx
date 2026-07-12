@@ -60,7 +60,7 @@ export default function FreeAiAiBackgroundRemoverTool() {
       <PrivacyBadge />
   
       <div className="space-y-4">
-        <div className="border-2 border-dashed border-black p-6 text-center bg-background">
+        <div className="border-2 border-dashed border-border p-6 text-center bg-background">
           <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" id="filter-upload" />
           <label htmlFor="filter-upload" className="cursor-pointer font-mono text-xs font-bold uppercase block py-4">
             {image ? 'Change Image' : 'Select Image File'}
@@ -69,11 +69,11 @@ export default function FreeAiAiBackgroundRemoverTool() {
 
         {image && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="border border-black p-2 bg-background flex flex-col items-center">
+            <div className="border border-border p-2 bg-background flex flex-col items-center">
               <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground mb-1">Original Image</span>
               <img src={image} alt="Original" className="max-h-64 object-contain" />
             </div>
-            <div className="border border-black p-2 bg-background flex flex-col items-center">
+            <div className="border border-border p-2 bg-background flex flex-col items-center">
               <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground mb-1">Processed Output</span>
               {processed ? (
                 <img src={processed} alt="Processed" className="max-h-64 object-contain" />
