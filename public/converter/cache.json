@@ -1,0 +1,329 @@
+[
+  [
+    "svgTrace",
+    [
+      {
+        "name": "Portable Network Graphics",
+        "format": "png",
+        "extension": "png",
+        "mime": "image/png",
+        "category": "image",
+        "internal": "png",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Joint Photographic Experts Group JFIF",
+        "format": "jpeg",
+        "extension": "jpg",
+        "mime": "image/jpeg",
+        "category": "image",
+        "internal": "jpeg",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "WebP",
+        "format": "webp",
+        "extension": "webp",
+        "mime": "image/webp",
+        "category": "image",
+        "internal": "webp",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Scalable Vector Graphics",
+        "format": "svg",
+        "extension": "svg",
+        "mime": "image/svg+xml",
+        "category": [
+          "image",
+          "vector",
+          "document"
+        ],
+        "internal": "svg",
+        "from": false,
+        "to": true,
+        "lossless": false
+      }
+    ]
+  ],
+  [
+    "canvasToBlob",
+    [
+      {
+        "name": "Portable Network Graphics",
+        "format": "png",
+        "extension": "png",
+        "mime": "image/png",
+        "category": "image",
+        "internal": "png",
+        "from": true,
+        "to": true,
+        "lossless": true
+      },
+      {
+        "name": "Joint Photographic Experts Group JFIF",
+        "format": "jpeg",
+        "extension": "jpg",
+        "mime": "image/jpeg",
+        "category": "image",
+        "internal": "jpeg",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "WebP",
+        "format": "webp",
+        "extension": "webp",
+        "mime": "image/webp",
+        "category": "image",
+        "internal": "webp",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "CompuServe Graphics Interchange Format (GIF)",
+        "format": "gif",
+        "extension": "gif",
+        "mime": "image/gif",
+        "category": [
+          "image",
+          "video"
+        ],
+        "internal": "gif",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Scalable Vector Graphics",
+        "format": "svg",
+        "extension": "svg",
+        "mime": "image/svg+xml",
+        "category": [
+          "image",
+          "vector",
+          "document"
+        ],
+        "internal": "svg",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Plain Text",
+        "format": "text",
+        "extension": "txt",
+        "mime": "text/plain",
+        "category": "text",
+        "internal": "text",
+        "from": true,
+        "to": true,
+        "lossless": false
+      }
+    ]
+  ],
+  [
+    "meyda",
+    [
+      {
+        "name": "Portable Network Graphics",
+        "format": "png",
+        "extension": "png",
+        "mime": "image/png",
+        "category": "image",
+        "internal": "image",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "Joint Photographic Experts Group JFIF",
+        "format": "jpeg",
+        "extension": "jpg",
+        "mime": "image/jpeg",
+        "category": "image",
+        "internal": "image",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "WebP",
+        "format": "webp",
+        "extension": "webp",
+        "mime": "image/webp",
+        "category": "image",
+        "internal": "image",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "Waveform Audio File Format",
+        "format": "wav",
+        "extension": "wav",
+        "mime": "audio/wav",
+        "category": "audio",
+        "internal": "audio",
+        "from": true,
+        "to": true,
+        "lossless": false
+      },
+      {
+        "name": "MP3 Audio",
+        "format": "mp3",
+        "extension": "mp3",
+        "mime": "audio/mpeg",
+        "category": "audio",
+        "internal": "audio",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Ogg Audio",
+        "format": "ogg",
+        "extension": "ogg",
+        "mime": "audio/ogg",
+        "category": "audio",
+        "internal": "audio",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Free Lossless Audio Codec",
+        "format": "flac",
+        "extension": "flac",
+        "mime": "audio/flac",
+        "category": "audio",
+        "internal": "audio",
+        "from": true,
+        "to": false,
+        "lossless": false
+      }
+    ]
+  ],
+  [
+    "htmlEmbed",
+    [
+      {
+        "name": "Hypertext Markup Language",
+        "format": "html",
+        "extension": "html",
+        "mime": "text/html",
+        "category": [
+          "document",
+          "text"
+        ],
+        "internal": "html",
+        "from": false,
+        "to": true,
+        "lossless": true
+      },
+      {
+        "name": "Portable Network Graphics",
+        "format": "png",
+        "extension": "png",
+        "mime": "image/png",
+        "category": "image",
+        "internal": "png",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Joint Photographic Experts Group JFIF",
+        "format": "jpeg",
+        "extension": "jpg",
+        "mime": "image/jpeg",
+        "category": "image",
+        "internal": "jpeg",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "WebP",
+        "format": "webp",
+        "extension": "webp",
+        "mime": "image/webp",
+        "category": "image",
+        "internal": "webp",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "CompuServe Graphics Interchange Format (GIF)",
+        "format": "gif",
+        "extension": "gif",
+        "mime": "image/gif",
+        "category": [
+          "image",
+          "video"
+        ],
+        "internal": "gif",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Scalable Vector Graphics",
+        "format": "svg",
+        "extension": "svg",
+        "mime": "image/svg+xml",
+        "category": [
+          "image",
+          "vector",
+          "document"
+        ],
+        "internal": "svg",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "Plain Text",
+        "format": "text",
+        "extension": "txt",
+        "mime": "text/plain",
+        "category": "text",
+        "internal": "text",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "MPEG-4 Part 14",
+        "format": "mp4",
+        "extension": "mp4",
+        "mime": "video/mp4",
+        "category": "video",
+        "internal": "mp4",
+        "from": true,
+        "to": false,
+        "lossless": false
+      },
+      {
+        "name": "MP3 Audio",
+        "format": "mp3",
+        "extension": "mp3",
+        "mime": "audio/mpeg",
+        "category": "audio",
+        "internal": "mp3",
+        "from": true,
+        "to": false,
+        "lossless": false
+      }
+    ]
+  ]
+]
