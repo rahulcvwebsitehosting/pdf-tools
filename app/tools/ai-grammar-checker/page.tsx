@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-grammar-checker";
 const displayDescription = "Use this Free AI grammar checker tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Grammar Checker - 100% Local | ToolsAtZero",
+  title: "Free AI Grammar Checker - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai grammar checker","ai grammar checker online","free ai grammar checker online","ai grammar checker tool","client-side ai grammar checker","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Grammar Checker - 100% Local | ToolsAtZero",
+    title: "Free AI Grammar Checker - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-grammar-checker",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Grammar Checker - 100% Local | ToolsAtZero",
+    title: "Free AI Grammar Checker - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

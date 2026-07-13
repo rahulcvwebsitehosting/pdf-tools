@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-table-extractor";
 const displayDescription = "Use this Free AI table extractor tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Table Extractor - 100% Local | ToolsAtZero",
+  title: "Free AI Table Extractor - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai table extractor","ai table extractor online","free ai table extractor online","ai table extractor tool","client-side ai table extractor","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Table Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Table Extractor - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-table-extractor",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Table Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Table Extractor - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

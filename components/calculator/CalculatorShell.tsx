@@ -142,7 +142,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
     tool.outputs.forEach((out) => {
       lines.push(`${out.label}: ${outputs[out.name] || "0"}`);
     });
-    lines.push(`\nProcessed privately at ToolsAtZero: https://toolsatzero.com/tools/${tool.slug}`);
+    lines.push(`\nProcessed privately at PDF Tools: https://pdf-tools-cv.vercel.app/tools/${tool.slug}`);
 
     const success = await copyToClipboard(lines.join("\n"));
     if (success) {

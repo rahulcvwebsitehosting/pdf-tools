@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-keyword-extractor";
 const displayDescription = "Use this Free AI keyword extractor tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Keyword Extractor - 100% Local | ToolsAtZero",
+  title: "Free AI Keyword Extractor - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai keyword extractor","ai keyword extractor online","free ai keyword extractor online","ai keyword extractor tool","client-side ai keyword extractor","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Keyword Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Keyword Extractor - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-keyword-extractor",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Keyword Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Keyword Extractor - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

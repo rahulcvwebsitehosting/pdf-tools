@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-sql-formatter-explanation";
 const displayDescription = "Use this Free AI sql formatter with explanation tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI SQL Formatter with Explanation - 100% Local | ToolsAtZero",
+  title: "Free AI SQL Formatter with Explanation - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai sql formatter with explanation","ai sql formatter with explanation online","free ai sql formatter with explanation online","ai sql formatter with explanation tool","client-side ai sql formatter with explanation","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI SQL Formatter with Explanation - 100% Local | ToolsAtZero",
+    title: "Free AI SQL Formatter with Explanation - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-sql-formatter-explanation",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI SQL Formatter with Explanation - 100% Local | ToolsAtZero",
+    title: "Free AI SQL Formatter with Explanation - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

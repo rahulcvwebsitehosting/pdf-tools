@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-password-strength-analyzer";
 const displayDescription = "Use this Free AI password strength analyzer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Password Strength Analyzer - 100% Local | ToolsAtZero",
+  title: "Free AI Password Strength Analyzer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai password strength analyzer","ai password strength analyzer online","free ai password strength analyzer online","ai password strength analyzer tool","client-side ai password strength analyzer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Password Strength Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Password Strength Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-password-strength-analyzer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Password Strength Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Password Strength Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

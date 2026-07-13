@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-handwriting-to-text";
 const displayDescription = "Use this Free AI handwriting to text tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Handwriting to Text - 100% Local | ToolsAtZero",
+  title: "Free AI Handwriting to Text - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai handwriting to text","ai handwriting to text online","free ai handwriting to text online","ai handwriting to text tool","client-side ai handwriting to text","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Handwriting to Text - 100% Local | ToolsAtZero",
+    title: "Free AI Handwriting to Text - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-handwriting-to-text",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Handwriting to Text - 100% Local | ToolsAtZero",
+    title: "Free AI Handwriting to Text - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-language-detector";
 const displayDescription = "Use this Free AI language detector tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Language Detector - 100% Local | ToolsAtZero",
+  title: "Free AI Language Detector - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai language detector","ai language detector online","free ai language detector online","ai language detector tool","client-side ai language detector","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Language Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Language Detector - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-language-detector",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Language Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Language Detector - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

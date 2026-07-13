@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-audio-language-detector";
 const displayDescription = "Use this Free AI audio language detector tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Audio Language Detector - 100% Local | ToolsAtZero",
+  title: "Free AI Audio Language Detector - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai audio language detector","ai audio language detector online","free ai audio language detector online","ai audio language detector tool","client-side ai audio language detector","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Audio Language Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Audio Language Detector - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-audio-language-detector",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Audio Language Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Audio Language Detector - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

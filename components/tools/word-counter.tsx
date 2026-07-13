@@ -12,7 +12,7 @@ interface DensityItem {
 
 export default function WordCounterTool() {
   const [text, setText] = useState<string>(
-    `The ultimate free web toolkit. ToolsAtZero contains JSON formatters, Base64 encoders, and PDF tools. All processing runs 100% locally in your browser memory. Data never leaves your machine. Zero server uploads, zero sign-ups, zero friction.`
+    `The ultimate free web toolkit. PDF Tools contains JSON formatters, Base64 encoders, and PDF tools. All processing runs 100% locally in your browser memory. Data never leaves your machine. Zero server uploads, zero sign-ups, zero friction.`
   );
   
   const [charCountWithSpaces, setCharCountWithSpaces] = useState(0);

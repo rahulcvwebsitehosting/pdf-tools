@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-auto-crop";
 const displayDescription = "Use this Free AI auto crop tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Auto Crop - 100% Local | ToolsAtZero",
+  title: "Free AI Auto Crop - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai auto crop","ai auto crop online","free ai auto crop online","ai auto crop tool","client-side ai auto crop","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Auto Crop - 100% Local | ToolsAtZero",
+    title: "Free AI Auto Crop - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-auto-crop",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Auto Crop - 100% Local | ToolsAtZero",
+    title: "Free AI Auto Crop - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

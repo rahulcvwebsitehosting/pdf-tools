@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-regex-explainer";
 const displayDescription = "Use this Free AI regex explainer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Regex Explainer - 100% Local | ToolsAtZero",
+  title: "Free AI Regex Explainer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai regex explainer","ai regex explainer online","free ai regex explainer online","ai regex explainer tool","client-side ai regex explainer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Regex Explainer - 100% Local | ToolsAtZero",
+    title: "Free AI Regex Explainer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-regex-explainer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Regex Explainer - 100% Local | ToolsAtZero",
+    title: "Free AI Regex Explainer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

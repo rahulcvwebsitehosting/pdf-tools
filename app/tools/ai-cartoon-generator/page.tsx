@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-cartoon-generator";
 const displayDescription = "Use this Free AI cartoon generator tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Cartoon Generator - 100% Local | ToolsAtZero",
+  title: "Free AI Cartoon Generator - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai cartoon generator","ai cartoon generator online","free ai cartoon generator online","ai cartoon generator tool","client-side ai cartoon generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Cartoon Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Cartoon Generator - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-cartoon-generator",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Cartoon Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Cartoon Generator - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

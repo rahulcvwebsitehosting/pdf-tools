@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-noise-reduction";
 const displayDescription = "Use this Free AI noise reduction tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Noise Reduction - 100% Local | ToolsAtZero",
+  title: "Free AI Noise Reduction - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai noise reduction","ai noise reduction online","free ai noise reduction online","ai noise reduction tool","client-side ai noise reduction","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Noise Reduction - 100% Local | ToolsAtZero",
+    title: "Free AI Noise Reduction - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-noise-reduction",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Noise Reduction - 100% Local | ToolsAtZero",
+    title: "Free AI Noise Reduction - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

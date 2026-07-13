@@ -36,7 +36,7 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-[#1a1f2e]/95 backdrop-blur border-b border-white/10 light:bg-white/95 light:border-black/10">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
           <Link href="/" className="hover:opacity-90 transition-opacity">
-            <img src="/logo.svg" alt="ToolsAtZero" className="h-9 w-auto" />
+            <img src="/logo.svg" alt="PDF Tools" className="h-9 w-auto" />
           </Link>
 
           <Link href="/pdf-tools" className="text-sm text-foreground/90 hover:text-white light:hover:text-black transition-colors flex items-center gap-1.5">

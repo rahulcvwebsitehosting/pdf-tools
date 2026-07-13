@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-pencil-sketch";
 const displayDescription = "Use this Free AI pencil sketch converter tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Pencil Sketch Converter - 100% Local | ToolsAtZero",
+  title: "Free AI Pencil Sketch Converter - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai pencil sketch converter","ai pencil sketch converter online","free ai pencil sketch converter online","ai pencil sketch converter tool","client-side ai pencil sketch converter","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Pencil Sketch Converter - 100% Local | ToolsAtZero",
+    title: "Free AI Pencil Sketch Converter - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-pencil-sketch",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Pencil Sketch Converter - 100% Local | ToolsAtZero",
+    title: "Free AI Pencil Sketch Converter - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

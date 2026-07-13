@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-email-subject-analyzer";
 const displayDescription = "Use this Free AI email subject analyzer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Email Subject Analyzer - 100% Local | ToolsAtZero",
+  title: "Free AI Email Subject Analyzer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai email subject analyzer","ai email subject analyzer online","free ai email subject analyzer online","ai email subject analyzer tool","client-side ai email subject analyzer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Email Subject Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Email Subject Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-email-subject-analyzer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Email Subject Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Email Subject Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

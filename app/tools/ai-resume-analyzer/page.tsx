@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-resume-analyzer";
 const displayDescription = "Use this Free AI resume analyzer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Resume Analyzer - 100% Local | ToolsAtZero",
+  title: "Free AI Resume Analyzer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai resume analyzer","ai resume analyzer online","free ai resume analyzer online","ai resume analyzer tool","client-side ai resume analyzer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Resume Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Resume Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-resume-analyzer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Resume Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Resume Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

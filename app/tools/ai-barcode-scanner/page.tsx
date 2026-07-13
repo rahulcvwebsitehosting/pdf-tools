@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-barcode-scanner";
 const displayDescription = "Use this Free AI barcode scanner tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Barcode Scanner - 100% Local | ToolsAtZero",
+  title: "Free AI Barcode Scanner - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai barcode scanner","ai barcode scanner online","free ai barcode scanner online","ai barcode scanner tool","client-side ai barcode scanner","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Barcode Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Barcode Scanner - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-barcode-scanner",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Barcode Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Barcode Scanner - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

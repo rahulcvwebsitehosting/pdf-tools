@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-ocr";
 const displayDescription = "Use this Free AI ocr tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI OCR - 100% Local | ToolsAtZero",
+  title: "Free AI OCR - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai ocr","ai ocr online","free ai ocr online","ai ocr tool","client-side ai ocr","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI OCR - 100% Local | ToolsAtZero",
+    title: "Free AI OCR - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-ocr",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI OCR - 100% Local | ToolsAtZero",
+    title: "Free AI OCR - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-commit-message-generator";
 const displayDescription = "Use this Free AI commit message generator tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Commit Message Generator - 100% Local | ToolsAtZero",
+  title: "Free AI Commit Message Generator - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai commit message generator","ai commit message generator online","free ai commit message generator online","ai commit message generator tool","client-side ai commit message generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Commit Message Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Commit Message Generator - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-commit-message-generator",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Commit Message Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Commit Message Generator - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

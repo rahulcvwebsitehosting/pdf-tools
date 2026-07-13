@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Logo } from "@/components/logo";
 
 export const metadata: Metadata = {
-  title: "ToolsAtZero | 100+ Free Developer & Office Tools | 100% Client-Side",
+  title: "PDF Tools | 100+ Free Developer & Office Tools | 100% Client-Side",
   description:
     "The ultimate free web toolkit. JSON formatters, Base64 encoders, and PDF tools. No sign-ups, no server uploads, zero friction. All processing runs in your browser memory.",
 };

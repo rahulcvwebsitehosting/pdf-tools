@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
     description: comparison.metaDescription,
     keywords: comparison.keywords,
     alternates: {
-      canonical: `https://toolsatzero.com/compare/${slug}`,
+      canonical: `https://pdf-tools-cv.vercel.app/compare/${slug}`,
     },
     openGraph: {
       title: comparison.seoTitle,
       description: comparison.metaDescription,
-      url: `https://toolsatzero.com/compare/${slug}`,
-      siteName: "ToolsAtZero",
+      url: `https://pdf-tools-cv.vercel.app/compare/${slug}`,
+      siteName: "PDF Tools",
       type: "article",
     },
     twitter: {
@@ -48,36 +48,36 @@ export default async function ComparePage({ params }: ComparePageProps) {
     "@graph": [
       {
         "@type": "Article",
-        "@id": `https://toolsatzero.com/compare/${slug}/#article`,
-        url: `https://toolsatzero.com/compare/${slug}`,
+        "@id": `https://pdf-tools-cv.vercel.app/compare/${slug}/#article`,
+        url: `https://pdf-tools-cv.vercel.app/compare/${slug}`,
         headline: comparison.title,
         description: comparison.metaDescription,
         inLanguage: "en-US",
         author: {
           "@type": "Organization",
-          name: "ToolsAtZero",
-          url: "https://toolsatzero.com",
+          name: "PDF Tools",
+          url: "https://pdf-tools-cv.vercel.app",
         },
         publisher: {
           "@type": "Organization",
-          name: "ToolsAtZero",
-          url: "https://toolsatzero.com",
+          name: "PDF Tools",
+          url: "https://pdf-tools-cv.vercel.app",
         },
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://toolsatzero.com/compare/${slug}/#breadcrumb`,
+        "@id": `https://pdf-tools-cv.vercel.app/compare/${slug}/#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://toolsatzero.com" },
-          { "@type": "ListItem", position: 2, name: "Compare", item: "https://toolsatzero.com" },
-          { "@type": "ListItem", position: 3, name: comparison.title, item: `https://toolsatzero.com/compare/${slug}` },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://pdf-tools-cv.vercel.app" },
+          { "@type": "ListItem", position: 2, name: "Compare", item: "https://pdf-tools-cv.vercel.app" },
+          { "@type": "ListItem", position: 3, name: comparison.title, item: `https://pdf-tools-cv.vercel.app/compare/${slug}` },
         ],
       },
       ...(comparison.faqs.length > 0
         ? [
             {
               "@type": "FAQPage",
-              "@id": `https://toolsatzero.com/compare/${slug}/#faq`,
+              "@id": `https://pdf-tools-cv.vercel.app/compare/${slug}/#faq`,
               mainEntity: comparison.faqs.map((faq) => ({
                 "@type": "Question",
                 name: faq.question,

@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-pdf-summarizer";
 const displayDescription = "Use this Free AI pdf summarizer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI PDF Summarizer - 100% Local | ToolsAtZero",
+  title: "Free AI PDF Summarizer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai pdf summarizer","ai pdf summarizer online","free ai pdf summarizer online","ai pdf summarizer tool","client-side ai pdf summarizer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI PDF Summarizer - 100% Local | ToolsAtZero",
+    title: "Free AI PDF Summarizer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-pdf-summarizer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI PDF Summarizer - 100% Local | ToolsAtZero",
+    title: "Free AI PDF Summarizer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

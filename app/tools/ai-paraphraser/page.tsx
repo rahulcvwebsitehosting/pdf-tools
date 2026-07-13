@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-paraphraser";
 const displayDescription = "Use this Free AI paraphraser tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Paraphraser - 100% Local | ToolsAtZero",
+  title: "Free AI Paraphraser - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai paraphraser","ai paraphraser online","free ai paraphraser online","ai paraphraser tool","client-side ai paraphraser","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Paraphraser - 100% Local | ToolsAtZero",
+    title: "Free AI Paraphraser - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-paraphraser",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Paraphraser - 100% Local | ToolsAtZero",
+    title: "Free AI Paraphraser - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

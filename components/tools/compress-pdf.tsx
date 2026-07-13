@@ -83,8 +83,8 @@ export default function CompressPdfTool() {
       const pdfDoc = await PDFDocument.load(arrayBuffer, { updateMetadata: false });
       
       // Stamp the document with optimization tags
-      pdfDoc.setProducer("ToolsAtZero Client-Side Sandbox (Compressed)");
-      pdfDoc.setCreator("ToolsAtZero Compress PDF Engine");
+      pdfDoc.setProducer("PDF Tools Client-Side Sandbox (Compressed)");
+      pdfDoc.setCreator("PDF Tools Compress PDF Engine");
       
       const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
 

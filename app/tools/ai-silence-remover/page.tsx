@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-silence-remover";
 const displayDescription = "Use this Free AI silence remover tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Silence Remover - 100% Local | ToolsAtZero",
+  title: "Free AI Silence Remover - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai silence remover","ai silence remover online","free ai silence remover online","ai silence remover tool","client-side ai silence remover","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Silence Remover - 100% Local | ToolsAtZero",
+    title: "Free AI Silence Remover - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-silence-remover",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Silence Remover - 100% Local | ToolsAtZero",
+    title: "Free AI Silence Remover - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

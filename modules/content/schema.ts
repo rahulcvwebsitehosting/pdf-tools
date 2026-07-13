@@ -97,7 +97,7 @@ export interface LocalizationMeta {
 // ─── Author Reference ─────────────────────────────────────────────────────
 
 export interface AuthorRef {
-  authorId: string;       // "toolsatzero-editorial"
+  authorId: string;       // "pdf-tools-editorial"
   reviewerId: string;     // "technical-review"
 }
 
@@ -340,7 +340,7 @@ export function defaultLocalization(): LocalizationMeta {
 
 export function defaultAuthor(): AuthorRef {
   return {
-    authorId: "toolsatzero-editorial",
+    authorId: "pdf-tools-editorial",
     reviewerId: "technical-review",
   };
 }

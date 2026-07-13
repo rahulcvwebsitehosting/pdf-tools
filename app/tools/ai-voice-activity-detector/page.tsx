@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-voice-activity-detector";
 const displayDescription = "Use this Free AI voice activity detector tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Voice Activity Detector - 100% Local | ToolsAtZero",
+  title: "Free AI Voice Activity Detector - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai voice activity detector","ai voice activity detector online","free ai voice activity detector online","ai voice activity detector tool","client-side ai voice activity detector","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Voice Activity Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Voice Activity Detector - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-voice-activity-detector",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Voice Activity Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Voice Activity Detector - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

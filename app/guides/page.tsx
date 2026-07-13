@@ -3,7 +3,7 @@ import Link from "next/link";
 import GuidesList from "@/components/guides-list";
 
 export const metadata: Metadata = {
-  title: "Topic Guides & Technical Documentation | ToolsAtZero",
+  title: "Topic Guides & Technical Documentation | PDF Tools",
   description:
     "Explore our collection of free, browser-based utility guides. Step-by-step documentation on PDF merging, image compression, formatting structured JSON, and calculating EMI loan metrics.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "client-side privacy guides",
   ],
   alternates: {
-    canonical: "https://toolsatzero.com/guides",
+    canonical: "https://pdf-tools-cv.vercel.app/guides",
   },
 };
 

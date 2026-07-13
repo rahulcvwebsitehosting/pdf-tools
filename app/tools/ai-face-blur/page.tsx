@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-face-blur";
 const displayDescription = "Use this Free AI face blur tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Face Blur - 100% Local | ToolsAtZero",
+  title: "Free AI Face Blur - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai face blur","ai face blur online","free ai face blur online","ai face blur tool","client-side ai face blur","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Face Blur - 100% Local | ToolsAtZero",
+    title: "Free AI Face Blur - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-face-blur",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Face Blur - 100% Local | ToolsAtZero",
+    title: "Free AI Face Blur - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

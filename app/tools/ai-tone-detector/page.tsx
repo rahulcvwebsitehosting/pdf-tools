@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-tone-detector";
 const displayDescription = "Use this Free AI tone detector tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Tone Detector - 100% Local | ToolsAtZero",
+  title: "Free AI Tone Detector - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai tone detector","ai tone detector online","free ai tone detector online","ai tone detector tool","client-side ai tone detector","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Tone Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Tone Detector - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-tone-detector",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Tone Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Tone Detector - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

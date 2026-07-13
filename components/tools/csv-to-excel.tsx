@@ -121,7 +121,7 @@ export default function CsvToExcelTool() {
     xml += ' xmlns:x="urn:schemas-microsoft-com:office:excel"\n';
     xml += ' xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n';
     xml += ' xmlns:html="http://www.w3.org/TR/REC-html40">\n';
-    xml += ' <Worksheet ss:Name="ToolsAtZero Export">\n';
+    xml += ' <Worksheet ss:Name="PDF Tools Export">\n';
     xml += '  <Table>\n';
     
     for (const row of rows) {

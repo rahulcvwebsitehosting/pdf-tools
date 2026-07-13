@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { TrustBadge } from '@/components/trust-badge';
 
 const SAMPLE_JSON = `{
-  "name": "ToolsAtZero",
+  "name": "PDF Tools",
   "version": "1.0.0",
   "description": "Free online developer tools",
   "features": [

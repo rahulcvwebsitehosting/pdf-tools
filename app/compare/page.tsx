@@ -3,7 +3,7 @@ import Link from "next/link";
 import CompareList from "@/components/compare-list";
 
 export const metadata: Metadata = {
-  title: "Format & Utility Comparisons | ToolsAtZero",
+  title: "Format & Utility Comparisons | PDF Tools",
   description:
     "Compare common file formats and data standards side-by-side. Comprehensive analysis of WebP vs PNG, CSV vs Excel, JSON vs XML, and PDF vs DOCX to optimize your workflows.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "file format differences",
   ],
   alternates: {
-    canonical: "https://toolsatzero.com/compare",
+    canonical: "https://pdf-tools-cv.vercel.app/compare",
   },
 };
 

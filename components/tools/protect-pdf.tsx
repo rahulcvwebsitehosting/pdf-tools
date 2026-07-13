@@ -91,8 +91,8 @@ export default function ProtectPdfTool() {
       const pdfDoc = await PDFDocument.load(arrayBuffer, { updateMetadata: false });
       
       // Update Producer metadata to stamp it as protected locally
-      pdfDoc.setProducer("ToolsAtZero Client-Side Sandbox (Protected)");
-      pdfDoc.setCreator("ToolsAtZero Protect PDF Engine");
+      pdfDoc.setProducer("PDF Tools Client-Side Sandbox (Protected)");
+      pdfDoc.setCreator("PDF Tools Protect PDF Engine");
       
       const pdfBytes = await pdfDoc.save();
 

@@ -28,79 +28,79 @@ interface FAQItem {
 
 const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What is PDF Tools?",
+    question: "Why does my browser freeze for a second when I first open a PDF tool?",
     answer:
-      "PDF Tools is a free, browser-based platform offering 131 PDF utilities plus dozens of developer, image, text, web, time, and calculator tools. Everything runs 100% inside your browser using WebAssembly (PyMuPDF, etc.) and standard JavaScript APIs. No accounts, no uploads, no hidden costs.",
+      "On the first run, the tool fetches and initializes the PyMuPDF WebAssembly engine (~10 MB). This is a one-time download that gets cached by your browser. The next time you open any PDF tool, it starts almost instantly. We show a \"Loading PDF engine…\" message during this step so you know what's happening.",
   },
   {
-    question: "How many PDF tools do you offer?",
+    question: "I ran a tool and it produced a file with no extension. What do I do?",
     answer:
-      "We currently offer 131 PDF tools covering merge, split, compress, convert (PDF to Word, JPG, PNG, Excel, PowerPoint, and vice versa), edit, sign, protect with password, unlock, rotate pages, remove pages, extract pages, rearrange, add watermarks, add page numbers, OCR, redact, compare, optimize for web, and many more.",
+      "Some tools return a blob whose type the browser doesn't auto-name (for example multi-page splits). The download button on the result already appends the correct extension for PDF outputs. If your OS still strips it, just rename the file and add .pdf, .png, .jpg, etc. to match the operation you performed.",
   },
   {
-    question: "Are my files uploaded to a server?",
+    question: "Why is the \"Coming Soon\" badge showing on a tool that looks finished?",
     answer:
-      "No. Your files never leave your device. All processing happens locally inside your browser using WebAssembly. When you close the tab, all data is purged from memory automatically. There are no backend uploads, no cloud storage, and no file logging.",
+      "Some PDF tools are registered in the catalogue but their specific operation isn't yet wired into our PyMuPDF engine dispatcher. The page still loads so you can see what the tool will do, but running it will return a \"not yet supported\" message. We're shipping new operations every release. Use the Explore More toggle on the homepage to see everything that's live.",
   },
   {
-    question: "Is PDF Tools really free?",
+    question: "The watermark and page-number tools ask for a font — do I need to upload one?",
     answer:
-      "Yes. Every tool is 100% free with no usage limits, no premium tiers, and no sign-ups. The site is sustained through minimal, non-intrusive advertising.",
+      "No. We bundle a default font inside the PyMuPDF WebAssembly module, so you can type any text in plain ASCII or Unicode and it will be rendered onto the PDF without uploading anything. If you want a custom .ttf file, drop it into the upload field and it stays on your device.",
   },
   {
-    question: "Do I need to create an account?",
+    question: "My password-protected PDF won't unlock. Why?",
     answer:
-      "No. You can use every tool immediately without registering or providing any personal information.",
+      "There are two kinds of PDF passwords: the user password (required to even open the file) and the owner password (only restricts editing/printing). Our Unlock tool handles the user password. If your PDF only has an owner password, open it normally and re-save — no password is needed.",
   },
   {
-    question: "What technology powers the PDF tools?",
+    question: "How do I merge 50+ files at once?",
     answer:
-      "Our PDF tools are powered by PyMuPDF compiled to WebAssembly and loaded directly in your browser via Pyodide. The full PDF processing engine runs locally on your device, giving you desktop-grade PDF manipulation with the privacy of client-side computing.",
+      "Open the Merge PDF tool, drop all your files into the upload area, reorder them by dragging, and hit Run. There's no hard cap on the number of files, but very large batches can take a while because every page has to be copied through WebAssembly. For best results, keep total input under ~200 MB.",
   },
   {
-    question: "What file size can I process?",
+    question: "Will the OCR tool read handwriting?",
     answer:
-      "There is no hard limit imposed by PDF Tools, but practical limits depend on your device's available RAM. Most browsers comfortably handle files up to a few hundred megabytes. For very large or complex operations, a desktop with more RAM will perform better.",
+      "The built-in OCR engine is optimized for printed text and clean scans. Cursive handwriting, stylized fonts, and low-resolution photos (below 200 DPI) often produce partial or garbled results. For documents with mixed content, run OCR on the scanned pages only and leave the digital ones untouched.",
   },
   {
-    question: "Does it work offline?",
+    question: "The PDF I compressed is actually bigger. What went wrong?",
     answer:
-      "Once a tool page is fully loaded, most tools continue to work without an internet connection because the processing engine is already running in your browser. However, an initial connection is required to load the page and its WebAssembly assets.",
+      "If your PDF is already heavily optimized (images are at low DPI, fonts are subset, no embedded media), re-compressing it can make it larger because the engine adds metadata. Try the \"Low\" quality preset first, or skip compression for PDFs that are already under 1 MB.",
   },
   {
-    question: "What browsers are supported?",
+    question: "Can I add a real digital signature, not just a drawn signature image?",
     answer:
-      "PDF Tools works on all modern, up-to-date browsers including Chrome, Edge, Brave, Firefox, Safari, and Arc. WebAssembly support is required and is available in every browser released in the last several years.",
+      "Our Sign PDF tool currently places a drawn or uploaded signature image onto the page. Cryptographic PKCS#7 digital signatures (the legally-binding kind) are on the roadmap. For now, the drawn signature is perfectly fine for internal documents, contracts-in-progress, and visual approval flows.",
   },
   {
-    question: "Does it work on mobile?",
+    question: "Why does the rotate tool only let me rotate by 90°, 180°, or 270°?",
     answer:
-      "Yes. The site is fully responsive and works on smartphones and tablets. However, processing large PDFs on mobile may be slower due to limited RAM. For best results, use a desktop or laptop for large files.",
+      "PDF pages are designed around 90° increments — rotating by, say, 17° would break text reflow and accessibility tagging. If you need a custom angle, export the page to an image, rotate it in any image editor, then re-import it as a new page using our Image to PDF tool.",
   },
   {
-    question: "What other tool categories are available?",
+    question: "I'm on a slow connection and the page takes forever to load. Can I preload the engine?",
     answer:
-      "Beyond PDFs, we offer Developer tools (JSON formatter, Base64 encoder/decoder, JWT decoder, UUID generator, regex tester, etc.), Image tools (compressor, resizer, cropper, format converter), Office & Text tools (case converter, word counter, CSV/JSON converter, text diff), Web tools (URL encoder, HTML/CSS/JS minifier, meta tag generator), Time tools (epoch converter, timezone converter, date difference, stopwatch), and Calculators (GST, EMI, SIP, BMI, scientific).",
+      "Yes. Open any PDF tool once on a fast connection — the engine is then cached. On slow networks, the first load may take 20–30 seconds for the ~10 MB WASM file. Subsequent loads of any PDF tool will skip this step entirely. There is no preload banner at the moment, but it's on the list.",
   },
   {
-    question: "Is there a dark and light mode?",
+    question: "Why are some tools faster than others?",
     answer:
-      "Yes. Use the sun/moon button in the top-right corner of the header to toggle between dark and light themes. Your preference is saved in your browser and persists across visits.",
+      "Single-page operations (rotate, extract, metadata edit) finish in milliseconds because they only need to read the page dictionary. Multi-page operations that touch every pixel (compress, OCR, image conversion) are CPU-bound and scale with the number of pages. A 5-page compress is near-instant; a 500-page OCR can take a few minutes.",
   },
   {
-    question: "Can I use the tools for commercial work?",
+    question: "My downloaded PDF opens in Preview/Chrome but not in Acrobat — is it broken?",
     answer:
-      "Absolutely. The tools are free for personal, educational, and commercial use. There are no licensing restrictions on the output you generate.",
+      "Almost always, no. The file is a valid PDF 1.7 document, but some very old Acrobat versions or strict enterprise PDF/A validators reject certain features our engine produces (for example, object streams with cross-references). Re-saving the output through any of our other tools usually fixes it.",
   },
   {
-    question: "How do I report a bug or request a feature?",
+    question: "Where can I report a tool that crashed or gave a weird error?",
     answer:
-      "Open an issue on our GitHub repository and we will take a look. Bug reports, feature requests, and general questions are all welcome.",
+      "Open an issue on our GitHub repository. Please include the tool slug (the part of the URL after /tools/), your browser name and version, the input file size, and a copy of the exact error message if one was shown. Screenshots help a lot. We triage reports weekly.",
   },
   {
-    question: "Will my files be added to the \"Coming Soon\" tools?",
+    question: "Can I embed one of your tools on my own website?",
     answer:
-      "We are continuously working to bring more tools online. The tools labeled \"Coming Soon\" are already registered in our catalogue and are being wired up to the processing engine. The Explore More toggle on the homepage reveals all of them.",
+      "The PDF tools are deeply coupled to our engine bundle, so a drop-in embed isn't available yet. You can, however, link directly to any tool (for example /tools/merge-pdf) and the experience will be the same as on this site. If you need a higher-volume integration, reach out via GitHub issues and we can discuss options.",
   },
 ];
 
@@ -208,8 +208,9 @@ export default function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base">
-              Everything you need to know about PDF Tools. Can&apos;t find what
-              you&apos;re looking for? Ask on{" "}
+              Practical answers about the PDF tools on pdf-tools-cv.vercel.app
+              — performance quirks, edge cases, and how the engine behaves. Can&apos;t
+              find what you&apos;re looking for? Ask on{" "}
               <a
                 href={GITHUB_ISSUES_URL}
                 target="_blank"
@@ -227,8 +228,9 @@ export default function FAQPage() {
             <span className="text-2xl shrink-0">🛡️</span>
             <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
               <strong className="text-[#ff8a3d]">Zero-upload architecture.</strong>{" "}
-              All 131 PDF tools run 100% inside your browser. No files are
-              uploaded. No accounts required. No data harvesting.
+              Every PDF tool on this site runs 100% inside your browser. Your
+              files stay on your device. No accounts, no cloud, no tracking of
+              your documents.
             </p>
           </div>
 
@@ -269,11 +271,11 @@ export default function FAQPage() {
           {/* Bottom CTA */}
           <div className="editorial-card p-6 sm:p-8 text-center space-y-5">
             <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
-              Still Have Questions?
+              Have a Question We Missed?
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
               Open an issue on GitHub to report a bug, request a new tool, or
-              ask anything else. We&apos;re happy to help.
+              ask anything else. We read every report.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
@@ -289,15 +291,6 @@ export default function FAQPage() {
                 Browse All Tools
               </Link>
             </div>
-            <p className="text-xs text-muted-foreground pt-2">
-              Or reach us at{" "}
-              <a
-                href="mailto:support@pdf-tools.app"
-                className="text-[#ff8a3d] hover:underline"
-              >
-                support@pdf-tools.app
-              </a>
-            </p>
           </div>
         </div>
       </main>

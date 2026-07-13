@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-image-sharpener";
 const displayDescription = "Use this Free AI image sharpener tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Image Sharpener - 100% Local | ToolsAtZero",
+  title: "Free AI Image Sharpener - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai image sharpener","ai image sharpener online","free ai image sharpener online","ai image sharpener tool","client-side ai image sharpener","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Image Sharpener - 100% Local | ToolsAtZero",
+    title: "Free AI Image Sharpener - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-image-sharpener",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Image Sharpener - 100% Local | ToolsAtZero",
+    title: "Free AI Image Sharpener - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

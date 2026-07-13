@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-invoice-reader";
 const displayDescription = "Use this Free AI invoice reader tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Invoice Reader - 100% Local | ToolsAtZero",
+  title: "Free AI Invoice Reader - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai invoice reader","ai invoice reader online","free ai invoice reader online","ai invoice reader tool","client-side ai invoice reader","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Invoice Reader - 100% Local | ToolsAtZero",
+    title: "Free AI Invoice Reader - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-invoice-reader",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Invoice Reader - 100% Local | ToolsAtZero",
+    title: "Free AI Invoice Reader - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

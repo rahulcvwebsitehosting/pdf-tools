@@ -116,8 +116,8 @@ export default function CropPdfTool() {
         }
       }
 
-      pdfDoc.setProducer("ToolsAtZero Client-Side Sandbox (Cropped)");
-      pdfDoc.setCreator("ToolsAtZero Crop PDF Engine");
+      pdfDoc.setProducer("PDF Tools Client-Side Sandbox (Cropped)");
+      pdfDoc.setCreator("PDF Tools Crop PDF Engine");
       const pdfBytes = await pdfDoc.save();
 
       // Trigger standard local file download

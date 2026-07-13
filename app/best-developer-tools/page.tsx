@@ -14,13 +14,13 @@ export function generateMetadata(): Metadata {
     description: config.metaDescription,
     keywords: config.keywords,
     alternates: {
-      canonical: `https://toolsatzero.com/${hubSlug}`,
+      canonical: `https://pdf-tools-cv.vercel.app/${hubSlug}`,
     },
     openGraph: {
       title: config.seoTitle,
       description: config.metaDescription,
-      url: `https://toolsatzero.com/${hubSlug}`,
-      siteName: "ToolsAtZero",
+      url: `https://pdf-tools-cv.vercel.app/${hubSlug}`,
+      siteName: "PDF Tools",
       type: "website",
     },
     twitter: {
@@ -40,26 +40,26 @@ export default function BestDeveloperToolsPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": `https://toolsatzero.com/${hubSlug}/#webpage`,
-        "url": `https://toolsatzero.com/${hubSlug}`,
+        "@id": `https://pdf-tools-cv.vercel.app/${hubSlug}/#webpage`,
+        "url": `https://pdf-tools-cv.vercel.app/${hubSlug}`,
         "name": config.seoTitle,
         "description": config.metaDescription,
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://toolsatzero.com/${hubSlug}/#breadcrumb`,
+        "@id": `https://pdf-tools-cv.vercel.app/${hubSlug}/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://toolsatzero.com"
+            "item": "https://pdf-tools-cv.vercel.app"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": config.title,
-            "item": `https://toolsatzero.com/${hubSlug}`
+            "item": `https://pdf-tools-cv.vercel.app/${hubSlug}`
           }
         ]
       }

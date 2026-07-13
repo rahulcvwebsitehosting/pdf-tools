@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-colorize-photo";
 const displayDescription = "Use this Free AI colorize photo tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Colorize Photo - 100% Local | ToolsAtZero",
+  title: "Free AI Colorize Photo - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai colorize photo","ai colorize photo online","free ai colorize photo online","ai colorize photo tool","client-side ai colorize photo","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Colorize Photo - 100% Local | ToolsAtZero",
+    title: "Free AI Colorize Photo - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-colorize-photo",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Colorize Photo - 100% Local | ToolsAtZero",
+    title: "Free AI Colorize Photo - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

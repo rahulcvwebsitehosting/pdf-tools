@@ -16,7 +16,7 @@ export function SchemaMarkup({
     "@type": "SoftwareApplication",
     name: toolName,
     description: toolDescription,
-    url: `https://toolsatzero.com${toolUrl}`,
+    url: `https://pdf-tools-cv.vercel.app${toolUrl}`,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Any (Web Browser)",
     offers: {

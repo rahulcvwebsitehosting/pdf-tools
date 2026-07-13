@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-qr-code-scanner";
 const displayDescription = "Use this Free AI qr code scanner tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI QR Code Scanner - 100% Local | ToolsAtZero",
+  title: "Free AI QR Code Scanner - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai qr code scanner","ai qr code scanner online","free ai qr code scanner online","ai qr code scanner tool","client-side ai qr code scanner","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI QR Code Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI QR Code Scanner - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-qr-code-scanner",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI QR Code Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI QR Code Scanner - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

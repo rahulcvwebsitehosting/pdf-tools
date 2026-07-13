@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-image-caption";
 const displayDescription = "Use this Free AI image caption generator tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Image Caption Generator - 100% Local | ToolsAtZero",
+  title: "Free AI Image Caption Generator - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai image caption generator","ai image caption generator online","free ai image caption generator online","ai image caption generator tool","client-side ai image caption generator","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Image Caption Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Image Caption Generator - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-image-caption",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Image Caption Generator - 100% Local | ToolsAtZero",
+    title: "Free AI Image Caption Generator - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

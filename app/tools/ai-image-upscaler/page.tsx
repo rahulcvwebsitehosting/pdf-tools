@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-image-upscaler";
 const displayDescription = "Use this Free AI image upscaler tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Image Upscaler - 100% Local | ToolsAtZero",
+  title: "Free AI Image Upscaler - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai image upscaler","ai image upscaler online","free ai image upscaler online","ai image upscaler tool","client-side ai image upscaler","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Image Upscaler - 100% Local | ToolsAtZero",
+    title: "Free AI Image Upscaler - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-image-upscaler",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Image Upscaler - 100% Local | ToolsAtZero",
+    title: "Free AI Image Upscaler - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

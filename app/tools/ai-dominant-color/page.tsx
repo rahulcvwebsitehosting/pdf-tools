@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-dominant-color";
 const displayDescription = "Use this Free AI dominant color extractor tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Dominant Color Extractor - 100% Local | ToolsAtZero",
+  title: "Free AI Dominant Color Extractor - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai dominant color extractor","ai dominant color extractor online","free ai dominant color extractor online","ai dominant color extractor tool","client-side ai dominant color extractor","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Dominant Color Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Dominant Color Extractor - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-dominant-color",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Dominant Color Extractor - 100% Local | ToolsAtZero",
+    title: "Free AI Dominant Color Extractor - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

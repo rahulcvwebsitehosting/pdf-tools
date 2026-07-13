@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-tone-rewriter";
 const displayDescription = "Use this Free AI tone rewriter tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Tone Rewriter - 100% Local | ToolsAtZero",
+  title: "Free AI Tone Rewriter - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai tone rewriter","ai tone rewriter online","free ai tone rewriter online","ai tone rewriter tool","client-side ai tone rewriter","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Tone Rewriter - 100% Local | ToolsAtZero",
+    title: "Free AI Tone Rewriter - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-tone-rewriter",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Tone Rewriter - 100% Local | ToolsAtZero",
+    title: "Free AI Tone Rewriter - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

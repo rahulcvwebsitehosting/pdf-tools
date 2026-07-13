@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-spell-checker";
 const displayDescription = "Use this Free AI spell checker tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Spell Checker - 100% Local | ToolsAtZero",
+  title: "Free AI Spell Checker - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai spell checker","ai spell checker online","free ai spell checker online","ai spell checker tool","client-side ai spell checker","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Spell Checker - 100% Local | ToolsAtZero",
+    title: "Free AI Spell Checker - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-spell-checker",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Spell Checker - 100% Local | ToolsAtZero",
+    title: "Free AI Spell Checker - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

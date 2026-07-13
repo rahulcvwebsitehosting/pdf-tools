@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-business-card-scanner";
 const displayDescription = "Use this Free AI business card scanner tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Business Card Scanner - 100% Local | ToolsAtZero",
+  title: "Free AI Business Card Scanner - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai business card scanner","ai business card scanner online","free ai business card scanner online","ai business card scanner tool","client-side ai business card scanner","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Business Card Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Business Card Scanner - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-business-card-scanner",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Business Card Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Business Card Scanner - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

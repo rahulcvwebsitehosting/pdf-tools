@@ -166,8 +166,8 @@ export default function SplitPdfTool() {
           const copiedPages = await splitPdf.copyPages(srcDoc, uniqueIndices);
           copiedPages.forEach((page) => splitPdf.addPage(page));
 
-          splitPdf.setProducer("ToolsAtZero Client-Side Sandbox (Split)");
-          splitPdf.setCreator("ToolsAtZero Split PDF Engine");
+          splitPdf.setProducer("PDF Tools Client-Side Sandbox (Split)");
+          splitPdf.setCreator("PDF Tools Split PDF Engine");
           
           const pdfBytes = await splitPdf.save();
 

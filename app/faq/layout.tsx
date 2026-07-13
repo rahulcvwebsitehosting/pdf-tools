@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "FAQ – Frequently Asked Questions | PDF Tools",
     description:
       "Get answers to common questions about PDF Tools — 131 free, 100% client-side browser-based PDF utilities.",
-    url: "https://pdf-tools.app/faq",
+    url: "https://pdf-tools-cv.vercel.app/faq",
     siteName: "PDF Tools",
     locale: "en_US",
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Get answers to common questions about PDF Tools — 131 free, 100% client-side browser-based PDF utilities.",
   },
   alternates: {
-    canonical: "https://pdf-tools.app/faq",
+    canonical: "https://pdf-tools-cv.vercel.app/faq",
   },
 };
 

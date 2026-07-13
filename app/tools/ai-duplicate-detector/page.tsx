@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-duplicate-detector";
 const displayDescription = "Use this Free AI duplicate image detector tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Duplicate Image Detector - 100% Local | ToolsAtZero",
+  title: "Free AI Duplicate Image Detector - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai duplicate image detector","ai duplicate image detector online","free ai duplicate image detector online","ai duplicate image detector tool","client-side ai duplicate image detector","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Duplicate Image Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Duplicate Image Detector - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-duplicate-detector",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Duplicate Image Detector - 100% Local | ToolsAtZero",
+    title: "Free AI Duplicate Image Detector - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

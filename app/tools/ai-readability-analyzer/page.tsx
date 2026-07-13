@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-readability-analyzer";
 const displayDescription = "Use this Free AI readability analyzer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Readability Analyzer - 100% Local | ToolsAtZero",
+  title: "Free AI Readability Analyzer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai readability analyzer","ai readability analyzer online","free ai readability analyzer online","ai readability analyzer tool","client-side ai readability analyzer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Readability Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Readability Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-readability-analyzer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Readability Analyzer - 100% Local | ToolsAtZero",
+    title: "Free AI Readability Analyzer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

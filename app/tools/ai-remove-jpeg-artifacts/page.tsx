@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-remove-jpeg-artifacts";
 const displayDescription = "Use this Free AI remove jpeg artifacts tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Remove JPEG Artifacts - 100% Local | ToolsAtZero",
+  title: "Free AI Remove JPEG Artifacts - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai remove jpeg artifacts","ai remove jpeg artifacts online","free ai remove jpeg artifacts online","ai remove jpeg artifacts tool","client-side ai remove jpeg artifacts","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Remove JPEG Artifacts - 100% Local | ToolsAtZero",
+    title: "Free AI Remove JPEG Artifacts - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-remove-jpeg-artifacts",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Remove JPEG Artifacts - 100% Local | ToolsAtZero",
+    title: "Free AI Remove JPEG Artifacts - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

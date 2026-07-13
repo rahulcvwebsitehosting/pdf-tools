@@ -22,7 +22,7 @@ export function Footer() {
             </Link>
           </div>
           <p className="text-xs text-muted-foreground">
-            © 2026 ToolsAtZero. All processing happens in your browser.
+            © 2026 PDF Tools. All processing happens in your browser.
           </p>
         </div>
       </div>

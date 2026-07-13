@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ToolRegistryConfig } from "../registry/types";
 
 export function generateToolMetadata(config: ToolRegistryConfig): Metadata {
-  const baseUrl = "https://toolsatzero.com";
+  const baseUrl = "https://pdf-tools-cv.vercel.app";
   const url = `${baseUrl}/tools/${config.slug}`;
   const title = `Free ${config.title} Online | 100% Private | ToolsAtZero`;
   const description = config.description;

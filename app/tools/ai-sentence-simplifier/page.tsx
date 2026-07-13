@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-sentence-simplifier";
 const displayDescription = "Use this Free AI sentence simplifier tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Sentence Simplifier - 100% Local | ToolsAtZero",
+  title: "Free AI Sentence Simplifier - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai sentence simplifier","ai sentence simplifier online","free ai sentence simplifier online","ai sentence simplifier tool","client-side ai sentence simplifier","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Sentence Simplifier - 100% Local | ToolsAtZero",
+    title: "Free AI Sentence Simplifier - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-sentence-simplifier",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Sentence Simplifier - 100% Local | ToolsAtZero",
+    title: "Free AI Sentence Simplifier - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

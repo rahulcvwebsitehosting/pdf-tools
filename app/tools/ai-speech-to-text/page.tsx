@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-speech-to-text";
 const displayDescription = "Use this Free AI speech to text tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Speech to Text - 100% Local | ToolsAtZero",
+  title: "Free AI Speech to Text - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai speech to text","ai speech to text online","free ai speech to text online","ai speech to text tool","client-side ai speech to text","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Speech to Text - 100% Local | ToolsAtZero",
+    title: "Free AI Speech to Text - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-speech-to-text",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Speech to Text - 100% Local | ToolsAtZero",
+    title: "Free AI Speech to Text - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

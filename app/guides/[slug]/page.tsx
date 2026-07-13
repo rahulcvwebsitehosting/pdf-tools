@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
     description: guide.metaDescription,
     keywords: guide.keywords,
     alternates: {
-      canonical: `https://toolsatzero.com/guides/${slug}`,
+      canonical: `https://pdf-tools-cv.vercel.app/guides/${slug}`,
     },
     openGraph: {
       title: guide.seoTitle,
       description: guide.metaDescription,
-      url: `https://toolsatzero.com/guides/${slug}`,
-      siteName: "ToolsAtZero",
+      url: `https://pdf-tools-cv.vercel.app/guides/${slug}`,
+      siteName: "PDF Tools",
       type: "article",
     },
     twitter: {
@@ -57,28 +57,28 @@ export default async function GuidePage({ params }: GuidePageProps) {
     "@graph": [
       {
         "@type": "TechArticle",
-        "@id": `https://toolsatzero.com/guides/${slug}/#article`,
-        url: `https://toolsatzero.com/guides/${slug}`,
+        "@id": `https://pdf-tools-cv.vercel.app/guides/${slug}/#article`,
+        url: `https://pdf-tools-cv.vercel.app/guides/${slug}`,
         headline: guide.title,
         description: guide.metaDescription,
         inLanguage: "en-US",
-        author: { "@type": "Organization", name: "ToolsAtZero", url: "https://toolsatzero.com" },
-        publisher: { "@type": "Organization", name: "ToolsAtZero", url: "https://toolsatzero.com" },
+        author: { "@type": "Organization", name: "PDF Tools", url: "https://pdf-tools-cv.vercel.app" },
+        publisher: { "@type": "Organization", name: "PDF Tools", url: "https://pdf-tools-cv.vercel.app" },
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://toolsatzero.com/guides/${slug}/#breadcrumb`,
+        "@id": `https://pdf-tools-cv.vercel.app/guides/${slug}/#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://toolsatzero.com" },
-          { "@type": "ListItem", position: 2, name: "Guides", item: "https://toolsatzero.com" },
-          { "@type": "ListItem", position: 3, name: guide.title, item: `https://toolsatzero.com/guides/${slug}` },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://pdf-tools-cv.vercel.app" },
+          { "@type": "ListItem", position: 2, name: "Guides", item: "https://pdf-tools-cv.vercel.app" },
+          { "@type": "ListItem", position: 3, name: guide.title, item: `https://pdf-tools-cv.vercel.app/guides/${slug}` },
         ],
       },
       // HowTo schema for step guides
       ...(guide.steps.length > 0
         ? [{
             "@type": "HowTo",
-            "@id": `https://toolsatzero.com/guides/${slug}/#howto`,
+            "@id": `https://pdf-tools-cv.vercel.app/guides/${slug}/#howto`,
             name: guide.title,
             description: guide.description,
             step: guide.steps.map((s, i) => ({
@@ -92,7 +92,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
       ...(guide.faqs.length > 0
         ? [{
             "@type": "FAQPage",
-            "@id": `https://toolsatzero.com/guides/${slug}/#faq`,
+            "@id": `https://pdf-tools-cv.vercel.app/guides/${slug}/#faq`,
             mainEntity: guide.faqs.slice(0, 30).map((faq) => ({
               "@type": "Question",
               name: faq.question,

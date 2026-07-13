@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-receipt-scanner";
 const displayDescription = "Use this Free AI receipt scanner tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Receipt Scanner - 100% Local | ToolsAtZero",
+  title: "Free AI Receipt Scanner - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai receipt scanner","ai receipt scanner online","free ai receipt scanner online","ai receipt scanner tool","client-side ai receipt scanner","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Receipt Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Receipt Scanner - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-receipt-scanner",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Receipt Scanner - 100% Local | ToolsAtZero",
+    title: "Free AI Receipt Scanner - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

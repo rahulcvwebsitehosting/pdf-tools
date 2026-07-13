@@ -84,8 +84,8 @@ export default function UnlockPdfTool() {
       let pdfBytes: Uint8Array;
       try {
         const pdfDoc = await PDFDocument.load(arrayBuffer, { updateMetadata: false });
-        pdfDoc.setProducer("ToolsAtZero Client-Side Sandbox (Unlocked)");
-        pdfDoc.setCreator("ToolsAtZero Unlock PDF Engine");
+        pdfDoc.setProducer("PDF Tools Client-Side Sandbox (Unlocked)");
+        pdfDoc.setCreator("PDF Tools Unlock PDF Engine");
         pdfBytes = await pdfDoc.save();
       } catch (innerErr) {
         // If loading failed (e.g. encrypted), we simulate the decryption wrapper

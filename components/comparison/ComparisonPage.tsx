@@ -207,7 +207,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
         <div className="space-y-1">
           <h5 className="font-mono text-[10px] uppercase font-bold text-red-700">Client-Side Guarantee</h5>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            All ToolsAtZero utilities process files locally in your browser. No data is uploaded or stored on external servers.
+            All PDF Tools utilities process files locally in your browser. No data is uploaded or stored on external servers.
           </p>
         </div>
       </div>

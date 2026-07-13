@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-portrait-enhancer";
 const displayDescription = "Use this Free AI portrait enhancer tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Portrait Enhancer - 100% Local | ToolsAtZero",
+  title: "Free AI Portrait Enhancer - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai portrait enhancer","ai portrait enhancer online","free ai portrait enhancer online","ai portrait enhancer tool","client-side ai portrait enhancer","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Portrait Enhancer - 100% Local | ToolsAtZero",
+    title: "Free AI Portrait Enhancer - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-portrait-enhancer",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Portrait Enhancer - 100% Local | ToolsAtZero",
+    title: "Free AI Portrait Enhancer - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };

@@ -9,11 +9,11 @@ const toolUrl = "/tools/ai-emoji-suggestion";
 const displayDescription = "Use this Free AI emoji suggestion tool tool completely offline in your local browser.";
 
 export const metadata: Metadata = {
-  title: "Free AI Emoji Suggestion Tool - 100% Local | ToolsAtZero",
+  title: "Free AI Emoji Suggestion Tool - 100% Local | PDF Tools",
   description: displayDescription,
   keywords: ["free ai emoji suggestion tool","ai emoji suggestion tool online","free ai emoji suggestion tool online","ai emoji suggestion tool tool","client-side ai emoji suggestion tool","free online tools","privacy first","no upload","browser tool"],
   openGraph: {
-    title: "Free AI Emoji Suggestion Tool - 100% Local | ToolsAtZero",
+    title: "Free AI Emoji Suggestion Tool - 100% Local | PDF Tools",
     description: displayDescription,
     url: "https://pdf-tools-cv.vercel.app/tools/ai-emoji-suggestion",
     siteName: "PDF Tools",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Emoji Suggestion Tool - 100% Local | ToolsAtZero",
+    title: "Free AI Emoji Suggestion Tool - 100% Local | PDF Tools",
     description: displayDescription,
   },
 };
