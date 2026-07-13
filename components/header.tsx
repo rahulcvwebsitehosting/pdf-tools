@@ -39,14 +39,19 @@ export function Header() {
             <img src="/logo.svg" alt="PDF Tools" className="h-9 w-auto" />
           </Link>
 
-          <Link href="/pdf-tools" className="text-sm text-foreground/90 hover:text-white light:hover:text-black transition-colors flex items-center gap-1.5">
-            <span className="grid grid-cols-3 gap-0.5">
-              {[...Array(9)].map((_, i) => (
-                <span key={i} className="w-1 h-1 bg-current rounded-sm" />
-              ))}
-            </span>
-            All tools
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/converter" className="text-sm text-foreground/90 hover:text-white light:hover:text-black transition-colors">
+              Converter
+            </Link>
+            <Link href="/pdf-tools" className="text-sm text-foreground/90 hover:text-white light:hover:text-black transition-colors flex items-center gap-1.5">
+              <span className="grid grid-cols-3 gap-0.5">
+                {[...Array(9)].map((_, i) => (
+                  <span key={i} className="w-1 h-1 bg-current rounded-sm" />
+                ))}
+              </span>
+              All tools
+            </Link>
+          </div>
 
           <div className="flex items-center gap-1">
             <button
