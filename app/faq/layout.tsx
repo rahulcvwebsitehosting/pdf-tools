@@ -1,39 +1,39 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ – Frequently Asked Questions | ToolsAtZero",
+  title: "FAQ – Frequently Asked Questions | PDF Tools",
   description:
-    "Get answers to common questions about ToolsAtZero — free, 100% client-side browser tools for PDF, developer, office, image, web, and time utilities. Learn about privacy, file safety, offline usage, and more.",
+    "Get answers to common questions about PDF Tools — 131 free, 100% client-side PDF utilities and dozens of developer, image, text, web, time, and calculator tools. Learn about privacy, file safety, PyMuPDF processing, offline usage, and more.",
   keywords: [
-    "ToolsAtZero FAQ",
-    "free online tools",
-    "client-side tools",
-    "browser-based tools",
+    "PDF Tools FAQ",
+    "free PDF tools",
+    "client-side PDF tools",
+    "browser-based PDF tools",
+    "PyMuPDF",
     "privacy tools",
-    "PDF tools",
-    "developer tools",
-    "image tools",
-    "file safety",
-    "offline tools",
-    "no upload tools",
+    "PDF merge",
+    "PDF split",
+    "PDF compress",
+    "no upload PDF",
+    "offline PDF tools",
   ],
   openGraph: {
     type: "website",
-    title: "FAQ – Frequently Asked Questions | ToolsAtZero",
+    title: "FAQ – Frequently Asked Questions | PDF Tools",
     description:
-      "Get answers to common questions about ToolsAtZero — free, 100% client-side browser tools.",
-    url: "https://toolsatzero.com/faq",
-    siteName: "ToolsAtZero",
+      "Get answers to common questions about PDF Tools — 131 free, 100% client-side browser-based PDF utilities.",
+    url: "https://pdf-tools.app/faq",
+    siteName: "PDF Tools",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ – Frequently Asked Questions | ToolsAtZero",
+    title: "FAQ – Frequently Asked Questions | PDF Tools",
     description:
-      "Get answers to common questions about ToolsAtZero — free, 100% client-side browser tools.",
+      "Get answers to common questions about PDF Tools — 131 free, 100% client-side browser-based PDF utilities.",
   },
   alternates: {
-    canonical: "https://toolsatzero.com/faq",
+    canonical: "https://pdf-tools.app/faq",
   },
 };
 

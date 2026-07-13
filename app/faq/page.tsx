@@ -4,9 +4,22 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
-/* Metadata is exported from layout.tsx (server component) */
+const GITHUB_ISSUES_URL = "https://github.com/rahulcvwebsitehosting/pdf-tools/issues";
 
-
+function GitHubIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.92.58.1.79-.25.79-.56v-2.1c-3.2.7-3.87-1.37-3.87-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.47.12-3.07 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.64 1.6.24 2.77.12 3.07.75.8 1.2 1.82 1.2 3.08 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+    </svg>
+  );
+}
 
 interface FAQItem {
   question: string;
@@ -15,93 +28,81 @@ interface FAQItem {
 
 const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What is ToolsAtZero?",
+    question: "What is PDF Tools?",
     answer:
-      "ToolsAtZero is a free, 100% client-side tools platform that runs entirely inside your browser. We offer 102 production-ready browser-based tools across categories like PDF, Developer, Office/Text, Image, Web, and Time. The platform features an extensive Knowledge Hub, topic clusters, and side-by-side format comparisons (e.g., PNG vs JPG, CSV vs Excel) to help users make informed technical decisions. Zero cost, zero server uploads, and zero accounts required.",
+      "PDF Tools is a free, browser-based platform offering 131 PDF utilities plus dozens of developer, image, text, web, time, and calculator tools. Everything runs 100% inside your browser using WebAssembly (PyMuPDF, etc.) and standard JavaScript APIs. No accounts, no uploads, no hidden costs.",
   },
   {
-    question: "How does local/client-side processing work?",
+    question: "How many PDF tools do you offer?",
     answer:
-      "When you use a tool on ToolsAtZero, all processing happens inside your browser's sandboxed JavaScript environment. Your files are loaded into temporary memory (RAM), processed using WebAssembly, Web Workers, or standard JavaScript APIs, and the output is generated locally. Nothing is transmitted to any server. When you close the tab, all data is purged from memory automatically.",
+      "We currently offer 131 PDF tools covering merge, split, compress, convert (PDF to Word, JPG, PNG, Excel, PowerPoint, and vice versa), edit, sign, protect with password, unlock, rotate pages, remove pages, extract pages, rearrange, add watermarks, add page numbers, OCR, redact, compare, optimize for web, and many more.",
   },
   {
-    question: "Is ToolsAtZero completely free?",
+    question: "Are my files uploaded to a server?",
     answer:
-      "Yes. Every tool on ToolsAtZero is 100% free with no usage limits, no hidden paywalls, and no premium tiers. We believe essential developer and productivity tools should be accessible to everyone. The platform is sustained through minimal, non-intrusive advertising and community support.",
+      "No. Your files never leave your device. All processing happens locally inside your browser using WebAssembly. When you close the tab, all data is purged from memory automatically. There are no backend uploads, no cloud storage, and no file logging.",
   },
   {
-    question: "Do you store or upload my files to any server?",
+    question: "Is PDF Tools really free?",
     answer:
-      "No. Your files never leave your device. ToolsAtZero processes everything locally inside your browser's sandboxed memory. We have no backend file storage, no upload endpoints, and no database of user files. Once you close the browser tab, all traces of your data are gone.",
-  },
-  {
-    question: "Is my data safe from browser extensions?",
-    answer:
-      "While ToolsAtZero itself never transmits your data, third-party browser extensions with broad permissions (like 'Read and change all your data on all websites') can potentially access content on any active tab — including data you're processing. For maximum security when working with sensitive files, we recommend using a clean browser profile, an incognito/private window (which disables most extensions by default), or temporarily disabling untrusted extensions.",
-  },
-  {
-    question: "Can I use ToolsAtZero offline?",
-    answer:
-      "Partially. Once a tool page is fully loaded in your browser, many tools will continue to function even if your internet connection drops, because the processing logic is already running in your browser. However, you need an initial internet connection to load the page and its assets. We're exploring Progressive Web App (PWA) support for full offline capability in the future.",
-  },
-  {
-    question: "What browsers are supported?",
-    answer:
-      "ToolsAtZero works best on modern, Chromium-based browsers — Google Chrome, Microsoft Edge, Brave, and Arc. Firefox and Safari are also supported for the vast majority of tools. We recommend keeping your browser updated to the latest version for optimal performance and full API compatibility (especially for WebAssembly and Web Workers).",
-  },
-  {
-    question: "What file types and formats are supported?",
-    answer:
-      "Our tools support a wide range of formats depending on the category. PDF tools handle .pdf files. Image tools support PNG, JPEG, WebP, SVG, GIF, BMP, TIFF, and ICO. Developer tools handle JSON, XML, YAML, CSV, TOML, Base64, JWT, and various code formats. Office/Text tools work with plain text, Markdown, and common document formats. Check each tool's interface for specific format details.",
-  },
-  {
-    question: "How do the AI-powered tools work locally?",
-    answer:
-      "Our AI-powered tools use lightweight machine learning models that run directly in your browser via WebAssembly (WASM) and Web Workers. These models are downloaded once and cached by your browser. Inference (prediction/processing) happens entirely on your device's CPU/GPU — no data is sent to any cloud AI service. This means slower performance compared to cloud AI, but absolute privacy.",
-  },
-  {
-    question: "Is there a file size limit?",
-    answer:
-      "There's no hard limit imposed by ToolsAtZero, but practical limits depend on your device's available RAM and browser memory allocation. Most browsers handle files up to ~500 MB comfortably for simple operations. Complex processing (like AI inference or multi-page PDF manipulation) works best with files under 100 MB. If you encounter slowness or crashes, try a smaller file or close other browser tabs to free memory.",
-  },
-  {
-    question: "Does ToolsAtZero use cookies or tracking?",
-    answer:
-      "We use minimal, essential cookies and localStorage for UI preferences like dark/light mode and search history in the command palette. We use Google Analytics to collect anonymous usage metrics (page views, device type, geographic region) for improving the platform. We do not use cookies to track your file contents, processing activity, or personal identity. You can block all cookies through your browser settings.",
-  },
-  {
-    question: "Does ToolsAtZero work on mobile devices?",
-    answer:
-      "Yes. ToolsAtZero is fully responsive and works on smartphones and tablets. All tools function on mobile browsers including Chrome for Android and Safari for iOS. However, some tools involving large file processing or complex operations may perform better on desktop due to mobile devices having less available RAM and processing power.",
-  },
-  {
-    question: "Why is HTTPS important for ToolsAtZero?",
-    answer:
-      "ToolsAtZero is served exclusively over HTTPS (TLS encryption). This is critical because it ensures the tool code delivered to your browser hasn't been tampered with during transit (man-in-the-middle protection). It also enables modern browser APIs like Web Workers, WebAssembly, and the Clipboard API that many of our tools depend on. Never use developer tools on plain HTTP sites — the code itself could be compromised.",
-  },
-  {
-    question: "How do I report a bug or suggest a new tool?",
-    answer:
-      "We'd love to hear from you! You can report bugs, request new tools, or provide general feedback by emailing us at support@toolsatzero.com. Please include your browser name/version, the tool you were using, and a description of what happened. Screenshots or screen recordings are extremely helpful for reproducing issues.",
-  },
-  {
-    question: "What are the limitations of browser-based processing?",
-    answer:
-      "Browser-based tools trade cloud-scale power for absolute privacy. Key limitations include: (1) File size is bounded by your device's available RAM. (2) CPU-intensive tasks like video transcoding or large-model AI inference are slower than server-side equivalents. (3) Some file format support depends on browser API availability. (4) No persistent storage — outputs must be downloaded before closing the tab. (5) Multi-gigabyte operations are generally not feasible. For most everyday tasks, these trade-offs are negligible.",
+      "Yes. Every tool is 100% free with no usage limits, no premium tiers, and no sign-ups. The site is sustained through minimal, non-intrusive advertising.",
   },
   {
     question: "Do I need to create an account?",
     answer:
-      "No. ToolsAtZero requires zero registration, zero sign-ups, and zero personal information. Just open a tool and start using it. There are no accounts, no login walls, and no email harvesting. Every tool is immediately accessible.",
+      "No. You can use every tool immediately without registering or providing any personal information.",
   },
   {
-    question: "Can I use ToolsAtZero for commercial / work purposes?",
+    question: "What technology powers the PDF tools?",
     answer:
-      "Absolutely. ToolsAtZero is free for personal, educational, and commercial use. There are no licensing restrictions on the output generated by our tools. Whether you're formatting JSON for a client project, converting images for a presentation, or merging PDFs for a report — you're covered.",
+      "Our PDF tools are powered by PyMuPDF compiled to WebAssembly and loaded directly in your browser via Pyodide. The full PDF processing engine runs locally on your device, giving you desktop-grade PDF manipulation with the privacy of client-side computing.",
+  },
+  {
+    question: "What file size can I process?",
+    answer:
+      "There is no hard limit imposed by PDF Tools, but practical limits depend on your device's available RAM. Most browsers comfortably handle files up to a few hundred megabytes. For very large or complex operations, a desktop with more RAM will perform better.",
+  },
+  {
+    question: "Does it work offline?",
+    answer:
+      "Once a tool page is fully loaded, most tools continue to work without an internet connection because the processing engine is already running in your browser. However, an initial connection is required to load the page and its WebAssembly assets.",
+  },
+  {
+    question: "What browsers are supported?",
+    answer:
+      "PDF Tools works on all modern, up-to-date browsers including Chrome, Edge, Brave, Firefox, Safari, and Arc. WebAssembly support is required and is available in every browser released in the last several years.",
+  },
+  {
+    question: "Does it work on mobile?",
+    answer:
+      "Yes. The site is fully responsive and works on smartphones and tablets. However, processing large PDFs on mobile may be slower due to limited RAM. For best results, use a desktop or laptop for large files.",
+  },
+  {
+    question: "What other tool categories are available?",
+    answer:
+      "Beyond PDFs, we offer Developer tools (JSON formatter, Base64 encoder/decoder, JWT decoder, UUID generator, regex tester, etc.), Image tools (compressor, resizer, cropper, format converter), Office & Text tools (case converter, word counter, CSV/JSON converter, text diff), Web tools (URL encoder, HTML/CSS/JS minifier, meta tag generator), Time tools (epoch converter, timezone converter, date difference, stopwatch), and Calculators (GST, EMI, SIP, BMI, scientific).",
+  },
+  {
+    question: "Is there a dark and light mode?",
+    answer:
+      "Yes. Use the sun/moon button in the top-right corner of the header to toggle between dark and light themes. Your preference is saved in your browser and persists across visits.",
+  },
+  {
+    question: "Can I use the tools for commercial work?",
+    answer:
+      "Absolutely. The tools are free for personal, educational, and commercial use. There are no licensing restrictions on the output you generate.",
+  },
+  {
+    question: "How do I report a bug or request a feature?",
+    answer:
+      "Open an issue on our GitHub repository and we will take a look. Bug reports, feature requests, and general questions are all welcome.",
+  },
+  {
+    question: "Will my files be added to the \"Coming Soon\" tools?",
+    answer:
+      "We are continuously working to bring more tools online. The tools labeled \"Coming Soon\" are already registered in our catalogue and are being wired up to the processing engine. The Explore More toggle on the homepage reveals all of them.",
   },
 ];
-
-
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -116,8 +117,6 @@ const faqSchema = {
   })),
 };
 
-
-
 function FAQAccordionItem({
   item,
   index,
@@ -130,23 +129,23 @@ function FAQAccordionItem({
   toggle: () => void;
 }) {
   return (
-    <div className="border-2 border-border bg-background shadow-soft transition-shadow hover:shadow-lift">
+    <div className="editorial-card overflow-hidden">
       <button
         onClick={toggle}
-        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer group"
+        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer"
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
       >
         <div className="flex items-start gap-3 sm:gap-4 min-w-0">
-          <span className="neon-badge px-2 py-0.5 text-[10px] sm:text-xs font-mono font-bold shrink-0 mt-0.5">
+          <span className="neon-badge shrink-0 mt-0.5">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 className="font-editorial text-base sm:text-lg md:text-xl font-bold uppercase tracking-tight leading-snug">
+          <h3 className="font-editorial text-base sm:text-lg font-bold leading-snug">
             {item.question}
           </h3>
         </div>
         <ChevronDown
-          className={`w-5 h-5 sm:w-6 sm:h-6 shrink-0 transition-transform duration-300 ${
+          className={`w-5 h-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
             isOpen ? "rotate-180" : "rotate-0"
           }`}
         />
@@ -155,14 +154,13 @@ function FAQAccordionItem({
       <div
         id={`faq-answer-${index}`}
         role="region"
-        aria-labelledby={`faq-question-${index}`}
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
+        <div className="px-5 sm:px-6 pb-5 sm:pb-6">
           <div className="border-t border-border pt-4">
-            <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
+            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
               {item.answer}
             </p>
           </div>
@@ -173,7 +171,7 @@ function FAQAccordionItem({
 }
 
 export default function FAQPage() {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set());
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
 
   const toggle = (index: number) => {
     setOpenItems((prev) => {
@@ -197,60 +195,58 @@ export default function FAQPage() {
 
   return (
     <>
-      {/* JSON-LD FAQ Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main className="min-h-screen bg-background text-foreground pb-24 pt-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          {/* Back Link */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase font-bold tracking-wider hover:underline mb-8"
-          >
-            ← Return to Workbench
-          </Link>
-
-          {/* Page Header */}
-          <div className="space-y-4 mb-10">
-            <span className="neon-badge px-3 py-1 text-xs">
-              KNOWLEDGE BASE
-            </span>
-            <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight border-b-2 border-border pb-6">
+      <main className="text-foreground pb-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+          {/* Header */}
+          <div className="space-y-4 pt-4">
+            <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
               Frequently Asked Questions
             </h1>
-            <p className="font-mono text-xs text-muted-foreground uppercase">
-              {FAQ_ITEMS.length} Questions Answered · 100% Transparent · Last
-              Updated: June 2026
+            <p className="text-muted-foreground text-sm sm:text-base">
+              Everything you need to know about PDF Tools. Can&apos;t find what
+              you&apos;re looking for? Ask on{" "}
+              <a
+                href={GITHUB_ISSUES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#ff8a3d] hover:underline"
+              >
+                GitHub
+              </a>
+              .
             </p>
           </div>
 
-          {/* Giant Yellow Banner */}
-          <div className="bg-accent border-2 border-border p-6 sm:p-8 text-black mb-12 shadow-lift">
-            <p className="font-mono text-sm sm:text-base font-black uppercase tracking-wider leading-relaxed">
-              🛡️ ZERO-UPLOAD ARCHITECTURE: All 102 tools run 100% inside your
-              browser. No files are uploaded. No accounts required. No data
-              harvesting. Just tools that work.
+          {/* Banner */}
+          <div className="editorial-card p-5 sm:p-6 flex items-start gap-3">
+            <span className="text-2xl shrink-0">🛡️</span>
+            <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+              <strong className="text-[#ff8a3d]">Zero-upload architecture.</strong>{" "}
+              All 131 PDF tools run 100% inside your browser. No files are
+              uploaded. No accounts required. No data harvesting.
             </p>
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between mb-6">
-            <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-muted-foreground">
               {openItems.size} / {FAQ_ITEMS.length} expanded
             </span>
             <div className="flex gap-2">
               <button
                 onClick={expandAll}
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-3 py-1.5 hover:bg-accent hover:text-primary transition-colors cursor-pointer"
+                className="btn-secondary px-3 py-1.5 text-xs"
               >
                 Expand All
               </button>
               <button
                 onClick={collapseAll}
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-3 py-1.5 hover:bg-accent hover:text-primary transition-colors cursor-pointer"
+                className="btn-secondary px-3 py-1.5 text-xs"
               >
                 Collapse All
               </button>
@@ -258,7 +254,7 @@ export default function FAQPage() {
           </div>
 
           {/* FAQ Items */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {FAQ_ITEMS.map((item, index) => (
               <FAQAccordionItem
                 key={index}
@@ -271,43 +267,37 @@ export default function FAQPage() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="mt-16 border-2 border-border p-6 sm:p-8 text-center shadow-soft">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-bold uppercase tracking-tight mb-3">
+          <div className="editorial-card p-6 sm:p-8 text-center space-y-5">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
               Still Have Questions?
             </h2>
-            <p className="font-sans text-sm sm:text-base text-muted-foreground mb-6 max-w-xl mx-auto">
-              Can&apos;t find what you&apos;re looking for? Reach out and
-              we&apos;ll get back to you.
+            <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+              Open an issue on GitHub to report a bug, request a new tool, or
+              ask anything else. We&apos;re happy to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="mailto:support@toolsatzero.com"
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border bg-accent text-accent-foreground px-6 py-3 hover:shadow-soft transition-shadow"
+                href={GITHUB_ISSUES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="editorial-btn-primary"
               >
-                Email Support
+                <GitHubIcon size={18} />
+                Ask on GitHub
               </a>
-              <Link
-                href="/"
-                className="font-mono text-xs uppercase font-bold tracking-wider border-2 border-border px-6 py-3 hover:bg-accent hover:text-primary transition-colors"
-              >
+              <Link href="/" className="btn-secondary">
                 Browse All Tools
               </Link>
             </div>
-          </div>
-
-          {/* Footer Links */}
-          <div className="mt-10 flex flex-wrap items-center gap-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            <Link href="/privacy-policy" className="hover:underline">
-              Privacy Policy
-            </Link>
-            <span>·</span>
-            <Link href="/terms" className="hover:underline">
-              Terms of Service
-            </Link>
-            <span>·</span>
-            <Link href="/" className="hover:underline">
-              Home
-            </Link>
+            <p className="text-xs text-muted-foreground pt-2">
+              Or reach us at{" "}
+              <a
+                href="mailto:support@pdf-tools.app"
+                className="text-[#ff8a3d] hover:underline"
+              >
+                support@pdf-tools.app
+              </a>
+            </p>
           </div>
         </div>
       </main>
