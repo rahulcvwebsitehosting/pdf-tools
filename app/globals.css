@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable light: variant — applies when .light class is on <html> or ancestor */
+@custom-variant light (&:where(.light, .light *));
+
 /* ========================================
    PDF Tools — Dark Modern (pdf24-inspired)
    Deep navy × Soft dark cards × Orange CTA
@@ -163,12 +166,12 @@ body {
 .editorial-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
 }
 
-.editorial-card:hover .card-title { color: #ffffff; }
-.editorial-card:hover .card-icon { color: #ffffff; }
-.editorial-card:hover .card-arrow { color: #ff8a3d; transform: translateX(4px); }
+.editorial-card:hover .card-title { color: var(--primary); }
+.editorial-card:hover .card-icon { color: var(--primary); }
+.editorial-card:hover .card-arrow { color: var(--primary); transform: translateX(4px); }
 
 /* Primary button — orange CTA */
 .btn-primary,
