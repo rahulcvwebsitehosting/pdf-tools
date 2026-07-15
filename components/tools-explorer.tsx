@@ -84,29 +84,6 @@ export default function ToolsExplorer() {
         </div>
       )}
 
-      {/* Converter card — prominent, before categories */}
-      <div className="space-y-5 scroll-mt-20">
-        <h2 className="font-editorial text-xl sm:text-2xl font-bold text-foreground text-center">
-          File Converter
-        </h2>
-        <div className="flex justify-center">
-          <Link
-            href="/converter"
-            className="editorial-card group relative p-8 flex flex-col items-center text-center max-w-md w-full"
-          >
-            <div className="card-icon mb-4 text-primary group-hover:text-[#ff8a3d] transition-colors">
-              <ArrowRightLeft size={56} strokeWidth={1.3} />
-            </div>
-            <span className="card-title text-lg font-bold text-foreground/90 group-hover:text-white transition-colors">
-              Universal File Converter
-            </span>
-            <span className="text-sm text-muted-foreground mt-2">
-              Convert images, audio, video, documents, archives & more — 82 formats, 100% in your browser
-            </span>
-          </Link>
-        </div>
-      </div>
-
       {CATEGORIES.map((cat) => {
         const ready = activeTools.filter((t) => t.category === cat.slug);
         const coming = tools.filter((t) => t.category === cat.slug && !t.isReady);
@@ -151,17 +128,43 @@ export default function ToolsExplorer() {
               })}
             </div>
 
-            {cat.slug === "pdf" && hasComingSoon && (
-              <div className="flex justify-center pt-2">
-                <button
-                  type="button"
-                  onClick={() => setExploreAll((v) => !v)}
-                  className="editorial-btn-primary"
-                >
-                  {exploreAll ? <Minus size={16} /> : <Plus size={16} />}
-                  {exploreAll ? "Show Less" : "Explore More Tools"}
-                </button>
-              </div>
+            {cat.slug === "pdf" && (
+              <>
+                {hasComingSoon && (
+                  <div className="flex justify-center pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setExploreAll((v) => !v)}
+                      className="editorial-btn-primary"
+                    >
+                      {exploreAll ? <Minus size={16} /> : <Plus size={16} />}
+                      {exploreAll ? "Show Less" : "Explore More Tools"}
+                    </button>
+                  </div>
+                )}
+                {/* Converter card at bottom of PDF Tools */}
+                <div className="pt-6 space-y-4">
+                  <h3 className="font-editorial text-lg font-bold text-foreground text-center">
+                    File Converter
+                  </h3>
+                  <div className="flex justify-center">
+                    <Link
+                      href="/converter"
+                      className="editorial-card group relative p-8 flex flex-col items-center text-center max-w-md w-full"
+                    >
+                      <div className="card-icon mb-4 text-primary group-hover:text-[#ff8a3d] transition-colors">
+                        <ArrowRightLeft size={56} strokeWidth={1.3} />
+                      </div>
+                      <span className="card-title text-lg font-bold text-foreground/90 group-hover:text-white transition-colors">
+                        Universal File Converter
+                      </span>
+                      <span className="text-sm text-muted-foreground mt-2">
+                        Convert images, audio, video, documents, archives & more — 82 formats, 100% in your browser
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </>
             )}
           </div>
         );
