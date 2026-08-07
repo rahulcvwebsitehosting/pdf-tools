@@ -6420,7 +6420,7 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
                 "scale": "10"
             },
             "outputs": {
-                "cgpa": 9.47
+                "cgpa": 9.53
             }
         }
     ],
