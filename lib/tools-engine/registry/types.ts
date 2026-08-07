@@ -1,7 +1,7 @@
 export interface ToolInput {
   name: string;
   label: string;
-  type: "number" | "select" | "text" | "date" | "boolean" | "textarea";
+  type: "number" | "select" | "text" | "date" | "boolean" | "textarea" | "subjects";
   defaultValue: any;
   placeholder?: string;
   options?: Array<{ label: string; value: any }>;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { getCategoryBySlug, CategoryConfig } from "@/modules/categories/category.config";
-import { tools } from "@/lib/tools";
+import { tools, type Tool } from "@/lib/tools";
 import { guidesConfig } from "@/modules/content/guides";
 import { comparisonsConfig } from "@/modules/content/comparisons";
 import {
@@ -33,21 +33,32 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
     (t) => t.category === config.categoryKey && t.isReady
   );
 
+  // Tools from other categories, used as a fallback when the in-category
+  // search has no matches (e.g. "CGPA" typed on a non-calculator page)
+  const otherTools = tools.filter(
+    (t) => t.category !== config.categoryKey && t.isReady
+  );
+
+  const matchesQuery = (t: Tool) => {
+    const q = search.toLowerCase().trim();
+    return q
+      ? t.name.toLowerCase().includes(q) ||
+          t.description.toLowerCase().includes(q) ||
+          t.keywords.some((k) => k.toLowerCase().includes(q))
+      : true;
+  };
+
   // Filter tools by search query and letter index
   const filteredTools = categoryTools.filter((t) => {
-    const q = search.toLowerCase().trim();
-    const matchesQuery = q
-      ? t.name.toLowerCase().includes(q) ||
-        t.description.toLowerCase().includes(q) ||
-        t.keywords.some((k) => k.toLowerCase().includes(q))
-      : true;
-
     const matchesLetter = activeLetter
       ? t.name.toUpperCase().startsWith(activeLetter)
       : true;
 
-    return matchesQuery && matchesLetter;
+    return matchesQuery(t) && matchesLetter;
   });
+
+  const fallbackTools =
+    filteredTools.length === 0 ? otherTools.filter(matchesQuery).slice(0, 6) : [];
 
   // Extract alphabetical list
   const alphabet = Array.from(
@@ -218,11 +229,38 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
             </Link>
           ))}
 
-          {filteredTools.length === 0 && (
+          {filteredTools.length === 0 && fallbackTools.length === 0 && (
             <div className="col-span-full border border-border bg-secondary p-8 rounded-xl text-center text-muted-foreground text-sm">
               <AlertCircle size={16} className="mx-auto mb-2 text-muted-foreground" />
               <span>No tools found matching selections.</span>
             </div>
+          )}
+
+          {fallbackTools.length > 0 && (
+            <>
+              <div className="col-span-full text-xs text-muted-foreground pt-2 pb-1">
+                No {config.title} match your search — showing matching tools from other categories:
+              </div>
+              {fallbackTools.map((t) => (
+                <Link
+                  key={t.slug}
+                  href={t.href}
+                  className="editorial-card p-5 flex flex-col justify-between hover:border-primary"
+                >
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-sm block tracking-tight">
+                      Free {t.name} Online
+                    </h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {t.description}
+                    </p>
+                  </div>
+                  <span className="text-[11px] text-muted-foreground text-right mt-6 block">
+                    {t.category} tool →
+                  </span>
+                </Link>
+              ))}
+            </>
           )}
         </div>
 

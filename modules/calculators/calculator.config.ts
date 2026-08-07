@@ -6187,7 +6187,7 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
     "slug": "cgpa-calculator",
     "title": "CGPA Calculator",
     "shortTitle": "CGPA",
-    "description": "Paste your grade sheet to auto-detect subjects, grades, and grade points, or enter totals manually. Get your CGPA client-side and 100% private.",
+    "description": "Paste your grade sheet and the tool auto-detects subjects, grades, and grade points — ignoring your name, roll number, department, and header lines. Or add each subject manually. Get your CGPA client-side and 100% private.",
     "keywords": [
         "cgpa calculator",
         "grade point average",
@@ -6224,9 +6224,16 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             "name": "bulkData",
             "label": "Paste Grade Sheet",
             "type": "textarea",
-            "defaultValue": "4\t23AG401\tTheory of Machines\tA\t8\tPass\n4\t23AG402\tHydrology and Water Resource Engineering\tA+\t9\tPass\n4\t23AG403\tSoil Science for Agricultural Engineers\tA+\t9\tPass\n4\t23AG404\tTractors and Farm Engines\tA+\t9\tPass\n4\t23AG405\tSoil Science Laboratory\tO\t10\tPass\n4\t23BS405\tProbability and Statistics\tA+\t9\tPass\n4\t23ES403\tMechanics for Engineers\tA\t8\tPass\n4\t23HS401\tTechnical Communication\tA+\t9\tPass\n4\t23MC004\tUniversal Human Values - II Understanding Harmony\tB+\t7\tPass\n4\t23TPS04\tQuantitative Aptitude and Logical Reasoning - II\tA\t8\tPass",
+            "defaultValue": "AAISWARYA P M\t2403730422522001\nB.Tech-Agricultural Engineering\nSemester\tCourse Code\tCourse Title\tGrade\tGrade Point\tResult\n4\t23AG401\tTheory of Machines\tA+\t9\tPass\n4\t23AG402\tHydrology and Water Resource Engineering\tA+\t9\tPass\n4\t23AG403\tSoil Science for Agricultural Engineers\tA+\t9\tPass\n4\t23AG404\tTractors and Farm Engines\tA+\t9\tPass\n4\t23AG405\tSoil Science Laboratory\tO\t10\tPass\n4\t23BS405\tProbability and Statistics\tA+\t9\tPass\n4\t23ES403\tMechanics for Engineers\tA\t8\tPass\n4\t23HS401\tTechnical Communication\tA+\t9\tPass\n4\t23MC004\tUniversal Human Values - II Understanding Harmony\tB+\t7\tPass\n4\t23TPS04\tQuantitative Aptitude and Logical Reasoning - II\tA\t8\tPass",
             "placeholder": "Paste rows like:\nCredits  Code  Subject  Grade  Grade Point  Result\n4\t23AG401\tTheory of Machines\tA\t8\tPass",
-            "helpText": "Paste your semester grade sheet (one course per line, columns separated by tabs or multiple spaces). Subject, grade, and grade point are detected automatically."
+            "helpText": "Paste your semester grade sheet (one course per line). Your name, roll number, department, header rows, serial/semester numbers, and course codes are ignored automatically — only subject name, grade, grade point, and Pass/Fail are used."
+        },
+        {
+            "name": "manualSubjects",
+            "label": "Add Subjects Manually",
+            "type": "subjects",
+            "defaultValue": [],
+            "helpText": "Add each subject one by one — name, credit hours, grade, and result. Manual subjects are combined with any pasted grade sheet."
         },
         {
             "name": "totalGradePoints",
@@ -6310,7 +6317,11 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
     "faq": [
         {
             "question": "How do I use the bulk paste feature?",
-            "answer": "Copy your grade sheet from your college portal and paste it into the text area. Each line should have credits, course code, subject name, grade, and grade point separated by tabs or spaces — the tool detects them automatically."
+            "answer": "Copy your grade sheet from your college portal and paste it into the text area. The tool skips your name, roll number, department, and header rows automatically, and ignores serial/semester numbers and course codes — it only reads subject name, grade, grade point, and Pass/Fail. Failed subjects contribute 0 grade points."
+        },
+        {
+            "question": "How do I add subjects manually?",
+            "answer": "Use the 'Add Subjects Manually' section: enter the subject name, credit hours, and grade for each course, then tap 'Add Subject'. Grade points fill in automatically from the selected grading scale but can be overridden. Manual subjects are combined with anything you pasted in the grade sheet box."
         },
         {
             "question": "How is CGPA calculated?",
@@ -6326,7 +6337,7 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
         }
     ],
     "aeo": {
-        "quickAnswer": "Paste your grade sheet and the tool auto-detects each subject's grade and grade point, then computes CGPA = total grade points / total credits.",
+        "quickAnswer": "Paste your grade sheet — name, roll number, department, and headers are ignored — or add subjects manually. Each subject's grade point and credit hours are detected, then CGPA = total grade points / total credits.",
         "aiSummary": "A private, client-side CGPA calculator for students. Paste a bulk grade sheet to auto-detect subjects, grades, and grade points, or enter totals manually. Get CGPA, percentage, and classification instantly.",
         "commonMistakes": [
             "Adding raw grade points instead of grade point x credit products.",
@@ -6377,6 +6388,20 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             },
             "outputs": {
                 "cgpa": 7.89
+            }
+        },
+        {
+            "title": "Manual Subject Entry",
+            "inputs": {
+                "manualSubjects": [
+                    { "subject": "Theory of Machines", "credits": 4, "grade": "A+", "gradePoint": 9, "result": "Pass" },
+                    { "subject": "Probability and Statistics", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" },
+                    { "subject": "Soil Science Laboratory", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" }
+                ],
+                "scale": "10"
+            },
+            "outputs": {
+                "cgpa": 9.67
             }
         }
     ],

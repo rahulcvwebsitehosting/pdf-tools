@@ -90,8 +90,26 @@ export function salaryCalculator(inputs: Record<string, any>) {
   };
 }
 
-const GRADE_PATTERN = /^(O|A\+?|B\+?|C\+?|D\+?|E\+?|F|S|P|N|U|W)$/i;
+const GRADE_PATTERN = /^(O|A\+?|A-|B\+?|B-|C\+?|C-|D\+?|D-|E|F|S|P|N|U|W)$/i;
+const RESULT_PATTERN = /^(pass|fail|f|p|r|u|w|ab)$/i;
 const CODE_PATTERN = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9-]{4,12}$/;
+const ROLL_NO_PATTERN = /^\d{10,}$/;
+
+const GRADE_POINT_MAP: Record<string, number> = {
+  o: 10,
+  "a+": 9,
+  a: 8,
+  "b+": 7,
+  b: 6,
+  "c+": 5,
+  c: 4,
+  d: 3,
+  e: 2,
+  f: 0,
+  "a-": 3.7,
+  "b-": 2.7,
+  "c-": 1.7,
+};
 
 export interface ParsedGradeRow {
   code: string;
@@ -99,11 +117,40 @@ export interface ParsedGradeRow {
   grade: string;
   gradePoint: number;
   credits: number;
+  result: string;
+}
+
+export function gradePointFor(grade: string): number | null {
+  const g = String(grade || "").trim().toLowerCase();
+  return GRADE_POINT_MAP[g] !== undefined ? GRADE_POINT_MAP[g] : null;
+}
+
+function isHeaderLine(tokens: string[]): boolean {
+  const joined = tokens.join(" ").toLowerCase();
+  const headerWords = [
+    "semester",
+    "course code",
+    "course title",
+    "course name",
+    "subject name",
+    "grade",
+    "credit",
+    "result",
+    "marks",
+    "grade point",
+    "s.no",
+  ];
+  return headerWords.some((w) => joined.includes(w));
+}
+
+function isPlausibleGradePoint(n: number): boolean {
+  return n >= 0 && n <= 20;
 }
 
 export function parseGradeSheet(bulkData: string): ParsedGradeRow[] {
   if (!bulkData) return [];
   const rows: ParsedGradeRow[] = [];
+  const leadingNums: Array<{ row: ParsedGradeRow; num: number }> = [];
 
   const lines = bulkData.split(/\r?\n/);
   for (const rawLine of lines) {
@@ -113,41 +160,94 @@ export function parseGradeSheet(bulkData: string): ParsedGradeRow[] {
     }
     if (tokens.length < 3) continue;
 
+    // skip student name/roll-number lines, department lines, etc.
+    if (tokens.some((t) => ROLL_NO_PATTERN.test(t))) continue;
+
     const numericIdx: number[] = [];
     tokens.forEach((t, i) => {
       if (/^\d+(\.\d+)?$/.test(t)) numericIdx.push(i);
     });
     if (numericIdx.length === 0) continue;
 
-    const gradePointIdx = numericIdx[numericIdx.length - 1];
-    const creditsIdx = numericIdx[0];
-    const gradePoint = parseFloat(tokens[gradePointIdx]);
-    const credits = creditsIdx === gradePointIdx ? 1 : parseFloat(tokens[creditsIdx]);
+    // skip header rows (they carry header words and no grade letters)
+    if (isHeaderLine(tokens) && !tokens.some((t) => GRADE_PATTERN.test(t))) continue;
 
-    let gradeIdx = gradePointIdx - 1;
-    while (gradeIdx > creditsIdx && !GRADE_PATTERN.test(tokens[gradeIdx])) {
-      gradeIdx--;
+    // right-anchored: the last plausible numeric is the grade point
+    let gpIdx = -1;
+    for (let i = numericIdx.length - 1; i >= 0; i--) {
+      const v = parseFloat(tokens[numericIdx[i]]);
+      if (isPlausibleGradePoint(v)) {
+        gpIdx = numericIdx[i];
+        break;
+      }
     }
-    if (gradeIdx <= creditsIdx) gradeIdx = gradePointIdx - 1;
-    const grade = tokens[gradeIdx];
+    if (gpIdx === -1) continue;
 
+    const resultToken = tokens[gpIdx + 1] || "";
+    const failed = RESULT_PATTERN.test(resultToken) && /^(fail|f)$/i.test(resultToken);
+
+    // grade: nearest grade-like token to the left of the grade point
+    let gradeIdx = gpIdx - 1;
+    let grade = "";
+    for (let i = gpIdx - 1; i >= 0 && i >= gpIdx - 3; i--) {
+      if (GRADE_PATTERN.test(tokens[i])) {
+        gradeIdx = i;
+        grade = tokens[i];
+        break;
+      }
+    }
+    if (!grade) {
+      grade = tokens[gpIdx - 1] || "";
+      gradeIdx = gpIdx - 1;
+    }
+
+    // prefer the canonical grade point for a known grade letter
+    let gradePoint = failed ? 0 : gradePointFor(grade);
+    if (gradePoint === null) gradePoint = parseFloat(tokens[gpIdx]);
+    if (failed) gradePoint = 0;
+
+    // leading numerics before the grade are serial/semester or credits —
+    // ignored here, resolved to credits only when they vary across rows
+    const leading = numericIdx.filter((i) => i < gradeIdx);
+    const firstLeading = leading.length > 0 ? leading[0] : -1;
+    let subjectStart = firstLeading >= 0 ? firstLeading + 1 : 0;
+
+    // course code between the leading numerics and the subject
     let codeIdx = -1;
-    for (let i = creditsIdx + 1; i < gradeIdx; i++) {
+    for (let i = subjectStart; i < gradeIdx; i++) {
       if (CODE_PATTERN.test(tokens[i])) {
         codeIdx = i;
         break;
       }
     }
+    if (codeIdx >= 0) subjectStart = codeIdx + 1;
 
-    const start = codeIdx !== -1 ? codeIdx + 1 : creditsIdx + 1;
-    const subject = tokens.slice(start, gradeIdx).join(" ").trim() || "Subject";
+    const subject = tokens.slice(subjectStart, gradeIdx).join(" ").trim() || "Subject";
 
-    rows.push({
-      code: codeIdx !== -1 ? tokens[codeIdx] : "",
+    const row: ParsedGradeRow = {
+      code: codeIdx >= 0 ? tokens[codeIdx] : "",
       subject,
       grade,
       gradePoint,
-      credits,
+      credits: 1,
+      result: failed ? "Fail" : "Pass",
+    };
+    rows.push(row);
+
+    if (firstLeading >= 0) {
+      leadingNums.push({ row, num: parseFloat(tokens[firstLeading]) });
+    }
+  }
+
+  // If the leading numeric column varies across rows (and is not a plain
+  // 1,2,3... serial), treat it as credit hours; otherwise it is a serial
+  // or semester number and every subject counts with equal weight.
+  const nums = leadingNums.map((x) => x.num);
+  const isSerial = nums.length > 1 && nums[0] === 1 && nums.every((n, i) => n === i + 1);
+  const useAsCredits = nums.length > 0 && !isSerial && new Set(nums).size > 1;
+  if (useAsCredits) {
+    leadingNums.forEach((x) => {
+      x.row.credits = x.num;
     });
   }
 
@@ -156,18 +256,43 @@ export function parseGradeSheet(bulkData: string): ParsedGradeRow[] {
 
 export function cgpaCalculator(inputs: Record<string, any>) {
   const bulkData = String(inputs.bulkData || "").trim();
-  const scale = inputs.scale || "10"; // "10" or "4"
+  const scale = String(inputs.scale || "10") === "4" ? "4" : "10";
+  const manual = Array.isArray(inputs.manualSubjects) ? inputs.manualSubjects : [];
 
-  let rows: ParsedGradeRow[] = [];
-  let totalGradePoints = Number(inputs.totalGradePoints || 0);
-  let totalCredits = Number(inputs.totalCredits || 0);
+  let rows: ParsedGradeRow[] = bulkData ? parseGradeSheet(bulkData) : [];
 
-  if (bulkData) {
-    rows = parseGradeSheet(bulkData);
-    if (rows.length > 0) {
-      totalGradePoints = rows.reduce((sum, r) => sum + r.gradePoint * r.credits, 0);
-      totalCredits = rows.reduce((sum, r) => sum + r.credits, 0);
-    }
+  // Subjects entered one-by-one (manual mode) are combined with any pasted sheet
+  const manualRows: ParsedGradeRow[] = manual
+    .filter((m) => m && String(m.subject || "").trim() !== "")
+    .map((m) => {
+      const grade = String(m.grade || "").toUpperCase();
+      const failed = /fail/i.test(String(m.result || "")) || grade === "F";
+      const parsedGp = parseFloat(String(m.gradePoint));
+      const gradePoint = failed
+        ? 0
+        : !isNaN(parsedGp)
+          ? parsedGp
+          : gradePointFor(grade) ?? 0;
+      const credits = parseFloat(String(m.credits));
+      return {
+        code: String(m.code || ""),
+        subject: String(m.subject || "").trim(),
+        grade,
+        gradePoint,
+        credits: isNaN(credits) || credits <= 0 ? 1 : credits,
+        result: failed ? "Fail" : "Pass",
+      };
+    });
+  rows = [...rows, ...manualRows];
+
+  let totalGradePoints = 0;
+  let totalCredits = 0;
+  if (rows.length > 0) {
+    totalGradePoints = rows.reduce((sum, r) => sum + r.gradePoint * r.credits, 0);
+    totalCredits = rows.reduce((sum, r) => sum + r.credits, 0);
+  } else {
+    totalGradePoints = Number(inputs.totalGradePoints || 0);
+    totalCredits = Number(inputs.totalCredits || 0);
   }
 
   const cgpa = totalCredits > 0 ? totalGradePoints / totalCredits : 0;
@@ -194,6 +319,7 @@ export function cgpaCalculator(inputs: Record<string, any>) {
     grade: r.grade,
     gradePoint: r.gradePoint,
     credits: r.credits,
+    result: r.result,
   }));
 
   return {

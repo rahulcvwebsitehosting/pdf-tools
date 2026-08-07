@@ -88,7 +88,9 @@ export default async function ToolPage({ params }: PageProps) {
             <AeoSection
               toolName={calc.title}
               whatIs={calc.aeo.aiSummary}
-              howToUse={calc.inputs.map((i) => `Configure your target ${i.label} (defaults: ${i.defaultValue}).`)}
+              howToUse={calc.inputs
+                .filter((i) => i.type !== "subjects")
+                .map((i) => `Configure your target ${i.label} (defaults: ${i.defaultValue}).`)}
               whyClientSide="Calculating parameters takes place strictly inside your local browser tab. No numbers are logged."
             />
           </article>

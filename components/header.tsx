@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sun, Moon, ChevronDown } from "lucide-react";
+import { Sun, Moon, ChevronDown, Search } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { CommandPalette } from "@/components/command-palette";
 
@@ -103,6 +103,26 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-1">
+            <button
+              onClick={() => setOpen(true)}
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lift transition-all"
+              title="Search tools (Ctrl+K)"
+              aria-label="Search tools"
+            >
+              <Search size={16} />
+              <span className="text-sm">Search</span>
+              <kbd className="px-1.5 py-0.5 bg-secondary text-[10px] font-mono text-muted-foreground rounded">
+                Ctrl K
+              </kbd>
+            </button>
+            <button
+              onClick={() => setOpen(true)}
+              className="sm:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+              title="Search tools"
+              aria-label="Search tools"
+            >
+              <Search size={20} />
+            </button>
             <button
               onClick={toggleTheme}
               className="p-2 text-primary hover:opacity-80 transition-opacity"
