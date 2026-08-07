@@ -1,7 +1,7 @@
 export interface ToolInput {
   name: string;
   label: string;
-  type: "number" | "select" | "text" | "date" | "boolean";
+  type: "number" | "select" | "text" | "date" | "boolean" | "textarea";
   defaultValue: any;
   placeholder?: string;
   options?: Array<{ label: string; value: any }>;
@@ -15,7 +15,7 @@ export interface ToolInput {
 export interface ToolOutput {
   name: string;
   label: string;
-  type: "number" | "text" | "percentage" | "currency" | "duration" | "boolean";
+  type: "number" | "text" | "percentage" | "currency" | "duration" | "boolean" | "table";
   description?: string;
 }
 

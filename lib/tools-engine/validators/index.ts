@@ -22,7 +22,7 @@ export function validateNumber(
 
 export function validateInput(
   value: any,
-  type: "number" | "select" | "text" | "date" | "boolean",
+  type: "number" | "select" | "text" | "date" | "boolean" | "textarea",
   min?: number,
   max?: number,
   defaultValue?: any

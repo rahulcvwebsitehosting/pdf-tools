@@ -50,7 +50,7 @@ export default function ResultCard({ outputsSchema, values, slug, currencyCode =
         Calculated Outputs
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {outputsSchema.map((out) => {
+        {outputsSchema.filter((out) => out.type !== "table").map((out) => {
           const rawVal = values[out.name];
           const displayVal = getDisplayValue(rawVal, out.type);
 

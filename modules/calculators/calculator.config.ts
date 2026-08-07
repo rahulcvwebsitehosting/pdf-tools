@@ -49,6 +49,7 @@ const formulasMap: Record<string, (inputs: Record<string, any>) => any> = {
   "pregnancy-due-date-calculator": health.pregnancyDueDateCalculator,
   "ovulation-calculator": health.ovulationCalculator,
   "tip-calculator": utilities.tipCalculator,
+  "cgpa-calculator": utilities.cgpaCalculator,
   "fuel-cost-calculator": utilities.fuelCostCalculator,
   "electricity-bill-calculator": utilities.electricityBillCalculator,
   "salary-calculator": utilities.salaryCalculator,
@@ -6180,6 +6181,211 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
     ]
 },
     calculate: formulasMap["gcd-lcm-calculator"]
+  },
+  "cgpa-calculator": {
+    ...{
+    "slug": "cgpa-calculator",
+    "title": "CGPA Calculator",
+    "shortTitle": "CGPA",
+    "description": "Paste your grade sheet to auto-detect subjects, grades, and grade points, or enter totals manually. Get your CGPA client-side and 100% private.",
+    "keywords": [
+        "cgpa calculator",
+        "grade point average",
+        "gpa calculator",
+        "college cgpa",
+        "semester gpa",
+        "cgpa from marks",
+        "grade sheet"
+    ],
+    "category": "calculator",
+    "icon": "GraduationCap",
+    "version": 1,
+    "status": "stable",
+    "featured": true,
+    "searchWeight": 90,
+    "searchIntent": "Calculate CGPA from grade points and credits",
+    "difficulty": "easy",
+    "priority": 1,
+    "formula": {
+        "equation": "CGPA = Total Grade Points / Total Credits, where Total Grade Points = Sum(Grade Point x Credit) per course",
+        "explanation": "Total Grade Points is the sum of (course grade point x course credit) across all courses. Divide by the total credits attempted to get your cumulative average. Bulk paste mode detects each course automatically.",
+        "workedExample": {
+            "expression": "Course grade points: 8x4, 7x3, 9x2 (credits in brackets)",
+            "steps": [
+                "Total Grade Points = (8 x 4) + (7 x 3) + (9 x 2) = 32 + 21 + 18 = 71",
+                "Total Credits = 4 + 3 + 2 = 9",
+                "CGPA = 71 / 9 = 7.89"
+            ],
+            "result": "CGPA = 7.89 (on a 10-point scale)"
+        }
+    },
+    "inputs": [
+        {
+            "name": "bulkData",
+            "label": "Paste Grade Sheet",
+            "type": "textarea",
+            "defaultValue": "4\t23AG401\tTheory of Machines\tA\t8\tPass\n4\t23AG402\tHydrology and Water Resource Engineering\tA+\t9\tPass\n4\t23AG403\tSoil Science for Agricultural Engineers\tA+\t9\tPass\n4\t23AG404\tTractors and Farm Engines\tA+\t9\tPass\n4\t23AG405\tSoil Science Laboratory\tO\t10\tPass\n4\t23BS405\tProbability and Statistics\tA+\t9\tPass\n4\t23ES403\tMechanics for Engineers\tA\t8\tPass\n4\t23HS401\tTechnical Communication\tA+\t9\tPass\n4\t23MC004\tUniversal Human Values - II Understanding Harmony\tB+\t7\tPass\n4\t23TPS04\tQuantitative Aptitude and Logical Reasoning - II\tA\t8\tPass",
+            "placeholder": "Paste rows like:\nCredits  Code  Subject  Grade  Grade Point  Result\n4\t23AG401\tTheory of Machines\tA\t8\tPass",
+            "helpText": "Paste your semester grade sheet (one course per line, columns separated by tabs or multiple spaces). Subject, grade, and grade point are detected automatically."
+        },
+        {
+            "name": "totalGradePoints",
+            "label": "Total Grade Points (Manual)",
+            "type": "number",
+            "defaultValue": 71,
+            "min": 0,
+            "step": 0.01,
+            "helpText": "Fallback only — used when the grade sheet above is empty. Sum of (grade point x credit) for every course."
+        },
+        {
+            "name": "totalCredits",
+            "label": "Total Credits (Manual)",
+            "type": "number",
+            "defaultValue": 9,
+            "min": 1,
+            "step": 0.5,
+            "helpText": "Fallback only — used when the grade sheet above is empty. Total credit hours attempted across all courses."
+        },
+        {
+            "name": "scale",
+            "label": "Grading Scale",
+            "type": "select",
+            "defaultValue": "10",
+            "options": [
+                {
+                    "label": "10-Point Scale",
+                    "value": "10"
+                },
+                {
+                    "label": "4-Point Scale",
+                    "value": "4"
+                }
+            ]
+        }
+    ],
+    "outputs": [
+        {
+            "name": "cgpa",
+            "label": "CGPA",
+            "type": "number",
+            "description": "Cumulative Grade Point Average"
+        },
+        {
+            "name": "percentage",
+            "label": "Approx. Percentage",
+            "type": "percentage",
+            "description": "10-point: CGPA x 9.5 | 4-point: CGPA / 4 x 100"
+        },
+        {
+            "name": "classification",
+            "label": "Classification",
+            "type": "text",
+            "description": "Performance band on the selected grading scale"
+        },
+        {
+            "name": "subjectsDetected",
+            "label": "Subjects Parsed",
+            "type": "number",
+            "description": "Courses auto-detected from your pasted grade sheet"
+        },
+        {
+            "name": "totalGradePoints",
+            "label": "Total Grade Points",
+            "type": "number",
+            "description": "Sum of (grade point x credit) across all parsed courses"
+        },
+        {
+            "name": "totalCredits",
+            "label": "Total Credits",
+            "type": "number",
+            "description": "Total credit hours of all parsed courses"
+        },
+        {
+            "name": "rows",
+            "label": "Detected Subjects",
+            "type": "table",
+            "description": "Auto-detected subject, grade, grade point, and credits"
+        }
+    ],
+    "faq": [
+        {
+            "question": "How do I use the bulk paste feature?",
+            "answer": "Copy your grade sheet from your college portal and paste it into the text area. Each line should have credits, course code, subject name, grade, and grade point separated by tabs or spaces — the tool detects them automatically."
+        },
+        {
+            "question": "How is CGPA calculated?",
+            "answer": "CGPA is the weighted average of your grade points, computed by dividing total grade points earned by total credit hours attempted."
+        },
+        {
+            "question": "How do I convert CGPA to percentage?",
+            "answer": "On a 10-point scale multiply CGPA by 9.5. On a 4-point scale divide by 4 and multiply by 100. Exact formulas vary by institution."
+        },
+        {
+            "question": "What is a good CGPA?",
+            "answer": "On a 10-point scale, 8+ is usually considered excellent. On a 4-point scale, 3.5+ is typically honors-level."
+        }
+    ],
+    "aeo": {
+        "quickAnswer": "Paste your grade sheet and the tool auto-detects each subject's grade and grade point, then computes CGPA = total grade points / total credits.",
+        "aiSummary": "A private, client-side CGPA calculator for students. Paste a bulk grade sheet to auto-detect subjects, grades, and grade points, or enter totals manually. Get CGPA, percentage, and classification instantly.",
+        "commonMistakes": [
+            "Adding raw grade points instead of grade point x credit products.",
+            "Forgetting to include failed or repeated courses in total credits."
+        ],
+        "keyTakeaways": [
+            "Bulk paste with auto-detection.",
+            "Works for 4-point and 10-point scales.",
+            "Runs offline in your browser."
+        ],
+        "searchIntent": "Calculate CGPA from grade points and credits",
+        "entities": [
+            "CGPA",
+            "GPA",
+            "Grade Points",
+            "Credits",
+            "Grade Sheet"
+        ],
+        "semanticTopics": [
+            "Academic Performance",
+            "University Grading"
+        ],
+        "synonyms": [
+            "GPA Calculator",
+            "Grade Point Average Calculator"
+        ]
+    },
+    "geo": {
+        "regionalVariations": "Common in India (10-point), the US (4-point), and many Commonwealth universities. Percentage conversion rules vary by board and institution."
+    },
+    "examples": [
+        {
+            "title": "Bulk Grade Sheet (10-Point)",
+            "inputs": {
+                "bulkData": "4\t23AG401\tTheory of Machines\tA\t8\tPass\n4\t23AG402\tHydrology and Water Resource Engineering\tA+\t9\tPass\n4\t23AG405\tSoil Science Laboratory\tO\t10\tPass",
+                "scale": "10"
+            },
+            "outputs": {
+                "cgpa": 9
+            }
+        },
+        {
+            "title": "Manual Totals",
+            "inputs": {
+                "totalGradePoints": 71,
+                "totalCredits": 9,
+                "scale": "10"
+            },
+            "outputs": {
+                "cgpa": 7.89
+            }
+        }
+    ],
+    "relatedTools": [
+        "percentage-calculator",
+        "scientific-calculator"
+    ]
+},
+    calculate: formulasMap["cgpa-calculator"]
   },
 };
 

@@ -136,11 +136,11 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
     const lines = [`--- ${tool.title} Summary ---`];
     lines.push("\n[Inputs]");
     tool.inputs.forEach((inp) => {
-      lines.push(`${inp.label}: ${inputs[inp.name]}`);
+      lines.push(`${inp.label}: ${String(inputs[inp.name] || "").replace(/\s+/g, " ").trim()}`);
     });
     lines.push("\n[Outputs]");
     tool.outputs.forEach((out) => {
-      lines.push(`${out.label}: ${outputs[out.name] || "0"}`);
+      lines.push(`${out.label}: ${String(outputs[out.name] || "").replace(/\s+/g, " ").trim()}`);
     });
     lines.push(`\nProcessed privately at PDF Tools: https://pdf-tools-cv.vercel.app/tools/${tool.slug}`);
 
@@ -284,6 +284,15 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
                         className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
+                    ) : inp.type === "textarea" ? (
+                      <textarea
+                        id={inp.name}
+                        rows={10}
+                        value={inputs[inp.name] || ""}
+                        placeholder={inp.placeholder}
+                        onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
+                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
+                      />
                     ) : (
                       <input
                         id={inp.name}
@@ -353,6 +362,48 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             <div className={`${isPending ? "opacity-60" : "opacity-100"} transition-opacity`}>
               <ResultCard outputsSchema={tool.outputs} values={outputs} slug={tool.slug} currencyCode={currencyCode} />
             </div>
+
+            {/* Table outputs (e.g. parsed rows) */}
+            {tool.outputs
+              .filter((out) => out.type === "table")
+              .map((out) => {
+                const rows = outputs[out.name];
+                if (!Array.isArray(rows) || rows.length === 0) return null;
+                const columns = Object.keys(rows[0]);
+                const prettify = (k: string) =>
+                  k === "gradePoint"
+                    ? "Grade Point"
+                    : k.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/^./, (c) => c.toUpperCase());
+                return (
+                  <div key={out.name} className="editorial-panel p-6 space-y-4 overflow-x-auto">
+                    <h4 className="font-mono text-xs uppercase font-bold text-foreground border-b border-border pb-2">
+                      {out.label}
+                    </h4>
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead>
+                        <tr>
+                          {columns.map((col) => (
+                            <th key={col} className="uppercase text-muted-foreground text-[10px] pb-2 pr-3 whitespace-nowrap">
+                              {prettify(col)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((row, idx) => (
+                          <tr key={idx} className="border-t border-border/60">
+                            {columns.map((col) => (
+                              <td key={col} className="py-1.5 pr-3 whitespace-nowrap text-foreground/90">
+                                {row[col]}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              })}
 
             {/* AEO GEO Highlights */}
             <div className="editorial-panel p-6 space-y-4">
