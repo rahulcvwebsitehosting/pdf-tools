@@ -257,33 +257,60 @@ export function parseGradeSheet(bulkData: string): ParsedGradeRow[] {
 export function cgpaCalculator(inputs: Record<string, any>) {
   const bulkData = String(inputs.bulkData || "").trim();
   const scale = String(inputs.scale || "10") === "4" ? "4" : "10";
-  const manual = Array.isArray(inputs.manualSubjects) ? inputs.manualSubjects : [];
+
+  // Support both old (manualSubjects) and new (semesters) input formats
+  const semesters = Array.isArray(inputs.semesters) ? inputs.semesters : [];
+  const flatManual = Array.isArray(inputs.manualSubjects) ? inputs.manualSubjects : [];
 
   let rows: ParsedGradeRow[] = bulkData ? parseGradeSheet(bulkData) : [];
 
-  // Subjects entered one-by-one (manual mode) are combined with any pasted sheet
-  const manualRows: ParsedGradeRow[] = manual
-    .filter((m) => m && String(m.subject || "").trim() !== "")
-    .map((m) => {
-      const grade = String(m.grade || "").toUpperCase();
-      const failed = /fail/i.test(String(m.result || "")) || grade === "F";
-      const parsedGp = parseFloat(String(m.gradePoint));
-      const gradePoint = failed
-        ? 0
-        : !isNaN(parsedGp)
-          ? parsedGp
-          : gradePointFor(grade) ?? 0;
-      const credits = parseFloat(String(m.credits));
-      return {
-        code: String(m.code || ""),
-        subject: String(m.subject || "").trim(),
-        grade,
-        gradePoint,
-        credits: isNaN(credits) || credits <= 0 ? 1 : credits,
-        result: failed ? "Fail" : "Pass",
-      };
+  function subjectToRow(m: any): ParsedGradeRow | null {
+    if (!m || String(m.subject || "").trim() === "") return null;
+    const grade = String(m.grade || "").toUpperCase();
+    const failed = /fail/i.test(String(m.result || "")) || grade === "F";
+    const parsedGp = parseFloat(String(m.gradePoint));
+    const gradePoint = failed
+      ? 0
+      : !isNaN(parsedGp)
+        ? parsedGp
+        : gradePointFor(grade) ?? 0;
+    const credits = parseFloat(String(m.credits));
+    return {
+      code: String(m.code || ""),
+      subject: String(m.subject || "").trim(),
+      grade,
+      gradePoint,
+      credits: isNaN(credits) || credits <= 0 ? 1 : credits,
+      result: failed ? "Fail" : "Pass",
+    };
+  }
+
+  // Semester-based manual entry
+  const semesterRows: ParsedGradeRow[] = [];
+  const semesterBreakdown: Array<{ name: string; gpa: number; credits: number; gradePoints: number }> = [];
+  for (const sem of semesters) {
+    const subjRows: ParsedGradeRow[] = [];
+    for (const sub of (sem.subjects || [])) {
+      const r = subjectToRow(sub);
+      if (r) subjRows.push(r);
+    }
+    const semGP = subjRows.reduce((s, r) => s + r.gradePoint * r.credits, 0);
+    const semCr = subjRows.reduce((s, r) => s + r.credits, 0);
+    semesterBreakdown.push({
+      name: sem.name || `Semester ${semesters.indexOf(sem) + 1}`,
+      gpa: semCr > 0 ? Number((semGP / semCr).toFixed(2)) : 0,
+      credits: semCr,
+      gradePoints: semGP,
     });
-  rows = [...rows, ...manualRows];
+    semesterRows.push(...subjRows);
+  }
+
+  // Flat manual entry (legacy)
+  const flatRows: ParsedGradeRow[] = flatManual
+    .map(subjectToRow)
+    .filter((r): r is ParsedGradeRow => r !== null);
+
+  rows = [...rows, ...semesterRows, ...flatRows];
 
   let totalGradePoints = 0;
   let totalCredits = 0;
@@ -330,6 +357,7 @@ export function cgpaCalculator(inputs: Record<string, any>) {
     totalGradePoints: Math.round(totalGradePoints * 100) / 100,
     totalCredits,
     rows: parsedRows,
+    semesterBreakdown,
   };
 }
 

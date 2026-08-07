@@ -22,7 +22,7 @@ export function validateNumber(
 
 export function validateInput(
   value: any,
-  type: "number" | "select" | "text" | "date" | "boolean" | "textarea" | "subjects",
+  type: "number" | "select" | "text" | "date" | "boolean" | "textarea" | "subjects" | "semesters",
   min?: number,
   max?: number,
   defaultValue?: any
@@ -37,6 +37,7 @@ export function validateInput(
       const date = new Date(value);
       return isNaN(date.getTime()) ? defaultValue || "" : value;
     case "subjects":
+    case "semesters":
       return Array.isArray(value) ? value : [];
     default:
       return value === undefined || value === null ? defaultValue || "" : String(value);

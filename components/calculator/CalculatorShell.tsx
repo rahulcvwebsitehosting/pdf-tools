@@ -14,6 +14,7 @@ import FAQSection from "./FAQSection";
 import CurrencySelector from "./CurrencySelector";
 import MoneyInput from "./MoneyInput";
 import { SubjectEditor } from "./SubjectEditor";
+import { SemesterEditor } from "./SemesterEditor";
 import { Share2, Printer, RotateCcw, Copy, Calculator } from "lucide-react";
 
 interface CalculatorShellProps {
@@ -236,6 +237,17 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                       min={inp.min}
                       max={inp.max}
                       helpText={inp.helpText}
+                    />
+                  );
+                }
+
+                if (inp.type === "semesters") {
+                  return (
+                    <SemesterEditor
+                      key={inp.name}
+                      value={inputs[inp.name]}
+                      scale={String(inputs["scale"] ?? "10")}
+                      onChange={(rows) => handleChange(inp.name, rows, "semesters")}
                     />
                   );
                 }

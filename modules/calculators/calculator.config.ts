@@ -6187,7 +6187,7 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
     "slug": "cgpa-calculator",
     "title": "CGPA Calculator",
     "shortTitle": "CGPA",
-    "description": "Paste your grade sheet and the tool auto-detects subjects, grades, and grade points — ignoring your name, roll number, department, and header lines. Or add each subject manually. Get your CGPA client-side and 100% private.",
+    "description": "Paste your grade sheet and the tool auto-detects subjects, grades, and grade points — ignoring your name, roll number, department, and header lines. Or add semesters and courses manually. Get your CGPA client-side and 100% private.",
     "keywords": [
         "cgpa calculator",
         "grade point average",
@@ -6229,11 +6229,11 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             "helpText": "Paste your semester grade sheet (one course per line). Your name, roll number, department, header rows, serial/semester numbers, and course codes are ignored automatically — only subject name, grade, grade point, and Pass/Fail are used."
         },
         {
-            "name": "manualSubjects",
-            "label": "Add Subjects Manually",
-            "type": "subjects",
+            "name": "semesters",
+            "label": "Add Semesters & Subjects",
+            "type": "semesters",
             "defaultValue": [],
-            "helpText": "Add each subject one by one — name, credit hours, grade, and result. Manual subjects are combined with any pasted grade sheet."
+            "helpText": "Add semesters and then courses within each semester — name, credit hours, grade, and result. Combined with any pasted grade sheet."
         },
         {
             "name": "totalGradePoints",
@@ -6312,6 +6312,12 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             "label": "Detected Subjects",
             "type": "table",
             "description": "Auto-detected subject, grade, grade point, and credits"
+        },
+        {
+            "name": "semesterBreakdown",
+            "label": "Semester Breakdown",
+            "type": "table",
+            "description": "Per-semester GPA, credits, and grade points"
         }
     ],
     "faq": [
@@ -6321,7 +6327,7 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
         },
         {
             "question": "How do I add subjects manually?",
-            "answer": "Use the 'Add Subjects Manually' section: enter the subject name, credit hours, and grade for each course, then tap 'Add Subject'. Grade points fill in automatically from the selected grading scale but can be overridden. Manual subjects are combined with anything you pasted in the grade sheet box."
+            "answer": "Use the 'Add Semesters & Subjects' section: add a semester, then add courses within each semester with course name, credit hours, and grade. Each semester shows its own GPA subtotal. Grade points fill in automatically from the selected grading scale but can be overridden. Manual entries are combined with anything you pasted in the grade sheet box."
         },
         {
             "question": "How is CGPA calculated?",
@@ -6391,17 +6397,30 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             }
         },
         {
-            "title": "Manual Subject Entry",
+            "title": "Manual Subject Entry (Semesters)",
             "inputs": {
-                "manualSubjects": [
-                    { "subject": "Theory of Machines", "credits": 4, "grade": "A+", "gradePoint": 9, "result": "Pass" },
-                    { "subject": "Probability and Statistics", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" },
-                    { "subject": "Soil Science Laboratory", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" }
+                "semesters": [
+                    {
+                        "id": "sem-1",
+                        "name": "Semester 1",
+                        "subjects": [
+                            { "subject": "Theory of Machines", "credits": 4, "grade": "A+", "gradePoint": 9, "result": "Pass" },
+                            { "subject": "Probability and Statistics", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" }
+                        ]
+                    },
+                    {
+                        "id": "sem-2",
+                        "name": "Semester 2",
+                        "subjects": [
+                            { "subject": "Soil Science Laboratory", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" },
+                            { "subject": "Technical Communication", "credits": 3, "grade": "A+", "gradePoint": 9, "result": "Pass" }
+                        ]
+                    }
                 ],
                 "scale": "10"
             },
             "outputs": {
-                "cgpa": 9.67
+                "cgpa": 9.47
             }
         }
     ],
