@@ -6221,19 +6221,19 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
     },
     "inputs": [
         {
+            "name": "semesters",
+            "label": "Semester Sections",
+            "type": "semesters",
+            "defaultValue": [],
+            "helpText": "Add each semester as a row — enter the semester name, GPA, and total credits. Add multiple semesters to compute your overall CGPA."
+        },
+        {
             "name": "bulkData",
-            "label": "Paste Grade Sheet",
+            "label": "Or Paste Grade Sheet",
             "type": "textarea",
             "defaultValue": "AAISWARYA P M\t2403730422522001\nB.Tech-Agricultural Engineering\nSemester\tCourse Code\tCourse Title\tGrade\tGrade Point\tResult\n4\t23AG401\tTheory of Machines\tA+\t9\tPass\n4\t23AG402\tHydrology and Water Resource Engineering\tA+\t9\tPass\n4\t23AG403\tSoil Science for Agricultural Engineers\tA+\t9\tPass\n4\t23AG404\tTractors and Farm Engines\tA+\t9\tPass\n4\t23AG405\tSoil Science Laboratory\tO\t10\tPass\n4\t23BS405\tProbability and Statistics\tA+\t9\tPass\n4\t23ES403\tMechanics for Engineers\tA\t8\tPass\n4\t23HS401\tTechnical Communication\tA+\t9\tPass\n4\t23MC004\tUniversal Human Values - II Understanding Harmony\tB+\t7\tPass\n4\t23TPS04\tQuantitative Aptitude and Logical Reasoning - II\tA\t8\tPass",
             "placeholder": "Paste rows like:\nCredits  Code  Subject  Grade  Grade Point  Result\n4\t23AG401\tTheory of Machines\tA\t8\tPass",
-            "helpText": "Paste your semester grade sheet (one course per line). Your name, roll number, department, header rows, serial/semester numbers, and course codes are ignored automatically — only subject name, grade, grade point, and Pass/Fail are used."
-        },
-        {
-            "name": "semesters",
-            "label": "Add Semesters & Subjects",
-            "type": "semesters",
-            "defaultValue": [],
-            "helpText": "Add semesters and then courses within each semester — name, credit hours, grade, and result. Combined with any pasted grade sheet."
+            "helpText": "Optional — paste your semester grade sheet (one course per line) to auto-detect subjects. Combined with the semester sections above."
         },
         {
             "name": "totalGradePoints",
