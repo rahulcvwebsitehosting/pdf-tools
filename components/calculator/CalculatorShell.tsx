@@ -208,15 +208,15 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             )}
 
             <div className="space-y-4">
-              {tool.inputs.map((inp) => {
+              {tool.inputs.map((inp, idx) => {
                 const isMoneyField = inp.type === "number" && (
-                  inp.name.toLowerCase().includes("amount") || 
-                  inp.name.toLowerCase().includes("price") || 
-                  inp.name.toLowerCase().includes("salary") || 
-                  inp.name.toLowerCase().includes("principal") || 
-                  inp.name.toLowerCase().includes("returned") || 
-                  inp.name.toLowerCase().includes("invested") || 
-                  inp.name.toLowerCase().includes("cost") || 
+                  inp.name.toLowerCase().includes("amount") ||
+                  inp.name.toLowerCase().includes("price") ||
+                  inp.name.toLowerCase().includes("salary") ||
+                  inp.name.toLowerCase().includes("principal") ||
+                  inp.name.toLowerCase().includes("returned") ||
+                  inp.name.toLowerCase().includes("invested") ||
+                  inp.name.toLowerCase().includes("cost") ||
                   inp.name.toLowerCase().includes("value") ||
                   inp.name.toLowerCase().includes("revenue") ||
                   inp.name.toLowerCase().includes("bill") ||
@@ -224,6 +224,10 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                   inp.name.toLowerCase().includes("downpayment") ||
                   inp.name.toLowerCase().includes("homevalue")
                 );
+
+                const showOrDivider =
+                  inp.name === "bulkData" &&
+                  tool.inputs.some((i) => i.name === "semesters");
 
                 if (isMoneyField) {
                   return (
@@ -309,14 +313,33 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
                     ) : inp.type === "textarea" ? (
-                      <textarea
-                        id={inp.name}
-                        rows={10}
-                        value={inputs[inp.name] || ""}
-                        placeholder={inp.placeholder}
-                        onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
-                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
-                      />
+                      <>
+                        {showOrDivider && (
+                          <div className="flex items-center gap-3 my-6">
+                            <div className="flex-1 border-t border-dashed border-border" />
+                            <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                              [ OR ]
+                            </span>
+                            <div className="flex-1 border-t border-dashed border-border" />
+                          </div>
+                        )}
+                        <div className="border border-dashed border-border rounded-lg p-4 bg-secondary/20 space-y-2">
+                          <label
+                            htmlFor={inp.name}
+                            className="font-mono text-[11px] uppercase font-bold text-foreground flex items-center gap-2"
+                          >
+                            {inp.label}
+                          </label>
+                          <textarea
+                            id={inp.name}
+                            rows={10}
+                            value={inputs[inp.name] || ""}
+                            placeholder={inp.placeholder}
+                            onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
+                            className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
+                          />
+                        </div>
+                      </>
                     ) : (
                       <input
                         id={inp.name}
