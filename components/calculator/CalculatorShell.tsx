@@ -187,9 +187,9 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
       </div>
 
       {activeTab === "calc" && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Inputs Section */}
-          <div className="lg:col-span-1 border border-border bg-background p-6 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Inputs Section - centered and prominent */}
+          <div className="lg:col-span-3 lg:col-start-2 border border-border bg-background p-6 space-y-6">
             <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-2 flex items-center gap-2">
               <Calculator size={14} />
               <span>Configure Inputs</span>
@@ -381,8 +381,8 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             </div>
           </div>
 
-          {/* Results Section */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* Results Section - full width below */}
+          <div className="lg:col-span-5 space-y-6">
             <div className={`${isPending ? "opacity-60" : "opacity-100"} transition-opacity`}>
               <ResultCard outputsSchema={tool.outputs} values={outputs} slug={tool.slug} currencyCode={currencyCode} />
             </div>

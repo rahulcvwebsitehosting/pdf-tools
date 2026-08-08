@@ -68,7 +68,7 @@ export default async function ToolPage({ params }: PageProps) {
       <>
         <SEOSection config={calc} />
         <main className="min-h-screen bg-background text-foreground py-12">
-          <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <article className={`mx-auto px-4 sm:px-6 lg:px-8 space-y-8 ${calc.slug === "cgpa-calculator" ? "max-w-6xl" : "max-w-5xl"}`}>
             <nav className="font-mono text-[10px] uppercase font-bold text-muted-foreground flex items-center gap-1.5">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
               <span>/</span>
