@@ -285,22 +285,45 @@ export function cgpaCalculator(inputs: Record<string, any>) {
     };
   }
 
-  // Semester-based manual entry
+  // Semester-based manual entry — each semester has a mode:
+  //   "direct"   → user entered gpa + total credits manually
+  //   "courses"  → user added individual courses; gpa + credits computed from them
   const semesterRows: ParsedGradeRow[] = [];
-  const semesterBreakdown: Array<{ name: string; gpa: number; credits: number; gradePoints: number }> = [];
-  for (const sem of semesters) {
+  const semesterBreakdown: Array<{ name: string; gpa: number; credits: number; gradePoints: number; mode: string }> = [];
+  let directGP = 0;
+  let directCr = 0;
+
+  for (let semIdx = 0; semIdx < semesters.length; semIdx++) {
+    const sem = semesters[semIdx];
     const subjRows: ParsedGradeRow[] = [];
     for (const sub of (sem.subjects || [])) {
       const r = subjectToRow(sub);
       if (r) subjRows.push(r);
     }
-    const semGP = subjRows.reduce((s, r) => s + r.gradePoint * r.credits, 0);
-    const semCr = subjRows.reduce((s, r) => s + r.credits, 0);
+
+    let semGP = 0;
+    let semCr = 0;
+    let semGpa = 0;
+    const mode = sem.mode || "direct";
+
+    if (mode === "courses") {
+      semGP = subjRows.reduce((s, r) => s + r.gradePoint * r.credits, 0);
+      semCr = subjRows.reduce((s, r) => s + r.credits, 0);
+      semGpa = semCr > 0 ? semGP / semCr : 0;
+    } else {
+      semGpa = parseFloat(String(sem.gpa)) || 0;
+      semCr = parseFloat(String(sem.credits)) || 0;
+      semGP = semGpa * semCr;
+      directGP += semGP;
+      directCr += semCr;
+    }
+
     semesterBreakdown.push({
-      name: sem.name || `Semester ${semesters.indexOf(sem) + 1}`,
-      gpa: semCr > 0 ? Number((semGP / semCr).toFixed(2)) : 0,
+      name: sem.name || `Semester ${semIdx + 1}`,
+      gpa: Number(semGpa.toFixed(2)),
       credits: semCr,
       gradePoints: semGP,
+      mode,
     });
     semesterRows.push(...subjRows);
   }
@@ -314,9 +337,9 @@ export function cgpaCalculator(inputs: Record<string, any>) {
 
   let totalGradePoints = 0;
   let totalCredits = 0;
-  if (rows.length > 0) {
-    totalGradePoints = rows.reduce((sum, r) => sum + r.gradePoint * r.credits, 0);
-    totalCredits = rows.reduce((sum, r) => sum + r.credits, 0);
+  if (rows.length > 0 || directCr > 0) {
+    totalGradePoints = rows.reduce((sum, r) => sum + r.gradePoint * r.credits, 0) + directGP;
+    totalCredits = rows.reduce((sum, r) => sum + r.credits, 0) + directCr;
   } else {
     totalGradePoints = Number(inputs.totalGradePoints || 0);
     totalCredits = Number(inputs.totalCredits || 0);

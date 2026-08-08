@@ -6397,30 +6397,34 @@ export const calculatorRegistry: Record<string, CalculatorRegistryEntry> = {
             }
         },
         {
-            "title": "Manual Subject Entry (Semesters)",
+            "title": "Manual Semester Sections (Direct + Courses)",
             "inputs": {
                 "semesters": [
                     {
                         "id": "sem-1",
                         "name": "Semester 1",
-                        "subjects": [
-                            { "subject": "Theory of Machines", "credits": 4, "grade": "A+", "gradePoint": 9, "result": "Pass" },
-                            { "subject": "Probability and Statistics", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" }
-                        ]
+                        "mode": "direct",
+                        "gpa": "8.5",
+                        "credits": "24",
+                        "subjects": []
                     },
                     {
                         "id": "sem-2",
                         "name": "Semester 2",
+                        "mode": "courses",
+                        "gpa": "",
+                        "credits": "",
                         "subjects": [
-                            { "subject": "Soil Science Laboratory", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" },
-                            { "subject": "Technical Communication", "credits": 3, "grade": "A+", "gradePoint": 9, "result": "Pass" }
+                            { "subject": "Theory of Machines", "credits": 4, "grade": "A+", "gradePoint": 9, "result": "Pass" },
+                            { "subject": "Probability and Statistics", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" },
+                            { "subject": "Soil Science Laboratory", "credits": 4, "grade": "O", "gradePoint": 10, "result": "Pass" }
                         ]
                     }
                 ],
                 "scale": "10"
             },
             "outputs": {
-                "cgpa": 9.53
+                "cgpa": 8.89
             }
         }
     ],
