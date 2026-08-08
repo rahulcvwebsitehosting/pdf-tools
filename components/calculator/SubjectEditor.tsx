@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { Plus, X } from "lucide-react";
 
 export interface SubjectRow {
@@ -39,14 +40,20 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
   const rows: SubjectRow[] = Array.isArray(value) ? value : [];
   const scaleKey: "4" | "10" = scale === "4" ? "4" : "10";
   const grades = GRADES[scaleKey];
+  const manualGpIndices = useRef<Set<number>>(new Set());
 
   const update = (idx: number, patch: Partial<SubjectRow>) => {
+    if (patch.gradePoint !== undefined) {
+      manualGpIndices.current.add(idx);
+    }
     const next = rows.map((r, i) => {
       if (i !== idx) return r;
       const merged = { ...r, ...patch };
       if (patch.grade !== undefined && merged.grade) {
-        const gp = gradePointFor(String(merged.grade), scaleKey);
-        if (gp !== null) merged.gradePoint = gp;
+        if (!manualGpIndices.current.has(idx)) {
+          const gp = gradePointFor(String(merged.grade), scaleKey);
+          if (gp !== null) merged.gradePoint = gp;
+        }
         if (String(merged.grade).toUpperCase() === "F") merged.result = "Fail";
       }
       return merged;
@@ -68,7 +75,14 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
   };
 
   const removeRow = (idx: number) => {
-    onChange(rows.filter((_, i) => i !== idx));
+    const next = rows.filter((_, i) => i !== idx);
+    const nextSet = new Set<number>();
+    manualGpIndices.current.forEach((i) => {
+      if (i < idx) nextSet.add(i);
+      else if (i > idx) nextSet.add(i - 1);
+    });
+    manualGpIndices.current = nextSet;
+    onChange(next);
   };
 
   return (
@@ -88,7 +102,7 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
             return (
               <div
                 key={idx}
-                className="grid grid-cols-[1fr_3.5rem_4.5rem_3.5rem_4.5rem_auto] gap-1.5 items-center"
+                className="flex flex-wrap sm:grid sm:grid-cols-[1fr_3.5rem_4.5rem_3.5rem_4.5rem_auto] gap-1.5 items-center"
               >
                 <input
                   type="text"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { tools } from "@/lib/tools";
 import { Search } from "lucide-react";
@@ -56,7 +56,7 @@ function CommandPaletteInner({
   onSelect: (href: string) => void;
 }) {
   const [query, setQuery] = useState("");
-  const searchIndex = getSearchIndex();
+  const searchIndex = useMemo(() => getSearchIndex(), []);
 
   const filtered = searchIndex.filter((item) => {
     const q = query.toLowerCase().trim();

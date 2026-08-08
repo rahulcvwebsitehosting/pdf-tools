@@ -48,17 +48,18 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
       : true;
   };
 
+  const matchesLetter = (t: Tool) =>
+    activeLetter ? t.name.toUpperCase().startsWith(activeLetter) : true;
+
   // Filter tools by search query and letter index
   const filteredTools = categoryTools.filter((t) => {
-    const matchesLetter = activeLetter
-      ? t.name.toUpperCase().startsWith(activeLetter)
-      : true;
-
-    return matchesQuery(t) && matchesLetter;
+    return matchesQuery(t) && matchesLetter(t);
   });
 
   const fallbackTools =
-    filteredTools.length === 0 ? otherTools.filter(matchesQuery).slice(0, 6) : [];
+    filteredTools.length === 0
+      ? otherTools.filter((t) => matchesQuery(t) && matchesLetter(t)).slice(0, 6)
+      : [];
 
   // Extract alphabetical list
   const alphabet = Array.from(
@@ -86,6 +87,16 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
     { label: "Security Parameter", value: "No Uploads" },
     { label: "Monthly Users", value: "100% Secure" },
   ];
+
+  const CAT_LABELS: Record<string, string> = {
+    pdf: "PDF",
+    developer: "Developer",
+    office: "Text",
+    image: "Image",
+    web: "Web",
+    time: "Time",
+    calculator: "Calculator",
+  };
 
   return (
     <main className="text-foreground">
@@ -256,7 +267,7 @@ export default function CategoryLanding({ slug }: CategoryLandingProps) {
                     </p>
                   </div>
                   <span className="text-[11px] text-muted-foreground text-right mt-6 block">
-                    {t.category} tool →
+                    {CAT_LABELS[t.category] ?? t.category} tool →
                   </span>
                 </Link>
               ))}
