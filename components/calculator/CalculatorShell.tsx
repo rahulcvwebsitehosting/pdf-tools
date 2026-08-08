@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useTransition } from "react";
+import React, { useState, useEffect, useTransition, useRef } from "react";
 import { CalculatorRegistryEntry, calculatorRegistry } from "@/modules/calculators/calculator.config";
 import { TrustBadge } from "@/components/trust-badge";
 import { saveToolInputCache, loadToolInputCache, savePreferences, loadPreferences } from "@/lib/tools-engine/storage";
@@ -31,6 +31,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<"calc" | "formula" | "faq">("calc");
   const [copiedAll, setCopiedAll] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   // Detect monetary tools
   const isMonetary = tool?.outputs.some(o => o.type === "currency") || tool?.inputs.some(i => 
@@ -151,6 +152,17 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
       setCopiedAll(true);
       setTimeout(() => setCopiedAll(false), 2000);
     }
+  };
+
+  const handleSubmitPaste = () => {
+    startTransition(() => {
+      const updatedOutputs = tool.calculate(inputs);
+      setOutputs(updatedOutputs);
+      trackEvent("calculate", tool.slug);
+    });
+    setTimeout(() => {
+      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
   };
 
   return (
@@ -338,6 +350,16 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                             onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
                             className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
                           />
+                          {inp.name === "bulkData" && (
+                            <button
+                              onClick={handleSubmitPaste}
+                              disabled={isPending}
+                              className="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground font-mono text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity rounded-lg cursor-pointer disabled:opacity-50"
+                            >
+                              <Calculator size={14} />
+                              Submit
+                            </button>
+                          )}
                         </div>
                       </>
                     ) : (
@@ -405,7 +427,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
           </div>
 
           {/* Results Section - full width below */}
-          <div className="lg:col-span-5 space-y-6">
+          <div ref={resultsRef} className="lg:col-span-5 space-y-6 scroll-mt-8">
             <div className={`${isPending ? "opacity-60" : "opacity-100"} transition-opacity`}>
               <ResultCard outputsSchema={tool.outputs} values={outputs} slug={tool.slug} currencyCode={currencyCode} />
             </div>
