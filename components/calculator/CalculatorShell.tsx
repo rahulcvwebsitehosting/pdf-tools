@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useTransition, useRef } from "react";
 import { CalculatorRegistryEntry, calculatorRegistry } from "@/modules/calculators/calculator.config";
@@ -14,6 +14,7 @@ import FAQSection from "./FAQSection";
 import CurrencySelector from "./CurrencySelector";
 import MoneyInput from "./MoneyInput";
 import { SubjectEditor } from "./SubjectEditor";
+import { SemesterEditor } from "./SemesterEditor";
 import { Share2, Printer, RotateCcw, Copy, Calculator } from "lucide-react";
 
 interface CalculatorShellProps {
@@ -30,9 +31,10 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<"calc" | "formula" | "faq">("calc");
   const [copiedAll, setCopiedAll] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
   const calcTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const latestInputsRef = useRef(inputs);
+  const latestInputsRef = useRef<Record<string, any>>({});
 
   // Detect monetary tools
   const isMonetary = tool?.outputs.some(o => o.type === "currency") || tool?.inputs.some(i => 
@@ -93,21 +95,20 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
     const validated = validateInput(value, type, min, max, value);
     const updatedInputs = { ...latestInputsRef.current, [name]: validated };
 
-    latestInputsRef.current = updatedInputs;
     setInputs(updatedInputs);
+    latestInputsRef.current = updatedInputs;
 
-    // debounce heavy recalculations (e.g. parseGradeSheet on every keystroke)
+    // Debounce heavy recalculations (e.g. parseGradeSheet on every keystroke)
     clearTimeout(calcTimer.current);
     calcTimer.current = setTimeout(() => {
       startTransition(() => {
-        const snap = latestInputsRef.current;
-        const updatedOutputs = tool.calculate(snap);
+        const updatedOutputs = tool.calculate(latestInputsRef.current);
         setOutputs(updatedOutputs);
         trackEvent("calculate", tool.slug);
       });
     }, 200);
 
-    // debounce localStorage writes to avoid quota pressure on every keystroke
+    // Debounce localStorage writes to avoid quota pressure on every keystroke
     clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
       saveToolInputCache(tool.slug, latestInputsRef.current);
@@ -168,6 +169,17 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
     }
   };
 
+  const handleSubmitPaste = () => {
+    startTransition(() => {
+      const updatedOutputs = tool.calculate(inputs);
+      setOutputs(updatedOutputs);
+      trackEvent("calculate", tool.slug);
+    });
+    setTimeout(() => {
+      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  };
+
   return (
     <div className="space-y-12">
       {/* Trust Notice */}
@@ -202,9 +214,9 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
       </div>
 
       {activeTab === "calc" && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Inputs Section */}
-          <div className="lg:col-span-1 border border-border bg-background p-6 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Inputs Section - centered and prominent */}
+          <div className="lg:col-span-3 lg:col-start-2 border border-border bg-background p-6 space-y-6">
             <h3 className="font-mono text-xs uppercase font-bold text-muted-foreground border-b border-border pb-2 flex items-center gap-2">
               <Calculator size={14} />
               <span>Configure Inputs</span>
@@ -223,15 +235,15 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             )}
 
             <div className="space-y-4">
-              {tool.inputs.map((inp) => {
+              {tool.inputs.map((inp, idx) => {
                 const isMoneyField = inp.type === "number" && (
-                  inp.name.toLowerCase().includes("amount") || 
-                  inp.name.toLowerCase().includes("price") || 
-                  inp.name.toLowerCase().includes("salary") || 
-                  inp.name.toLowerCase().includes("principal") || 
-                  inp.name.toLowerCase().includes("returned") || 
-                  inp.name.toLowerCase().includes("invested") || 
-                  inp.name.toLowerCase().includes("cost") || 
+                  inp.name.toLowerCase().includes("amount") ||
+                  inp.name.toLowerCase().includes("price") ||
+                  inp.name.toLowerCase().includes("salary") ||
+                  inp.name.toLowerCase().includes("principal") ||
+                  inp.name.toLowerCase().includes("returned") ||
+                  inp.name.toLowerCase().includes("invested") ||
+                  inp.name.toLowerCase().includes("cost") ||
                   inp.name.toLowerCase().includes("value") ||
                   inp.name.toLowerCase().includes("revenue") ||
                   inp.name.toLowerCase().includes("bill") ||
@@ -239,6 +251,10 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                   inp.name.toLowerCase().includes("downpayment") ||
                   inp.name.toLowerCase().includes("homevalue")
                 );
+
+                const showOrDivider =
+                  inp.name === "bulkData" &&
+                  tool.inputs.some((i) => i.name === "semesters");
 
                 if (isMoneyField) {
                   return (
@@ -252,6 +268,17 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                       min={inp.min}
                       max={inp.max}
                       helpText={inp.helpText}
+                    />
+                  );
+                }
+
+                if (inp.type === "semesters") {
+                  return (
+                    <SemesterEditor
+                      key={inp.name}
+                      value={inputs[inp.name]}
+                      scale={String(inputs["scale"] ?? "10")}
+                      onChange={(rows) => handleChange(inp.name, rows, "semesters")}
                     />
                   );
                 }
@@ -313,14 +340,43 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         className="w-full p-2 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                       />
                     ) : inp.type === "textarea" ? (
-                      <textarea
-                        id={inp.name}
-                        rows={10}
-                        value={inputs[inp.name] || ""}
-                        placeholder={inp.placeholder}
-                        onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
-                        className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
-                      />
+                      <>
+                        {showOrDivider && (
+                          <div className="flex items-center gap-3 my-6">
+                            <div className="flex-1 border-t border-dashed border-border" />
+                            <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                              [ OR ]
+                            </span>
+                            <div className="flex-1 border-t border-dashed border-border" />
+                          </div>
+                        )}
+                        <div className="border border-dashed border-border rounded-lg p-4 bg-secondary/20 space-y-2">
+                          <label
+                            htmlFor={inp.name}
+                            className="font-mono text-[11px] uppercase font-bold text-foreground flex items-center gap-2"
+                          >
+                            {inp.label}
+                          </label>
+                          <textarea
+                            id={inp.name}
+                            rows={10}
+                            value={inputs[inp.name] || ""}
+                            placeholder={inp.placeholder}
+                            onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
+                            className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
+                          />
+                          {inp.name === "bulkData" && (
+                            <button
+                              onClick={handleSubmitPaste}
+                              disabled={isPending}
+                              className="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground font-mono text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity rounded-lg cursor-pointer disabled:opacity-50"
+                            >
+                              <Calculator size={14} />
+                              Submit
+                            </button>
+                          )}
+                        </div>
+                      </>
                     ) : (
                       <input
                         id={inp.name}
@@ -385,8 +441,8 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
             </div>
           </div>
 
-          {/* Results Section */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* Results Section - full width below */}
+          <div ref={resultsRef} className="lg:col-span-5 space-y-6 scroll-mt-8">
             <div className={`${isPending ? "opacity-60" : "opacity-100"} transition-opacity`}>
               <ResultCard outputsSchema={tool.outputs} values={outputs} slug={tool.slug} currencyCode={currencyCode} />
             </div>
