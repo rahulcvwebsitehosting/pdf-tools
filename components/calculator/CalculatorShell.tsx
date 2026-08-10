@@ -344,7 +344,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         {showOrDivider && (
                           <div className="flex items-center gap-3 my-6">
                             <div className="flex-1 border-t border-dashed border-border" />
-                            <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                            <span className="font-mono text-[11px] uppercase font-bold text-muted-foreground tracking-wider">
                               [ OR ]
                             </span>
                             <div className="flex-1 border-t border-dashed border-border" />
@@ -353,7 +353,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                         <div className="border border-dashed border-border rounded-lg p-4 bg-secondary/20 space-y-2">
                           <label
                             htmlFor={inp.name}
-                            className="font-mono text-[11px] uppercase font-bold text-foreground flex items-center gap-2"
+                            className="font-mono text-[12px] uppercase font-bold text-foreground flex items-center gap-2"
                           >
                             {inp.label}
                           </label>
@@ -363,13 +363,13 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                             value={inputs[inp.name] || ""}
                             placeholder={inp.placeholder}
                             onChange={(e) => handleChange(inp.name, e.target.value, inp.type)}
-                            className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
+                            className="w-full p-2.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-lg resize-y leading-relaxed"
                           />
                           {inp.name === "bulkData" && (
                             <button
                               onClick={handleSubmitPaste}
                               disabled={isPending}
-                              className="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground font-mono text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity rounded-lg cursor-pointer disabled:opacity-50"
+                              className="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground font-mono text-[12px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity rounded-lg cursor-pointer disabled:opacity-50"
                             >
                               <Calculator size={14} />
                               Submit

@@ -175,12 +175,12 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border pb-2">
-        <h4 className="font-mono text-xs uppercase font-bold text-foreground flex items-center gap-2">
+        <h4 className="font-mono text-[13px] uppercase font-bold text-foreground flex items-center gap-2">
           <BookOpen size={14} />
           Semester Sections
         </h4>
         {semesters.length > 0 && (
-          <span className="font-mono text-[10px] text-muted-foreground">
+          <span className="font-mono text-[11px] text-muted-foreground">
             CGPA: {computeOverallCGPA().toFixed(2)} | {semesters.length} section{semesters.length !== 1 && "s"}
           </span>
         )}
@@ -188,13 +188,13 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
 
       {/* Column Headers */}
       <div className="grid grid-cols-[1.5fr_1fr_1fr_auto] gap-3 px-1">
-        <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+        <span className="font-mono text-[11px] uppercase font-bold text-muted-foreground tracking-wider">
           Semester
         </span>
-        <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+        <span className="font-mono text-[11px] uppercase font-bold text-muted-foreground tracking-wider">
           GPA
         </span>
-        <span className="font-mono text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+        <span className="font-mono text-[11px] uppercase font-bold text-muted-foreground tracking-wider">
           Total Credits
         </span>
         <span className="w-6" />
@@ -214,7 +214,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                   type="text"
                   value={sem.name}
                   onChange={(e) => updateSemester(semIdx, { name: e.target.value })}
-                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-lg"
                   placeholder={`Semester ${semIdx + 1}`}
                 />
                 <input
@@ -226,7 +226,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                   placeholder={scaleKey === "4" ? "e.g. 3.5" : "e.g. 8.5"}
                   title="Enter GPA directly OR add courses below to compute it"
                   onChange={(e) => updateSemester(semIdx, { gpa: e.target.value, mode: "direct" })}
-                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <input
                   type="number"
@@ -236,7 +236,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                   placeholder="e.g. 24"
                   title="Enter total credits directly OR add courses below to compute it"
                   onChange={(e) => updateSemester(semIdx, { credits: e.target.value, mode: "direct" })}
-                  className="w-full p-2.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full p-2.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <div className="flex items-center gap-1">
                   <button
@@ -288,7 +288,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                   </div>
 
                   {sem.subjects.length === 0 && (
-                    <p className="text-[10px] text-muted-foreground leading-normal italic text-center py-1">
+                    <p className="text-[11px] text-muted-foreground leading-normal italic text-center py-1">
                       No courses — click "Add Course" or use the GPA input above.
                     </p>
                   )}
@@ -307,7 +307,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                           onChange={(e) =>
                             updateSubject(semIdx, subIdx, { subject: e.target.value })
                           }
-                          className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md"
+                          className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md"
                         />
                         <input
                           type="number"
@@ -319,7 +319,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                             updateSubject(semIdx, subIdx, { credits: e.target.value });
                             updateSemester(semIdx, { mode: "courses" });
                           }}
-                          className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
                         <select
                           value={sub.grade}
@@ -327,7 +327,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                             updateSubject(semIdx, subIdx, { grade: e.target.value });
                             updateSemester(semIdx, { mode: "courses" });
                           }}
-                          className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
+                          className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
                         >
                           {grades.map((g) => (
                             <option key={g} value={g}>
@@ -346,7 +346,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                             updateSubject(semIdx, subIdx, { gradePoint: e.target.value });
                             updateSemester(semIdx, { mode: "courses" });
                           }}
-                          className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
                         <select
                           value={sub.result}
@@ -354,7 +354,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                             updateSubject(semIdx, subIdx, { result: e.target.value });
                             updateSemester(semIdx, { mode: "courses" });
                           }}
-                          className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
+                          className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
                         >
                           <option value="Pass">Pass</option>
                           <option value="Fail">Fail</option>
@@ -376,14 +376,14 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
                       addSubject(semIdx);
                       updateSemester(semIdx, { mode: "courses" });
                     }}
-                    className="w-full flex items-center justify-center gap-1.5 py-1.5 border border-dashed border-border text-[10px] font-bold font-mono uppercase text-muted-foreground hover:text-foreground hover:border-primary transition-colors rounded-md"
+                    className="w-full flex items-center justify-center gap-1.5 py-1.5 border border-dashed border-border text-[11px] font-bold font-mono uppercase text-muted-foreground hover:text-foreground hover:border-primary transition-colors rounded-md"
                   >
                     <Plus size={12} />
                     Add Course
                   </button>
 
                   {sem.subjects.length > 0 && (
-                    <div className="flex items-center justify-between text-[10px] font-mono pt-1 px-1">
+                    <div className="flex items-center justify-between text-[11px] font-mono pt-1 px-1">
                       <span className="text-muted-foreground">
                         Auto-computed:{" "}
                         <span className="font-bold text-foreground">
@@ -409,7 +409,7 @@ export function SemesterEditor({ value, onChange, scale = "10" }: SemesterEditor
       </button>
 
       {semesters.length === 0 && (
-        <p className="text-[10px] text-muted-foreground leading-normal italic text-center">
+        <p className="text-[11px] text-muted-foreground leading-normal italic text-center">
           Click "Add Semester +" above to start. Each semester can have direct GPA + credits, OR expand to add individual courses for auto-computation.
         </p>
       )}

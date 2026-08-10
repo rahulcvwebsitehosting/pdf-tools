@@ -87,12 +87,12 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
 
   return (
     <div className="space-y-2">
-      <label className="font-mono text-[11px] uppercase font-bold text-foreground">
+      <label className="font-mono text-[12px] uppercase font-bold text-foreground">
         Add Subjects Manually
       </label>
 
       {rows.length === 0 ? (
-        <p className="text-[10px] text-muted-foreground leading-normal italic">
+        <p className="text-[11px] text-muted-foreground leading-normal italic">
           No subjects added yet — or paste a whole grade sheet above and they are detected automatically.
         </p>
       ) : (
@@ -109,7 +109,7 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
                   value={row.subject}
                   placeholder="Subject name"
                   onChange={(e) => update(idx, { subject: e.target.value })}
-                  className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md"
+                  className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md"
                 />
                 <input
                   type="number"
@@ -119,12 +119,12 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
                   placeholder="Cr"
                   title="Credit hours"
                   onChange={(e) => update(idx, { credits: e.target.value })}
-                  className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <select
                   value={row.grade}
                   onChange={(e) => update(idx, { grade: e.target.value })}
-                  className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
+                  className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
                 >
                   {grades.map((g) => (
                     <option key={g} value={g}>
@@ -140,12 +140,12 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
                   value={row.gradePoint}
                   title={`Grade point (auto from grade: ${gp ?? "—"})`}
                   onChange={(e) => update(idx, { gradePoint: e.target.value })}
-                  className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <select
                   value={row.result}
                   onChange={(e) => update(idx, { result: e.target.value })}
-                  className="w-full p-1.5 border border-border bg-background font-mono text-xs focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
+                  className="w-full p-1.5 border border-border bg-background font-mono text-[13px] focus:outline-none focus:ring-1 focus:ring-primary rounded-md cursor-pointer"
                 >
                   <option value="Pass">Pass</option>
                   <option value="Fail">Fail</option>
@@ -166,7 +166,7 @@ export function SubjectEditor({ value, onChange, scale = "10" }: SubjectEditorPr
 
       <button
         onClick={addRow}
-        className="w-full flex items-center justify-center gap-1.5 py-2 border border-dashed border-border text-[11px] font-bold font-mono uppercase text-muted-foreground hover:text-foreground hover:border-primary transition-colors rounded-lg"
+        className="w-full flex items-center justify-center gap-1.5 py-2 border border-dashed border-border text-[12px] font-bold font-mono uppercase text-muted-foreground hover:text-foreground hover:border-primary transition-colors rounded-lg"
       >
         <Plus size={13} />
         Add Subject
