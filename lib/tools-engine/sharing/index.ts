@@ -25,24 +25,28 @@ export async function copyToClipboard(text: string): Promise<boolean> {
   }
 }
 
-export function shareToolUrl(slug: string, title: string): void {
-  if (typeof navigator === "undefined") return;
-  const shareData = {
-    title: title,
-    url: window.location.href,
-  };
+export async function shareToolUrl(slug: string, title: string): Promise<boolean> {
+  if (typeof navigator === "undefined") return false;
+  const url = window.location.href;
+  const shareData = { title, url };
+
+  // Prefer native share sheet on capable devices (mobile, supported desktops)
   if (navigator.share) {
-    navigator.share(shareData).catch((err) => {
-      console.warn("Share sheet interaction canceled or failed", err);
-    });
-  } else {
-    // Fallback: Copy URL to clipboard
-    copyToClipboard(window.location.href).then((ok) => {
-      if (ok) {
-        alert("Tool link copied to clipboard!");
+    try {
+      await navigator.share(shareData);
+      return true;
+    } catch (err) {
+      // User cancelled the share sheet — treat as silent no-op success
+      if (err && typeof err === "object" && "name" in err && err.name === "AbortError") {
+        return true;
       }
-    });
+      // Real failure (e.g., permission) — fall through to clipboard
+      console.warn("navigator.share failed, falling back to clipboard", err);
+    }
   }
+
+  // Fallback: copy URL to clipboard
+  return await copyToClipboard(url);
 }
 
 export function triggerPrint(): void {

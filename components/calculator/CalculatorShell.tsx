@@ -31,6 +31,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<"calc" | "formula" | "faq">("calc");
   const [copiedAll, setCopiedAll] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
   const calcTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -139,9 +140,13 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
     trackEvent("reset", tool.slug);
   };
 
-  const handleShare = () => {
-    shareToolUrl(tool.slug, tool.title);
+  const handleShare = async () => {
+    const ok = await shareToolUrl(tool.slug, tool.title);
     trackEvent("share", tool.slug);
+    if (ok && !navigator.share) {
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    }
   };
 
   const handlePrint = () => {
@@ -428,7 +433,7 @@ export default function CalculatorShell({ slug, relatedLinks }: CalculatorShellP
                 title="Share this tool"
               >
                 <Share2 size={12} />
-                <span>Share</span>
+                <span>{copiedLink ? "Link Copied!" : "Share"}</span>
               </button>
               <button
                 onClick={handlePrint}
